@@ -182,6 +182,10 @@
           {
             "name": "single_nested_bool_attribute",
             "single_nested": {
+              "associated_external_type": {
+                "import": "example.com/apisdk",
+                "type": "*apisdk.DataSourceProperty"
+              },
               "attributes": [
                 {
                   "name": "bool_attribute",
