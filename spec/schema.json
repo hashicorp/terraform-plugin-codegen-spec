@@ -6,16 +6,16 @@
     "datasources": {
       "type": "array",
       "items": {
-        "$ref": "/datasource"
+        "$ref": "#/$defs/datasource"
       }
     },
     "provider": {
-      "$ref": "/provider"
+      "$ref": "#/$defs/provider"
     },
     "resources": {
       "type": "array",
       "items": {
-        "$ref": "/resource"
+        "$ref": "#/$defs/resource"
       }
     }
   },
@@ -24,8 +24,6 @@
   ],
   "$defs": {
     "datasource": {
-      "$id": "/datasource",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "name": {
@@ -33,7 +31,7 @@
         },
         "schema": {
           "type": "object",
-          "$ref": "/datasource/schema"
+          "$ref": "#/$defs/datasource_schema"
         }
       },
       "required": [
@@ -42,8 +40,6 @@
       ]
     },
     "datasource_schema": {
-      "$id": "/datasource/schema",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "attributes": {
@@ -52,19 +48,19 @@
           "items": {
             "oneOf": [
               {
-                "$ref": "/schemas/datasource/bool_attribute"
+                "$ref": "#/$defs/datasource_bool_attribute"
               },
               {
-                "$ref": "/schemas/datasource/list_attribute"
+                "$ref": "#/$defs/datasource_list_attribute"
               },
               {
-                "$ref": "/schemas/datasource/object_attribute"
+                "$ref": "#/$defs/datasource_object_attribute"
               },
               {
-                "$ref": "/schemas/datasource/list_nested_attribute"
+                "$ref": "#/$defs/datasource_list_nested_attribute"
               },
               {
-                "$ref": "/schemas/datasource/single_nested_attribute"
+                "$ref": "#/$defs/datasource_single_nested_attribute"
               }
             ]
           }
@@ -75,10 +71,10 @@
           "items": {
             "oneOf": [
               {
-                "$ref": "/schemas/datasource/list_nested_block"
+                "$ref": "#/$defs/datasource_list_nested_block"
               },
               {
-                "$ref": "/schemas/datasource/single_nested_block"
+                "$ref": "#/$defs/datasource_single_nested_block"
               }
             ]
           }
@@ -98,8 +94,6 @@
       ]
     },
     "provider": {
-      "$id": "/provider",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "name": {
@@ -107,7 +101,7 @@
         },
         "schema": {
           "type": "object",
-          "$ref": "/provider/schema"
+          "$ref": "#/$defs/provider_schema"
         }
       },
       "required": [
@@ -115,8 +109,6 @@
       ]
     },
     "provider_schema": {
-      "$id": "/provider/schema",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "attributes": {
@@ -150,8 +142,6 @@
       ]
     },
     "resource": {
-      "$id": "/resource",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "name": {
@@ -159,7 +149,7 @@
         },
         "schema": {
           "type": "object",
-          "$ref": "/resource/schema"
+          "$ref": "#/$defs/resource_schema"
         }
       },
       "required": [
@@ -168,8 +158,6 @@
       ]
     },
     "resource_schema": {
-      "$id": "/resource/schema",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "properties": {
         "attributes": {
@@ -178,7 +166,7 @@
           "items": {
             "oneOf": [
               {
-                "$ref": "/schemas/resource/bool_attribute"
+                "$ref": "#/$defs/resource_bool_attribute"
               }
             ]
           }
@@ -205,11 +193,7 @@
         }
       ]
     },
-    "common": {
-      "$id": "/schemas/common",
-      "$schema": "https://json-schema.org/draft-07/schema",
-      "definitions": {
-        "associated_external_type": {
+        "schema_associated_external_type": {
           "type": "object",
           "properties": {
             "import": {
@@ -223,7 +207,7 @@
             "type"
           ]
         },
-        "computed_optional_required": {
+        "schema_computed_optional_required": {
           "enum": [
             "computed",
             "computed_optional",
@@ -231,7 +215,7 @@
             "required"
           ]
         },
-        "custom_type": {
+        "schema_custom_type": {
           "type": "object",
           "properties": {
             "import": {
@@ -250,28 +234,28 @@
             "value_type"
           ]
         },
-        "bool_element": {
+        "schema_bool_element": {
           "type": "object",
           "additionalProperties": false
         },
-        "element_type": {
+        "schema_element_type": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "bool": {
-              "$ref": "#/definitions/bool_element"
+              "$ref": "#/$defs/schema_bool_element"
             },
             "list": {
-              "$ref": "#/definitions/list_element"
+              "$ref": "#/$defs/schema_list_element"
             },
             "map": {
-              "$ref": "#/definitions/map_element"
+              "$ref": "#/$defs/schema_map_element"
             },
             "object": {
-              "$ref": "#/definitions/object_elements"
+              "$ref": "#/$defs/schema_object_elements"
             },
             "string": {
-              "$ref": "#/definitions/string_element"
+              "$ref": "#/$defs/schema_string_element"
             }
           },
           "oneOf": [
@@ -302,24 +286,24 @@
             }
           ]
         },
-        "list_element": {
+        "schema_list_element": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "bool": {
-              "$ref": "#/definitions/bool_element"
+              "$ref": "#/$defs/schema_bool_element"
             },
             "list": {
-              "$ref": "#/definitions/list_element"
+              "$ref": "#/$defs/schema_list_element"
             },
             "map": {
-              "$ref": "#/definitions/map_element"
+              "$ref": "#/$defs/schema_map_element"
             },
             "object": {
-              "$ref": "#/definitions/object_elements"
+              "$ref": "#/$defs/schema_object_elements"
             },
             "string": {
-              "$ref": "#/definitions/string_element"
+              "$ref": "#/$defs/schema_string_element"
             }
           },
           "oneOf": [
@@ -350,24 +334,24 @@
             }
           ]
         },
-        "map_element": {
+        "schema_map_element": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "bool": {
-              "$ref": "#/definitions/bool_element"
+              "$ref": "#/$defs/schema_bool_element"
             },
             "list": {
-              "$ref": "#/definitions/list_element"
+              "$ref": "#/$defs/schema_list_element"
             },
             "map": {
-              "$ref": "#/definitions/map_element"
+              "$ref": "#/$defs/schema_map_element"
             },
             "object": {
-              "$ref": "#/definitions/object_elements"
+              "$ref": "#/$defs/schema_object_elements"
             },
             "string": {
-              "$ref": "#/definitions/string_element"
+              "$ref": "#/$defs/schema_string_element"
             }
           },
           "oneOf": [
@@ -398,14 +382,14 @@
             }
           ]
         },
-        "object_elements": {
+        "schema_object_elements": {
           "type": "array",
           "minItems": 1,
           "items": {
-            "$ref": "#/definitions/object_element"
+            "$ref": "#/$defs/schema_object_element"
           }
         },
-        "object_element": {
+        "schema_object_element": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
@@ -413,19 +397,19 @@
               "type": "string"
             },
             "bool": {
-              "$ref": "#/definitions/bool_element"
+              "$ref": "#/$defs/schema_bool_element"
             },
             "list": {
-              "$ref": "#/definitions/list_element"
+              "$ref": "#/$defs/schema_list_element"
             },
             "map": {
-              "$ref": "#/definitions/map_element"
+              "$ref": "#/$defs/schema_map_element"
             },
             "object": {
-              "$ref": "#/definitions/object_elements"
+              "$ref": "#/$defs/schema_object_elements"
             },
             "string": {
-              "$ref": "#/definitions/string_element"
+              "$ref": "#/$defs/schema_string_element"
             }
           },
           "required": [
@@ -459,15 +443,156 @@
             }
           ]
         },
-        "string_element": {
+        "schema_string_element": {
           "type": "object",
           "additionalProperties": false
+        },
+    "datasource_nested_attribute_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/datasource_bool_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_list_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_object_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_list_nested_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_single_nested_attribute"
+              }
+            ]
+          }
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "validators": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "custom": {
+                "type": "object",
+                "properties": {
+                  "import": {
+                    "type": "string"
+                  },
+                  "schema_definition": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "import",
+                  "schema_definition"
+                ]
+              }
+            },
+            "required": [
+              "custom"
+            ]
+          }
         }
-      }
+      },
+      "required": [
+        "attributes"
+      ]
+    },
+    "datasource_nested_block_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/datasource_bool_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_list_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_object_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_list_nested_attribute"
+              },
+              {
+                "$ref": "#/$defs/datasource_single_nested_attribute"
+              }
+            ]
+          }
+        },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/datasource_list_nested_block"
+              },
+              {
+                "$ref": "#/$defs/datasource_single_nested_block"
+              }
+            ]
+          }
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "validators": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "custom": {
+                "type": "object",
+                "properties": {
+                  "import": {
+                    "type": "string"
+                  },
+                  "schema_definition": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "import",
+                  "schema_definition"
+                ]
+              }
+            },
+            "required": [
+              "custom"
+            ]
+          }
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "attributes"
+          ]
+        },
+        {
+          "required": [
+            "blocks"
+          ]
+        }
+      ]
     },
     "datasource_bool_attribute": {
-      "$id": "/schemas/datasource/bool_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -479,10 +604,10 @@
           "additionalProperties": false,
           "properties": {
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -531,8 +656,6 @@
       ]
     },
     "datasource_list_attribute": {
-      "$id": "/schemas/datasource/list_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -544,10 +667,10 @@
           "additionalProperties": false,
           "properties": {
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -556,7 +679,7 @@
               "type": "string"
             },
             "element_type": {
-              "$ref": "/schemas/common#/definitions/element_type"
+              "$ref": "#/$defs/schema_element_type"
             },
             "sensitive": {
               "type": "boolean"
@@ -601,8 +724,6 @@
       ]
     },
     "datasource_list_nested_attribute": {
-      "$id": "/schemas/datasource/list_nested_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -614,10 +735,10 @@
           "additionalProperties": false,
           "properties": {
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -626,7 +747,7 @@
               "type": "string"
             },
             "nested_object": {
-              "$ref": "#/definitions/nested_object"
+              "$ref": "#/$defs/datasource_nested_attribute_object"
             },
             "sensitive": {
               "type": "boolean"
@@ -668,74 +789,9 @@
       "required": [
         "name",
         "list_nested"
-      ],
-      "definitions": {
-        "nested_object": {
-          "type": "object",
-          "properties": {
-            "attributes": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "/schemas/datasource/bool_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/list_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/object_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/list_nested_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/single_nested_attribute"
-                  }
-                ]
-              }
-            },
-            "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
-            },
-            "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
-            }
-          },
-          "required": [
-            "attributes"
-          ]
-        }
-      }
+      ]
     },
     "datasource_list_nested_block": {
-      "$id": "/schemas/datasource/list_nested_block",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -748,7 +804,7 @@
           "additionalProperties": false,
           "properties": {
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -757,7 +813,7 @@
               "type": "string"
             },
             "nested_object": {
-              "$ref": "#/definitions/nested_object"
+              "$ref": "#/$defs/datasource_nested_block_object"
             },
             "validators": {
               "type": "array",
@@ -795,97 +851,9 @@
       "required": [
         "name",
         "list_nested"
-      ],
-      "definitions": {
-        "nested_object": {
-          "type": "object",
-          "properties": {
-            "attributes": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "/schemas/datasource/bool_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/list_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/object_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/list_nested_attribute"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/single_nested_attribute"
-                  }
-                ]
-              }
-            },
-            "blocks": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "/schemas/datasource/list_nested_block"
-                  },
-                  {
-                    "$ref": "/schemas/datasource/single_nested_block"
-                  }
-                ]
-              }
-            },
-            "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
-            },
-            "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
-            }
-          },
-          "anyOf": [
-            {
-              "required": [
-                "attributes"
-              ]
-            },
-            {
-              "required": [
-                "blocks"
-              ]
-            }
-          ]
-        }
-      }
+      ]
     },
     "datasource_object_attribute": {
-      "$id": "/schemas/datasource/object_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -897,13 +865,13 @@
           "additionalProperties": false,
           "properties": {
             "attribute_types": {
-              "$ref": "/schemas/common#/definitions/object_elements"
+              "$ref": "#/$defs/schema_object_elements"
             },
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -954,8 +922,6 @@
       ]
     },
     "datasource_single_nested_attribute": {
-      "$id": "/schemas/datasource/single_nested_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -967,7 +933,7 @@
           "additionalProperties": false,
           "properties": {
             "associated_external_type": {
-              "$ref": "/schemas/common#/definitions/associated_external_type"
+              "$ref": "#/$defs/schema_associated_external_type"
             },
             "attributes": {
               "type": "array",
@@ -975,28 +941,28 @@
               "items": {
                 "oneOf": [
                   {
-                    "$ref": "/schemas/datasource/bool_attribute"
+                    "$ref": "#/$defs/datasource_bool_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/list_attribute"
+                    "$ref": "#/$defs/datasource_list_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/object_attribute"
+                    "$ref": "#/$defs/datasource_object_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/list_nested_attribute"
+                    "$ref": "#/$defs/datasource_list_nested_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/single_nested_attribute"
+                    "$ref": "#/$defs/datasource_single_nested_attribute"
                   }
                 ]
               }
             },
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -1047,8 +1013,6 @@
       ]
     },
     "datasource_single_nested_block": {
-      "$id": "/schemas/datasource/single_nested_block",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -1066,19 +1030,19 @@
               "items": {
                 "oneOf": [
                   {
-                    "$ref": "/schemas/datasource/bool_attribute"
+                    "$ref": "#/$defs/datasource_bool_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/list_attribute"
+                    "$ref": "#/$defs/datasource_list_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/object_attribute"
+                    "$ref": "#/$defs/datasource_object_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/list_nested_attribute"
+                    "$ref": "#/$defs/datasource_list_nested_attribute"
                   },
                   {
-                    "$ref": "/schemas/datasource/single_nested_attribute"
+                    "$ref": "#/$defs/datasource_single_nested_attribute"
                   }
                 ]
               }
@@ -1089,16 +1053,16 @@
               "items": {
                 "oneOf": [
                   {
-                    "$ref": "/schemas/datasource/list_nested_block"
+                    "$ref": "#/$defs/datasource_list_nested_block"
                   },
                   {
-                    "$ref": "/schemas/datasource/single_nested_block"
+                    "$ref": "#/$defs/datasource_single_nested_block"
                   }
                 ]
               }
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "deprecation_message": {
               "type": "string"
@@ -1154,8 +1118,6 @@
       ]
     },
     "resource_bool_attribute": {
-      "$id": "/schemas/resource/bool_attribute",
-      "$schema": "https://json-schema.org/draft-07/schema",
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -1167,10 +1129,10 @@
           "additionalProperties": false,
           "properties": {
             "computed_optional_required": {
-              "$ref": "/schemas/common#/definitions/computed_optional_required"
+              "$ref": "#/$defs/schema_computed_optional_required"
             },
             "custom_type": {
-              "$ref": "/schemas/common#/definitions/custom_type"
+              "$ref": "#/$defs/schema_custom_type"
             },
             "default": {
               "type": "object",
