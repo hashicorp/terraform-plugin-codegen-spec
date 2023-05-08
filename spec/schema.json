@@ -43,41 +43,10 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/datasource_bool_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_object_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_nested_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_single_nested_attribute"
-              }
-            ]
-          }
+          "$ref": "#/$defs/datasource_attributes"
         },
         "blocks": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/datasource_list_nested_block"
-              },
-              {
-                "$ref": "#/$defs/datasource_single_nested_block"
-              }
-            ]
-          }
+          "$ref": "#/$defs/datasource_blocks"
         }
       },
       "anyOf": [
@@ -92,6 +61,41 @@
           ]
         }
       ]
+    },
+    "datasource_attributes": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/datasource_bool_attribute"
+          },
+          {
+            "$ref": "#/$defs/datasource_list_attribute"
+          },
+          {
+            "$ref": "#/$defs/datasource_object_attribute"
+          },
+          {
+            "$ref": "#/$defs/datasource_list_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/datasource_single_nested_attribute"
+          }
+        ]
+      }
+    },
+    "datasource_blocks": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/datasource_list_nested_block"
+          },
+          {
+            "$ref": "#/$defs/datasource_single_nested_block"
+          }
+        ]
+      }
     },
     "provider": {
       "type": "object",
@@ -161,23 +165,10 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/resource_bool_attribute"
-              }
-            ]
-          }
+          "$ref": "#/$defs/resource_attributes"
         },
         "blocks": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-            ]
-          }
+          "$ref": "#/$defs/resource_blocks"
         }
       },
       "anyOf": [
@@ -192,6 +183,22 @@
           ]
         }
       ]
+    },
+    "resource_attributes": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/resource_bool_attribute"
+          }
+        ]
+      }
+    },
+    "resource_blocks": {
+      "type": "array",
+      "items": {
+        "oneOf": []
+      }
     },
         "schema_associated_external_type": {
           "type": "object",
@@ -451,57 +458,13 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/datasource_bool_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_object_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_nested_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_single_nested_attribute"
-              }
-            ]
-          }
+          "$ref": "#/$defs/datasource_attributes"
         },
         "custom_type": {
           "$ref": "#/$defs/schema_custom_type"
         },
         "validators": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "object",
-            "properties": {
-              "custom": {
-                "type": "object",
-                "properties": {
-                  "import": {
-                    "type": "string"
-                  },
-                  "schema_definition": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "import",
-                  "schema_definition"
-                ]
-              }
-            },
-            "required": [
-              "custom"
-            ]
-          }
+          "$ref": "#/$defs/schema_object_validators"
         }
       },
       "required": [
@@ -512,71 +475,16 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/datasource_bool_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_object_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_list_nested_attribute"
-              },
-              {
-                "$ref": "#/$defs/datasource_single_nested_attribute"
-              }
-            ]
-          }
+          "$ref": "#/$defs/datasource_attributes"
         },
         "blocks": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-              {
-                "$ref": "#/$defs/datasource_list_nested_block"
-              },
-              {
-                "$ref": "#/$defs/datasource_single_nested_block"
-              }
-            ]
-          }
+          "$ref": "#/$defs/datasource_blocks"
         },
         "custom_type": {
           "$ref": "#/$defs/schema_custom_type"
         },
         "validators": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "object",
-            "properties": {
-              "custom": {
-                "type": "object",
-                "properties": {
-                  "import": {
-                    "type": "string"
-                  },
-                  "schema_definition": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "import",
-                  "schema_definition"
-                ]
-              }
-            },
-            "required": [
-              "custom"
-            ]
-          }
+          "$ref": "#/$defs/schema_object_validators"
         }
       },
       "anyOf": [
@@ -619,31 +527,7 @@
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_bool_validators"
             }          },
           "required": [
             "computed_optional_required"
@@ -685,31 +569,7 @@
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_list_validators"
             }
           },
           "required": [
@@ -753,31 +613,7 @@
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_list_validators"
             }
           },
           "required": [
@@ -816,31 +652,7 @@
               "$ref": "#/$defs/datasource_nested_block_object"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_list_validators"
             }
           },
           "required": [
@@ -883,31 +695,7 @@
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_object_validators"
             }
           },
           "required": [
@@ -936,27 +724,7 @@
               "$ref": "#/$defs/schema_associated_external_type"
             },
             "attributes": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/datasource_bool_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_list_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_object_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_list_nested_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_single_nested_attribute"
-                  }
-                ]
-              }
+              "$ref": "#/$defs/datasource_attributes"
             },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
@@ -974,31 +742,7 @@
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_object_validators"
             }
           },
           "required": [
@@ -1025,41 +769,10 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/datasource_bool_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_list_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_object_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_list_nested_attribute"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_single_nested_attribute"
-                  }
-                ]
-              }
+              "$ref": "#/$defs/datasource_attributes"
             },
             "blocks": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/$defs/datasource_list_nested_block"
-                  },
-                  {
-                    "$ref": "#/$defs/datasource_single_nested_block"
-                  }
-                ]
-              }
+              "$ref": "#/$defs/datasource_blocks"
             },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
@@ -1071,31 +784,7 @@
               "type": "string"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_object_validators"
             }
           },
           "anyOf": [
@@ -1135,35 +824,7 @@
               "$ref": "#/$defs/schema_custom_type"
             },
             "default": {
-              "type": "object",
-              "properties": {
-                "custom": {
-                  "type": "object",
-                  "properties": {
-                    "import": {
-                      "type": "string"
-                    },
-                    "schema_definition": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "static": {
-                  "type": "boolean"
-                }
-              },
-              "oneOf": [
-                {
-                  "required": [
-                    "custom"
-                  ]
-                },
-                {
-                  "required": [
-                    "static"
-                  ]
-                }
-              ]
+              "$ref": "#/$defs/schema_bool_default"
             },
             "deprecation_message": {
               "type": "string"
@@ -1172,83 +833,13 @@
               "type": "string"
             },
             "plan_modifiers": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  },
-                  "requires_replace": {
-                    "type": "object",
-                    "additionalProperties": false
-                  },
-                  "use_state_for_unknown": {
-                    "type": "object",
-                    "additionalProperties": false
-                  }
-                },
-                "oneOf": [
-                  {
-                    "required": [
-                      "custom"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "requires_replace"
-                    ]
-                  },
-                  {
-                    "required": [
-                      "use_state_for_unknown"
-                    ]
-                  }
-                ]
-              }
+              "$ref": "#/$defs/schema_bool_plan_modifiers"
             },
             "sensitive": {
               "type": "boolean"
             },
             "validators": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "object",
-                "properties": {
-                  "custom": {
-                    "type": "object",
-                    "properties": {
-                      "import": {
-                        "type": "string"
-                      },
-                      "schema_definition": {
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "import",
-                      "schema_definition"
-                    ]
-                  }
-                },
-                "required": [
-                  "custom"
-                ]
-              }
+              "$ref": "#/$defs/schema_bool_validators"
             }
           },
           "required": [
@@ -1260,6 +851,161 @@
         "name",
         "bool"
       ]
+    },
+    "schema_bool_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        },
+        "static": {
+          "type": "boolean"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "static"
+          ]
+        }
+      ]
+    },
+    "schema_bool_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_bool_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_bool_plan_modifier"
+      }
+    },
+    "schema_bool_validator": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_validator"
+        }
+      },
+      "required": [
+        "custom"
+      ]
+    },
+    "schema_bool_validators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_bool_validator"
+      }
+    },
+    "schema_custom_default": {
+      "type": "object",
+      "properties": {
+        "import": {
+          "type": "string"
+        },
+        "schema_definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_definition"
+      ]
+    },
+    "schema_custom_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "import": {
+          "type": "string"
+        },
+        "schema_definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_definition"
+      ]
+    },
+    "schema_custom_validator": {
+      "type": "object",
+      "properties": {
+        "import": {
+          "type": "string"
+        },
+        "schema_definition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_definition"
+      ]
+    },
+    "schema_list_validator": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_validator"
+        }
+      },
+      "required": [
+        "custom"
+      ]
+    },
+    "schema_list_validators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_list_validator"
+      }
+    },
+    "schema_object_validator": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_validator"
+        }
+      },
+      "required": [
+        "custom"
+      ]
+    },
+    "schema_object_validators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_object_validator"
+      }
     }
   }
 }
