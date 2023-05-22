@@ -79,6 +79,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute",
+									Float64: &datasource.Float64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "int64_attribute",
+									Int64: &datasource.Int64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_attribute",
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -131,6 +143,37 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												},
 											},
 										},
+									},
+								},
+								{
+									Name: "map_attribute",
+									Map: &datasource.MapAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "map_nested_bool_attribute",
+									MapNested: &datasource.MapNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "number_attribute",
+									Number: &datasource.NumberAttribute{
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -254,6 +297,31 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute",
+									Set: &datasource.SetAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "set_nested_bool_attribute",
+									SetNested: &datasource.SetNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "single_nested_bool_attribute",
 									SingleNested: &datasource.SingleNestedAttribute{
 										AssociatedExternalType: &schema.AssociatedExternalType{
@@ -315,6 +383,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												},
 											},
 										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "string_attribute",
+									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
 									},
 								},
@@ -394,6 +468,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 																},
 															},
 														},
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "set_nested_block_bool_attribute",
+									SetNested: &datasource.SetNestedBlock{
+										NestedObject: datasource.NestedBlockObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
 													},
 												},
 											},

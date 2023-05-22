@@ -11,6 +11,18 @@
             }
           },
           {
+            "name": "float64_attribute",
+            "float64": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "int64_attribute",
+            "int64": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
             "name": "list_attribute",
             "list": {
               "computed_optional_required": "computed",
@@ -61,6 +73,37 @@
                   }
                 ]
               }
+            }
+          },
+          {
+            "name": "map_attribute",
+            "map": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "map_nested_bool_attribute",
+            "map_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "number_attribute",
+            "number": {
+              "computed_optional_required": "computed"
             }
           },
           {
@@ -180,6 +223,31 @@
             }
           },
           {
+            "name": "set_attribute",
+            "set": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "set_nested_bool_attribute",
+            "set_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
             "name": "single_nested_bool_attribute",
             "single_nested": {
               "associated_external_type": {
@@ -241,6 +309,12 @@
                   }
                 }
               ],
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "string_attribute",
+            "string": {
               "computed_optional_required": "computed"
             }
           }
@@ -320,6 +394,21 @@
                           }
                         ]
                       }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "set_nested_block_bool_attribute",
+            "set_nested": {
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
                     }
                   }
                 ]
