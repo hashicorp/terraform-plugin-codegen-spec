@@ -217,6 +217,42 @@
         "oneOf": [
           {
             "$ref": "#/$defs/resource_bool_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_float64_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_int64_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_list_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_list_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_map_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_map_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_number_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_object_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_set_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_set_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_single_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_string_attribute"
           }
         ]
       }
@@ -224,7 +260,17 @@
     "resource_blocks": {
       "type": "array",
       "items": {
-        "oneOf": []
+        "oneOf": [
+          {
+            "$ref": "#/$defs/resource_list_nested_block"
+          },
+          {
+            "$ref": "#/$defs/resource_set_nested_block"
+          },
+          {
+            "$ref": "#/$defs/resource_single_nested_block"
+          }
+        ]
       }
     },
         "schema_associated_external_type": {
@@ -1423,6 +1469,58 @@
         "single_nested"
       ]
     },
+    "resource_nested_attribute_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "$ref": "#/$defs/resource_attributes"
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "plan_modifiers": {
+          "$ref": "#/$defs/schema_object_plan_modifiers"
+        },
+        "validators": {
+          "$ref": "#/$defs/schema_object_validators"
+        }
+      },
+      "required": [
+        "attributes"
+      ]
+    },
+    "resource_nested_block_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "$ref": "#/$defs/resource_attributes"
+        },
+        "blocks": {
+          "$ref": "#/$defs/resource_blocks"
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "plan_modifiers": {
+          "$ref": "#/$defs/schema_object_plan_modifiers"
+        },
+        "validators": {
+          "$ref": "#/$defs/schema_object_validators"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "attributes"
+          ]
+        },
+        {
+          "required": [
+            "blocks"
+          ]
+        }
+      ]
+    },
     "resource_bool_attribute": {
       "type": "object",
       "additionalProperties": false,
@@ -1467,6 +1565,733 @@
       "required": [
         "name",
         "bool"
+      ]
+    },
+    "resource_float64_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "float64": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_float64_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_float64_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_float64_validators"
+            }          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "float64"
+      ]
+    },
+    "resource_int64_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "int64": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_int64_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_int64_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_int64_validators"
+            }          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "int64"
+      ]
+    },
+    "resource_list_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "list": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_list_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_list_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list"
+      ]
+    },
+    "resource_list_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "list_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_list_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/resource_nested_attribute_object"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_list_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list_nested"
+      ]
+    },
+    "resource_list_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "list_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_list_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/resource_nested_block_object"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_list_plan_modifiers"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list_nested"
+      ]
+    },
+    "resource_map_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_map_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_map_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_map_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "map"
+      ]
+    },
+    "resource_map_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_map_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/resource_nested_attribute_object"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_map_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_map_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "map_nested"
+      ]
+    },
+    "resource_number_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_number_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_number_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_number_validators"
+            }          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "number"
+      ]
+    },
+    "resource_object_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "object": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attribute_types": {
+              "$ref": "#/$defs/schema_object_elements"
+            },
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_object_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_object_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "required": [
+            "attribute_types",
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "object"
+      ]
+    },
+    "resource_set_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "set": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_set_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_set_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set"
+      ]
+    },
+    "resource_set_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "set_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_set_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/resource_nested_attribute_object"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_set_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set_nested"
+      ]
+    },
+    "resource_set_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "set_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_set_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/resource_nested_block_object"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_set_plan_modifiers"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set_nested"
+      ]
+    },
+    "resource_single_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "single_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "attributes": {
+              "$ref": "#/$defs/resource_attributes"
+            },
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_object_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_object_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "required": [
+            "attributes",
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "single_nested"
+      ]
+    },
+    "resource_single_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "single_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "#/$defs/resource_attributes"
+            },
+            "blocks": {
+              "$ref": "#/$defs/resource_blocks"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_object_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_object_plan_modifiers"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "attributes"
+              ]
+            },
+            {
+              "required": [
+                "blocks"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "single_nested"
+      ]
+    },
+    "resource_string_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "string": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_string_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_string_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_string_validators"
+            }          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "string"
       ]
     },
     "schema_bool_default": {
@@ -1590,6 +2415,68 @@
         "schema_definition"
       ]
     },
+    "schema_float64_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        },
+        "static": {
+          "type": "number"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "static"
+          ]
+        }
+      ]
+    },
+    "schema_float64_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_float64_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_float64_plan_modifier"
+      }
+    },
     "schema_float64_validator": {
       "type": "object",
       "properties": {
@@ -1605,6 +2492,68 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/schema_float64_validator"
+      }
+    },
+    "schema_int64_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        },
+        "static": {
+          "type": "number"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "static"
+          ]
+        }
+      ]
+    },
+    "schema_int64_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_int64_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_int64_plan_modifier"
       }
     },
     "schema_int64_validator": {
@@ -1624,6 +2573,60 @@
         "$ref": "#/$defs/schema_int64_validator"
       }
     },
+    "schema_list_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_list_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_list_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_list_plan_modifier"
+      }
+    },
     "schema_list_validator": {
       "type": "object",
       "properties": {
@@ -1639,6 +2642,60 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/schema_list_validator"
+      }
+    },
+    "schema_map_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_map_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_map_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_map_plan_modifier"
       }
     },
     "schema_map_validator": {
@@ -1658,6 +2715,60 @@
         "$ref": "#/$defs/schema_map_validator"
       }
     },
+    "schema_number_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_number_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_number_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_number_plan_modifier"
+      }
+    },
     "schema_number_validator": {
       "type": "object",
       "properties": {
@@ -1673,6 +2784,60 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/schema_number_validator"
+      }
+    },
+    "schema_object_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_object_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_object_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_object_plan_modifier"
       }
     },
     "schema_object_validator": {
@@ -1692,6 +2857,60 @@
         "$ref": "#/$defs/schema_object_validator"
       }
     },
+    "schema_set_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_set_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_set_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_set_plan_modifier"
+      }
+    },
     "schema_set_validator": {
       "type": "object",
       "properties": {
@@ -1707,6 +2926,68 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/schema_set_validator"
+      }
+    },
+    "schema_string_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        },
+        "static": {
+          "type": "string"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "static"
+          ]
+        }
+      ]
+    },
+    "schema_string_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        },
+        "requires_replace": {
+          "type": "object",
+          "additionalProperties": false
+        },
+        "use_state_for_unknown": {
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        },
+        {
+          "required": [
+            "requires_replace"
+          ]
+        },
+        {
+          "required": [
+            "use_state_for_unknown"
+          ]
+        }
+      ]
+    },
+    "schema_string_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_string_plan_modifier"
       }
     },
     "schema_string_validator": {
