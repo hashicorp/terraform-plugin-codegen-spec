@@ -143,34 +143,74 @@
       "type": "object",
       "properties": {
         "attributes": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "oneOf": [
-            ]
-          },
-          "blocks": {
-            "type": "array",
-            "minItems": 1,
-            "oneOf": {
-              "type": [
-              ]
-            }
-          }
-        }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
+          "$ref": "#/$defs/provider_attributes"
         },
-        {
-          "required": [
-            "blocks"
-          ]
+        "blocks": {
+          "$ref": "#/$defs/provider_blocks"
         }
-      ]
+      }
+    },
+    "provider_attributes": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/provider_bool_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_float64_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_int64_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_list_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_list_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_map_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_map_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_number_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_object_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_set_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_set_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_single_nested_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_string_attribute"
+          }
+        ]
+      }
+    },
+    "provider_blocks": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/provider_list_nested_block"
+          },
+          {
+            "$ref": "#/$defs/provider_set_nested_block"
+          },
+          {
+            "$ref": "#/$defs/provider_single_nested_block"
+          }
+        ]
+      }
     },
     "resource": {
       "type": "object",
@@ -661,6 +701,12 @@
                 "string"
               ]
             }
+          ]
+        },
+        "schema_optional_required": {
+          "enum": [
+            "optional",
+            "required"
           ]
         },
         "schema_set_element": {
@@ -1467,6 +1513,728 @@
       "required": [
         "name",
         "single_nested"
+      ]
+    },
+    "provider_nested_attribute_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "$ref": "#/$defs/provider_attributes"
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "validators": {
+          "$ref": "#/$defs/schema_object_validators"
+        }
+      },
+      "required": [
+        "attributes"
+      ]
+    },
+    "provider_nested_block_object": {
+      "type": "object",
+      "properties": {
+        "attributes": {
+          "$ref": "#/$defs/provider_attributes"
+        },
+        "blocks": {
+          "$ref": "#/$defs/provider_blocks"
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "validators": {
+          "$ref": "#/$defs/schema_object_validators"
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "attributes"
+          ]
+        },
+        {
+          "required": [
+            "blocks"
+          ]
+        }
+      ]
+    },
+    "provider_bool_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "bool": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_bool_validators"
+            }          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "bool"
+      ]
+    },
+    "provider_float64_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "float64": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_float64_validators"
+            }          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "float64"
+      ]
+    },
+    "provider_int64_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "int64": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_int64_validators"
+            }          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "int64"
+      ]
+    },
+    "provider_list_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "list": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list"
+      ]
+    },
+    "provider_list_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "list_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/provider_nested_attribute_object"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list_nested"
+      ]
+    },
+    "provider_list_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "list_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/provider_nested_block_object"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_list_validators"
+            }
+          },
+          "required": [
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "list_nested"
+      ]
+    },
+    "provider_map_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_map_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "map"
+      ]
+    },
+    "provider_map_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "map_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/provider_nested_attribute_object"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_map_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "map_nested"
+      ]
+    },
+    "provider_number_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "number": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_number_validators"
+            }          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "number"
+      ]
+    },
+    "provider_object_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "object": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attribute_types": {
+              "$ref": "#/$defs/schema_object_elements"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "required": [
+            "attribute_types",
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "object"
+      ]
+    },
+    "provider_set_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "set": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "element_type"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set"
+      ]
+    },
+    "provider_set_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "set_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/provider_nested_attribute_object"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "optional_required",
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set_nested"
+      ]
+    },
+    "provider_set_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "set_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "nested_object": {
+              "$ref": "#/$defs/provider_nested_block_object"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_set_validators"
+            }
+          },
+          "required": [
+            "nested_object"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "set_nested"
+      ]
+    },
+    "provider_single_nested_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "single_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "attributes": {
+              "$ref": "#/$defs/provider_attributes"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "required": [
+            "attributes",
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "single_nested"
+      ]
+    },
+    "provider_single_nested_block": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[^\\s]*$"
+        },
+        "single_nested": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "#/$defs/provider_attributes"
+            },
+            "blocks": {
+              "$ref": "#/$defs/provider_blocks"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_object_validators"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "attributes"
+              ]
+            },
+            {
+              "required": [
+                "blocks"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "single_nested"
+      ]
+    },
+    "provider_string_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "string": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_string_validators"
+            }          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "string"
       ]
     },
     "resource_nested_attribute_object": {

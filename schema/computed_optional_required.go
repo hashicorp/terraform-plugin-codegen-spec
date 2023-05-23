@@ -8,3 +8,5 @@ const (
 )
 
 type ComputedOptionalRequired string
+
+type OptionalRequired = ComputedOptionalRequired
