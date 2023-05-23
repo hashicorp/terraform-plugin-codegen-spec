@@ -567,6 +567,499 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 				},
 				Provider: &provider.Provider{
 					Name: "provider",
+					Schema: &provider.Schema{
+						Attributes: []provider.Attribute{
+							{
+								Name: "bool_attribute",
+								Bool: &provider.BoolAttribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "float64_attribute",
+								Float64: &provider.Float64Attribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "int64_attribute",
+								Int64: &provider.Int64Attribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "list_attribute",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "list_map_attribute",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										Map: &schema.MapType{
+											ElementType: schema.ElementType{
+												String: &schema.StringType{},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_object_attribute",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										Object: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_object_object_attribute",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										Object: []schema.ObjectAttributeType{
+											{
+												Name: "obj_obj_attr",
+												Object: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_obj_string_attr",
+														String: &schema.StringType{},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "map_attribute",
+								Map: &provider.MapAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "map_nested_bool_attribute",
+								MapNested: &provider.MapNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "number_attribute",
+								Number: &provider.NumberAttribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_list_attribute",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name: "obj_list_attr",
+											List: &schema.ListType{
+												ElementType: schema.ElementType{
+													String: &schema.StringType{},
+												},
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_list_object_attribute",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name: "obj_list_attr",
+											List: &schema.ListType{
+												ElementType: schema.ElementType{
+													Object: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_list_obj_attr",
+															String: &schema.StringType{},
+														},
+													},
+												},
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "list_nested_bool_attribute",
+								ListNested: &provider.ListNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_nested_list_nested_bool_attribute",
+								ListNested: &provider.ListNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "list_nested_attribute",
+												ListNested: &provider.ListNestedAttribute{
+													OptionalRequired: schema.Optional,
+													NestedObject: provider.NestedAttributeObject{
+														Attributes: []provider.Attribute{
+															{
+																Name: "bool_attribute",
+																Bool: &provider.BoolAttribute{
+																	OptionalRequired: schema.Optional,
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_nested_list_nested_list_attribute",
+								ListNested: &provider.ListNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "list_nested_attribute",
+												ListNested: &provider.ListNestedAttribute{
+													OptionalRequired: schema.Optional,
+													NestedObject: provider.NestedAttributeObject{
+														Attributes: []provider.Attribute{
+															{
+																Name: "list_attribute",
+																List: &provider.ListAttribute{
+																	OptionalRequired: schema.Optional,
+																	ElementType: schema.ElementType{
+																		String: &schema.StringType{},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "set_attribute",
+								Set: &provider.SetAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "set_nested_bool_attribute",
+								SetNested: &provider.SetNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "single_nested_bool_attribute",
+								SingleNested: &provider.SingleNestedAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: pointer("example.com/apisdk"),
+										Type:   "*apisdk.ProviderProperty",
+									},
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "single_nested_single_nested_bool_attribute",
+								SingleNested: &provider.SingleNestedAttribute{
+									Attributes: []provider.Attribute{
+										{
+											Name: "single_nested_attribute",
+											SingleNested: &provider.SingleNestedAttribute{
+												Attributes: []provider.Attribute{
+													{
+														Name: "bool_attribute",
+														Bool: &provider.BoolAttribute{
+															OptionalRequired: schema.Optional,
+														},
+													},
+												},
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "single_nested_single_nested_list_attribute",
+								SingleNested: &provider.SingleNestedAttribute{
+									Attributes: []provider.Attribute{
+										{
+											Name: "single_nested_attribute",
+											SingleNested: &provider.SingleNestedAttribute{
+												Attributes: []provider.Attribute{
+													{
+														Name: "list_attribute",
+														List: &provider.ListAttribute{
+															OptionalRequired: schema.Optional,
+															ElementType: schema.ElementType{
+																String: &schema.StringType{},
+															},
+														},
+													},
+												},
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "string_attribute",
+								String: &provider.StringAttribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+						},
+						Blocks: []provider.Block{
+							{
+								Name: "list_nested_block_bool_attribute",
+								ListNested: &provider.ListNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_nested_list_nested_block_bool_attribute",
+								ListNested: &provider.ListNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										Blocks: []provider.Block{
+											{
+												Name: "list_nested_block",
+												ListNested: &provider.ListNestedBlock{
+													NestedObject: provider.NestedBlockObject{
+														Attributes: []provider.Attribute{
+															{
+																Name: "bool_attribute",
+																Bool: &provider.BoolAttribute{
+																	OptionalRequired: schema.Optional,
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "list_nested_block_object_attribute_list_nested_nested_block_list_attribute",
+								ListNested: &provider.ListNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "object_attribute",
+												Object: &provider.ObjectAttribute{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_string_attr",
+															String: &schema.StringType{},
+														},
+													},
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+										Blocks: []provider.Block{
+											{
+												Name: "list_nested_block",
+												ListNested: &provider.ListNestedBlock{
+													NestedObject: provider.NestedBlockObject{
+														Attributes: []provider.Attribute{
+															{
+																Name: "list_attribute",
+																List: &provider.ListAttribute{
+																	OptionalRequired: schema.Optional,
+																	ElementType: schema.ElementType{
+																		String: &schema.StringType{},
+																	},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "set_nested_block_bool_attribute",
+								SetNested: &provider.SetNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "single_nested_block_bool_attribute",
+								SingleNested: &provider.SingleNestedBlock{
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "single_nested_single_nested_block_bool_attribute",
+								SingleNested: &provider.SingleNestedBlock{
+									Blocks: []provider.Block{
+										{
+											Name: "single_nested_block",
+											SingleNested: &provider.SingleNestedBlock{
+												Attributes: []provider.Attribute{
+													{
+														Name: "bool_attribute",
+														Bool: &provider.BoolAttribute{
+															OptionalRequired: schema.Optional,
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "single_nested_block_object_attribute_single_nested_list_nested_block_list_attribute",
+								SingleNested: &provider.SingleNestedBlock{
+									Attributes: []provider.Attribute{
+										{
+											Name: "object_attribute",
+											Object: &provider.ObjectAttribute{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_string_attr",
+														String: &schema.StringType{},
+													},
+												},
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									Blocks: []provider.Block{
+										{
+											Name: "list_nested_block",
+											ListNested: &provider.ListNestedBlock{
+												NestedObject: provider.NestedBlockObject{
+													Attributes: []provider.Attribute{
+														{
+															Name: "list_attribute",
+															List: &provider.ListAttribute{
+																OptionalRequired: schema.Optional,
+																ElementType: schema.ElementType{
+																	String: &schema.StringType{},
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
 				},
 				Resources: []resource.Resource{
 					{
