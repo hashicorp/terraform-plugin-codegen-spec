@@ -508,9 +508,6 @@
                 "type": "",
                 "value_type": ""
               },
-              "default": {
-                "static": true
-              },
               "plan_modifiers": [
                 {
                   "requires_replace": {}
@@ -527,6 +524,561 @@
                   "custom": {
                     "import": "github.com/my_account/my_project/myboolvalidator",
                     "schema_definition": "myboolvalidator.Validate()"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "bool_attribute_default_static",
+            "bool": {
+              "computed_optional_required": "optional",
+              "default": {
+                "static": true
+              }
+            }
+          },
+          {
+            "name": "float64_attribute",
+            "float64": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "float64_attribute_default_static",
+            "float64": {
+              "computed_optional_required": "optional",
+              "default": {
+                "static": 123.45
+              }
+            }
+          },
+          {
+            "name": "int64_attribute",
+            "int64": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "int64_attribute_default_static",
+            "int64": {
+              "computed_optional_required": "optional",
+              "default": {
+                "static": 123
+              }
+            }
+          },
+          {
+            "name": "list_attribute",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "list_attribute_default_custom",
+            "list": {
+              "computed_optional_required": "optional",
+              "default": {
+                "custom": {
+                  "import":           "github.com/hashicorp/terraform-plugin-framework/types",
+                  "schema_definition": "types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")})"
+                }
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "list_map_attribute",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "map": {
+                  "string": {}
+                }
+              }
+            }
+          },
+          {
+            "name": "list_object_attribute",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "object": [
+                  {
+                    "name": "obj_string_attr",
+                    "string": {}
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "list_object_object_attribute",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "object": [
+                  {
+                    "name": "obj_obj_attr",
+                    "object": [
+                      {
+                        "name": "obj_obj_string_attr",
+                        "string": {}
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "map_attribute",
+            "map": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "map_nested_bool_attribute",
+            "map_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "number_attribute",
+            "number": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "number_attribute_default_custom",
+            "number": {
+              "computed_optional_required": "optional",
+              "default": {
+                "custom": {
+                  "import": "math/big",
+                  "schema_definition": "big.NewFloat(123.45)"
+                }
+              }
+            }
+          },
+          {
+            "name": "object_attribute",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_list_attribute",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_list_attr",
+                  "list": {
+                    "string": {}
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_list_object_attribute",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_list_attr",
+                  "list": {
+                    "object": [
+                      {
+                        "name": "obj_list_obj_attr",
+                        "string": {}
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "list_nested_bool_attribute",
+            "list_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "list_nested_list_nested_bool_attribute",
+            "list_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "list_nested_attribute",
+                    "list_nested": {
+                      "computed_optional_required": "computed",
+                      "nested_object": {
+                        "attributes": [
+                          {
+                            "name": "bool_attribute",
+                            "bool": {
+                              "computed_optional_required": "computed"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "list_nested_list_nested_list_attribute",
+            "list_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "list_nested_attribute",
+                    "list_nested": {
+                      "computed_optional_required": "computed",
+                      "nested_object": {
+                        "attributes": [
+                          {
+                            "name": "list_attribute",
+                            "list": {
+                              "computed_optional_required": "computed",
+                              "element_type": {
+                                "string": {}
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "set_attribute",
+            "set": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "set_attribute_default_custom",
+            "set": {
+              "computed_optional_required": "optional",
+              "default": {
+                "custom": {
+                  "import":           "github.com/hashicorp/terraform-plugin-framework/types",
+                  "schema_definition": "types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")})"
+                }
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "set_nested_bool_attribute",
+            "set_nested": {
+              "computed_optional_required": "computed",
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "single_nested_bool_attribute",
+            "single_nested": {
+              "associated_external_type": {
+                "import": "example.com/apisdk",
+                "type": "*apisdk.DataSourceProperty"
+              },
+              "attributes": [
+                {
+                  "name": "bool_attribute",
+                  "bool": {
+                    "computed_optional_required": "computed"
+                  }
+                }
+              ],
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "single_nested_single_nested_bool_attribute",
+            "single_nested": {
+              "attributes": [
+                {
+                  "name": "single_nested_attribute",
+                  "single_nested": {
+                    "attributes": [
+                      {
+                        "name": "bool_attribute",
+                        "bool": {
+                          "computed_optional_required": "computed"
+                        }
+                      }
+                    ],
+                    "computed_optional_required": "computed"
+                  }
+                }
+              ],
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "single_nested_single_nested_list_attribute",
+            "single_nested": {
+              "attributes": [
+                {
+                  "name": "single_nested_attribute",
+                  "single_nested": {
+                    "attributes": [
+                      {
+                        "name": "list_attribute",
+                        "list": {
+                          "computed_optional_required": "computed",
+                          "element_type": {
+                            "string": {}
+                          }
+                        }
+                      }
+                    ],
+                    "computed_optional_required": "computed"
+                  }
+                }
+              ],
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "string_attribute",
+            "string": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "string_attribute_default_static",
+            "string": {
+              "computed_optional_required": "optional",
+              "default": {
+                "static": "example"
+              }
+            }
+          }
+        ],
+        "blocks": [
+          {
+            "name": "list_nested_block_bool_attribute",
+            "list_nested": {
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "list_nested_list_nested_block_bool_attribute",
+            "list_nested": {
+              "nested_object": {
+                "blocks": [
+                  {
+                    "name": "list_nested_block",
+                    "list_nested": {
+                      "nested_object": {
+                        "attributes": [
+                          {
+                            "name": "bool_attribute",
+                            "bool": {
+                              "computed_optional_required": "computed"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "list_nested_block_object_attribute_list_nested_nested_block_list_attribute",
+            "list_nested": {
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "object_attribute",
+                    "object": {
+                      "computed_optional_required": "computed",
+                      "attribute_types": [
+                        {
+                          "name": "obj_string_attr",
+                          "string": {}
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "blocks": [
+                  {
+                    "name": "list_nested_block",
+                    "list_nested": {
+                      "nested_object": {
+                        "attributes": [
+                          {
+                            "name": "list_attribute",
+                            "list": {
+                              "computed_optional_required": "computed",
+                              "element_type": {
+                                "string": {}
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "set_nested_block_bool_attribute",
+            "set_nested": {
+              "nested_object": {
+                "attributes": [
+                  {
+                    "name": "bool_attribute",
+                    "bool": {
+                      "computed_optional_required": "computed"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "single_nested_block_bool_attribute",
+            "single_nested": {
+              "attributes": [
+                {
+                  "name": "bool_attribute",
+                  "bool": {
+                    "computed_optional_required": "computed"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "single_nested_single_nested_block_bool_attribute",
+            "single_nested": {
+              "blocks": [
+                {
+                  "name": "single_nested_block",
+                  "single_nested": {
+                    "attributes": [
+                      {
+                        "name": "bool_attribute",
+                        "bool": {
+                          "computed_optional_required": "computed"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "single_nested_block_object_attribute_single_nested_list_nested_block_list_attribute",
+            "single_nested": {
+              "attributes": [
+                {
+                  "name": "object_attribute",
+                  "object": {
+                    "computed_optional_required": "computed",
+                    "attribute_types": [
+                      {
+                        "name": "obj_string_attr",
+                        "string": {}
+                      }
+                    ]
+                  }
+                }
+              ],
+              "blocks": [
+                {
+                  "name": "list_nested_block",
+                  "list_nested": {
+                    "nested_object": {
+                      "attributes": [
+                        {
+                          "name": "list_attribute",
+                          "list": {
+                            "computed_optional_required": "computed",
+                            "element_type": {
+                              "string": {}
+                            }
+                          }
+                        }
+                      ]
+                    }
                   }
                 }
               ]
