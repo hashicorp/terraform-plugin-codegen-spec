@@ -119,8 +119,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											Object: []schema.ObjectAttributeType{
 												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+													Name: "obj_string_attr",
+													ElementType: schema.ElementType{
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -134,10 +136,14 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Object: []schema.ObjectAttributeType{
 												{
 													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+													ElementType: schema.ElementType{
+														Object: []schema.ObjectAttributeType{
+															{
+																Name: "obj_obj_string_attr",
+																ElementType: schema.ElementType{
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -181,8 +187,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
+												Name: "obj_string_attr",
+												ElementType: schema.ElementType{
+													String: &schema.StringType{},
+												},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -194,9 +202,11 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_list_attr",
-												List: &schema.ListType{
-													ElementType: schema.ElementType{
-														String: &schema.StringType{},
+												ElementType: schema.ElementType{
+													List: &schema.ListType{
+														ElementType: schema.ElementType{
+															String: &schema.StringType{},
+														},
 													},
 												},
 											},
@@ -210,12 +220,16 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_list_attr",
-												List: &schema.ListType{
-													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+												ElementType: schema.ElementType{
+													List: &schema.ListType{
+														ElementType: schema.ElementType{
+															Object: []schema.ObjectAttributeType{
+																{
+																	Name: "obj_list_obj_attr",
+																	ElementType: schema.ElementType{
+																		String: &schema.StringType{},
+																	},
+																},
 															},
 														},
 													},
@@ -443,8 +457,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													Object: &datasource.ObjectAttribute{
 														AttributeTypes: []schema.ObjectAttributeType{
 															{
-																Name:   "obj_string_attr",
-																String: &schema.StringType{},
+																Name: "obj_string_attr",
+																ElementType: schema.ElementType{
+																	String: &schema.StringType{},
+																},
 															},
 														},
 														ComputedOptionalRequired: schema.Computed,
@@ -531,8 +547,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Object: &datasource.ObjectAttribute{
 													AttributeTypes: []schema.ObjectAttributeType{
 														{
-															Name:   "obj_string_attr",
-															String: &schema.StringType{},
+															Name: "obj_string_attr",
+															ElementType: schema.ElementType{
+																String: &schema.StringType{},
+															},
 														},
 													},
 													ComputedOptionalRequired: schema.Computed,
@@ -684,8 +702,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											Object: []schema.ObjectAttributeType{
 												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+													Name: "obj_string_attr",
+													ElementType: schema.ElementType{
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -699,10 +719,14 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Object: []schema.ObjectAttributeType{
 												{
 													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+													ElementType: schema.ElementType{
+														Object: []schema.ObjectAttributeType{
+															{
+																Name: "obj_obj_string_attr",
+																ElementType: schema.ElementType{
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -758,8 +782,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Object: &resource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
+												Name: "obj_string_attr",
+												ElementType: schema.ElementType{
+													String: &schema.StringType{},
+												},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -771,9 +797,11 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_list_attr",
-												List: &schema.ListType{
-													ElementType: schema.ElementType{
-														String: &schema.StringType{},
+												ElementType: schema.ElementType{
+													List: &schema.ListType{
+														ElementType: schema.ElementType{
+															String: &schema.StringType{},
+														},
 													},
 												},
 											},
@@ -787,12 +815,16 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_list_attr",
-												List: &schema.ListType{
-													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+												ElementType: schema.ElementType{
+													List: &schema.ListType{
+														ElementType: schema.ElementType{
+															Object: []schema.ObjectAttributeType{
+																{
+																	Name: "obj_list_obj_attr",
+																	ElementType: schema.ElementType{
+																		String: &schema.StringType{},
+																	},
+																},
 															},
 														},
 													},
@@ -1044,8 +1076,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													Object: &resource.ObjectAttribute{
 														AttributeTypes: []schema.ObjectAttributeType{
 															{
-																Name:   "obj_string_attr",
-																String: &schema.StringType{},
+																Name: "obj_string_attr",
+																ElementType: schema.ElementType{
+																	String: &schema.StringType{},
+																},
 															},
 														},
 														ComputedOptionalRequired: schema.Computed,
@@ -1132,8 +1166,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Object: &resource.ObjectAttribute{
 													AttributeTypes: []schema.ObjectAttributeType{
 														{
-															Name:   "obj_string_attr",
-															String: &schema.StringType{},
+															Name: "obj_string_attr",
+															ElementType: schema.ElementType{
+																String: &schema.StringType{},
+															},
 														},
 													},
 													ComputedOptionalRequired: schema.Computed,
