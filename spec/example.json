@@ -11,9 +11,31 @@
             }
           },
           {
+            "name": "bool_attribute_custom_type",
+            "bool": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.BoolType",
+                "value_type": "basetypes.BoolValue"
+              }
+            }
+          },
+          {
             "name": "float64_attribute",
             "float64": {
               "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "float64_attribute_custom_type",
+            "float64": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.Float64Type",
+                "value_type": "basetypes.Float64Value"
+              }
             }
           },
           {
@@ -23,11 +45,51 @@
             }
           },
           {
+            "name": "int64_attribute_custom_type",
+            "int64": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.Int64Type",
+                "value_type": "basetypes.Int64Value"
+              }
+            }
+          },
+          {
             "name": "list_attribute",
             "list": {
               "computed_optional_required": "computed",
               "element_type": {
                 "string": {}
+              }
+            }
+          },
+          {
+            "name": "list_attribute_custom_type",
+            "list": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.ListType",
+                "value_type": "basetypes.ListValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "list_attribute_element_type_string_custom_type",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
               }
             }
           },
@@ -85,6 +147,35 @@
             }
           },
           {
+            "name": "map_attribute_custom_type",
+            "map": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.MapType",
+                "value_type": "basetypes.MapValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "map_attribute_element_type_string_custom_type",
+            "map": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
+              }
+            }
+          },
+          {
             "name": "map_nested_bool_attribute",
             "map_nested": {
               "computed_optional_required": "computed",
@@ -107,9 +198,55 @@
             }
           },
           {
+            "name": "number_attribute_custom_type",
+            "number": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.NumberType",
+                "value_type": "basetypes.NumberValue"
+              }
+            }
+          },
+          {
             "name": "object_attribute",
             "object": {
               "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_attribute_types_string_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {
+                    "custom_type": {
+                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                      "type": "basetypes.StringType",
+                      "value_type": "basetypes.StringValue"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.ObjectType",
+                "value_type": "basetypes.ObjectValue"
+              },
               "attribute_types": [
                 {
                   "name": "obj_string_attr",
@@ -232,6 +369,35 @@
             }
           },
           {
+            "name": "set_attribute_custom_type",
+            "set": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.SetType",
+                "value_type": "basetypes.SetValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "set_attribute_element_type_string_custom_type",
+            "set": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
+              }
+            }
+          },
+          {
             "name": "set_nested_bool_attribute",
             "set_nested": {
               "computed_optional_required": "computed",
@@ -316,6 +482,17 @@
             "name": "string_attribute",
             "string": {
               "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "string_attribute_custom_type",
+            "string": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.StringType",
+                "value_type": "basetypes.StringValue"
+              }
             }
           }
         ],
@@ -502,9 +679,31 @@
           }
         },
         {
+          "name": "bool_attribute_custom_type",
+          "bool": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.BoolType",
+              "value_type": "basetypes.BoolValue"
+            }
+          }
+        },
+        {
           "name": "float64_attribute",
           "float64": {
             "optional_required": "optional"
+          }
+        },
+        {
+          "name": "float64_attribute_custom_type",
+          "float64": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.Float64Type",
+              "value_type": "basetypes.Float64Value"
+            }
           }
         },
         {
@@ -514,11 +713,51 @@
           }
         },
         {
+          "name": "int64_attribute_custom_type",
+          "int64": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.Int64Type",
+              "value_type": "basetypes.Int64Value"
+            }
+          }
+        },
+        {
           "name": "list_attribute",
           "list": {
             "optional_required": "optional",
             "element_type": {
               "string": {}
+            }
+          }
+        },
+        {
+          "name": "list_attribute_custom_type",
+          "list": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.ListType",
+              "value_type": "basetypes.ListValue"
+            },
+            "element_type": {
+              "string": {}
+            }
+          }
+        },
+        {
+          "name": "list_attribute_element_type_string_custom_type",
+          "list": {
+            "optional_required": "optional",
+            "element_type": {
+              "string": {
+                "custom_type": {
+                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                  "type": "basetypes.StringType",
+                  "value_type": "basetypes.StringValue"
+                }
+              }
             }
           }
         },
@@ -576,6 +815,35 @@
           }
         },
         {
+          "name": "map_attribute_custom_type",
+          "map": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.MapType",
+              "value_type": "basetypes.MapValue"
+            },
+            "element_type": {
+              "string": {}
+            }
+          }
+        },
+        {
+          "name": "map_attribute_element_type_string_custom_type",
+          "map": {
+            "optional_required": "optional",
+            "element_type": {
+              "string": {
+                "custom_type": {
+                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                  "type": "basetypes.StringType",
+                  "value_type": "basetypes.StringValue"
+                }
+              }
+            }
+          }
+        },
+        {
           "name": "map_nested_bool_attribute",
           "map_nested": {
             "optional_required": "optional",
@@ -598,9 +866,55 @@
           }
         },
         {
+          "name": "number_attribute_custom_type",
+          "number": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.NumberType",
+              "value_type": "basetypes.NumberValue"
+            }
+          }
+        },
+        {
           "name": "object_attribute",
           "object": {
             "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "obj_string_attr",
+                "string": {}
+              }
+            ]
+          }
+        },
+        {
+          "name": "object_attribute_attribute_types_string_custom_type",
+          "object": {
+            "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "obj_string_attr",
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "object_attribute_custom_type",
+          "object": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.ObjectType",
+              "value_type": "basetypes.ObjectValue"
+            },
             "attribute_types": [
               {
                 "name": "obj_string_attr",
@@ -723,6 +1037,35 @@
           }
         },
         {
+          "name": "set_attribute_custom_type",
+          "set": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.SetType",
+              "value_type": "basetypes.SetValue"
+            },
+            "element_type": {
+              "string": {}
+            }
+          }
+        },
+        {
+          "name": "set_attribute_element_type_string_custom_type",
+          "set": {
+            "optional_required": "optional",
+            "element_type": {
+              "string": {
+                "custom_type": {
+                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                  "type": "basetypes.StringType",
+                  "value_type": "basetypes.StringValue"
+                }
+              }
+            }
+          }
+        },
+        {
           "name": "set_nested_bool_attribute",
           "set_nested": {
             "optional_required": "optional",
@@ -807,6 +1150,17 @@
           "name": "string_attribute",
           "string": {
             "optional_required": "optional"
+          }
+        },
+        {
+          "name": "string_attribute_custom_type",
+          "string": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+              "type": "basetypes.StringType",
+              "value_type": "basetypes.StringValue"
+            }
           }
         }
       ],
@@ -990,11 +1344,6 @@
             "name": "bool_attribute",
             "bool": {
               "computed_optional_required": "computed",
-              "custom_type": {
-                "import": "",
-                "type": "",
-                "value_type": ""
-              },
               "plan_modifiers": [
                 {
                   "requires_replace": {}
@@ -1017,6 +1366,17 @@
             }
           },
           {
+            "name": "bool_attribute_custom_type",
+            "bool": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.BoolType",
+                "value_type": "basetypes.BoolValue"
+              }
+            }
+          },
+          {
             "name": "bool_attribute_default_static",
             "bool": {
               "computed_optional_required": "optional",
@@ -1032,6 +1392,17 @@
             }
           },
           {
+            "name": "float64_attribute_custom_type",
+            "float64": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.Float64Type",
+                "value_type": "basetypes.Float64Value"
+              }
+            }
+          },
+          {
             "name": "float64_attribute_default_static",
             "float64": {
               "computed_optional_required": "optional",
@@ -1044,6 +1415,17 @@
             "name": "int64_attribute",
             "int64": {
               "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "int64_attribute_custom_type",
+            "int64": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.Int64Type",
+                "value_type": "basetypes.Int64Value"
+              }
             }
           },
           {
@@ -1065,6 +1447,20 @@
             }
           },
           {
+            "name": "list_attribute_custom_type",
+            "list": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.ListType",
+                "value_type": "basetypes.ListValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
             "name": "list_attribute_default_custom",
             "list": {
               "computed_optional_required": "optional",
@@ -1076,6 +1472,21 @@
               },
               "element_type": {
                 "string": {}
+              }
+            }
+          },
+          {
+            "name": "list_attribute_element_type_string_custom_type",
+            "list": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
               }
             }
           },
@@ -1133,6 +1544,35 @@
             }
           },
           {
+            "name": "map_attribute_custom_type",
+            "map": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.MapType",
+                "value_type": "basetypes.MapValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
+            "name": "map_attribute_element_type_string_custom_type",
+            "map": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
+              }
+            }
+          },
+          {
             "name": "map_nested_bool_attribute",
             "map_nested": {
               "computed_optional_required": "computed",
@@ -1155,6 +1595,17 @@
             }
           },
           {
+            "name": "number_attribute_custom_type",
+            "number": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.NumberType",
+                "value_type": "basetypes.NumberValue"
+              }
+            }
+          },
+          {
             "name": "number_attribute_default_custom",
             "number": {
               "computed_optional_required": "optional",
@@ -1170,6 +1621,41 @@
             "name": "object_attribute",
             "object": {
               "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_attribute_types_string_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {
+                    "custom_type": {
+                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                      "type": "basetypes.StringType",
+                      "value_type": "basetypes.StringValue"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.ObjectType",
+                "value_type": "basetypes.ObjectValue"
+              },
               "attribute_types": [
                 {
                   "name": "obj_string_attr",
@@ -1292,6 +1778,20 @@
             }
           },
           {
+            "name": "set_attribute_custom_type",
+            "set": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.SetType",
+                "value_type": "basetypes.SetValue"
+              },
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
             "name": "set_attribute_default_custom",
             "set": {
               "computed_optional_required": "optional",
@@ -1303,6 +1803,21 @@
               },
               "element_type": {
                 "string": {}
+              }
+            }
+          },
+          {
+            "name": "set_attribute_element_type_string_custom_type",
+            "set": {
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.StringType",
+                    "value_type": "basetypes.StringValue"
+                  }
+                }
               }
             }
           },
@@ -1391,6 +1906,17 @@
             "name": "string_attribute",
             "string": {
               "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "string_attribute_custom_type",
+            "string": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                "type": "basetypes.StringType",
+                "value_type": "basetypes.StringValue"
+              }
             }
           },
           {

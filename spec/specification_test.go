@@ -79,9 +79,31 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_custom_type",
+									Bool: &datasource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.BoolType",
+											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "float64_attribute_custom_type",
+									Float64: &datasource.Float64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.Float64Type",
+											ValueType: "basetypes.Float64Value",
+										},
 									},
 								},
 								{
@@ -91,11 +113,51 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "int64_attribute_custom_type",
+									Int64: &datasource.Int64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.Int64Type",
+											ValueType: "basetypes.Int64Value",
+										},
+									},
+								},
+								{
 									Name: "list_attribute",
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
 											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "list_attribute_custom_type",
+									List: &datasource.ListAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.ListType",
+											ValueType: "basetypes.ListValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "list_attribute_element_type_string_custom_type",
+									List: &datasource.ListAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
 										},
 									},
 								},
@@ -155,6 +217,35 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_custom_type",
+									Map: &datasource.MapAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.MapType",
+											ValueType: "basetypes.MapValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_element_type_string_custom_type",
+									Map: &datasource.MapAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &datasource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -177,6 +268,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "number_attribute_custom_type",
+									Number: &datasource.NumberAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.NumberType",
+											ValueType: "basetypes.NumberValue",
+										},
+									},
+								},
+								{
 									Name: "object_attribute",
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -186,6 +288,41 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_string_custom_type",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_string_attr",
+												String: &schema.StringType{
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.StringType",
+														ValueType: "basetypes.StringValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_custom_type",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.ObjectType",
+											ValueType: "basetypes.ObjectValue",
+										},
 									},
 								},
 								{
@@ -306,6 +443,35 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_custom_type",
+									Set: &datasource.SetAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.SetType",
+											ValueType: "basetypes.SetValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_element_type_string_custom_type",
+									Set: &datasource.SetAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &datasource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -390,6 +556,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "string_attribute",
 									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "string_attribute_custom_type",
+									String: &datasource.StringAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.StringType",
+											ValueType: "basetypes.StringValue",
+										},
 									},
 								},
 							},
@@ -576,9 +753,31 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "bool_attribute_custom_type",
+								Bool: &provider.BoolAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.BoolType",
+										ValueType: "basetypes.BoolValue",
+									},
+								},
+							},
+							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "float64_attribute_custom_type",
+								Float64: &provider.Float64Attribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.Float64Type",
+										ValueType: "basetypes.Float64Value",
+									},
 								},
 							},
 							{
@@ -588,11 +787,51 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "int64_attribute_custom_type",
+								Int64: &provider.Int64Attribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.Int64Type",
+										ValueType: "basetypes.Int64Value",
+									},
+								},
+							},
+							{
 								Name: "list_attribute",
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									ElementType: schema.ElementType{
 										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "list_attribute_custom_type",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.ListType",
+										ValueType: "basetypes.ListValue",
+									},
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "list_attribute_element_type_string_custom_type",
+								List: &provider.ListAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{
+											CustomType: &schema.CustomType{
+												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Type:      "basetypes.StringType",
+												ValueType: "basetypes.StringValue",
+											},
+										},
 									},
 								},
 							},
@@ -652,6 +891,35 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "map_attribute_custom_type",
+								Map: &provider.MapAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.MapType",
+										ValueType: "basetypes.MapValue",
+									},
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "map_attribute_element_type_string_custom_type",
+								Map: &provider.MapAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{
+											CustomType: &schema.CustomType{
+												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Type:      "basetypes.StringType",
+												ValueType: "basetypes.StringValue",
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "map_nested_bool_attribute",
 								MapNested: &provider.MapNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -674,6 +942,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "number_attribute_custom_type",
+								Number: &provider.NumberAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.NumberType",
+										ValueType: "basetypes.NumberValue",
+									},
+								},
+							},
+							{
 								Name: "object_attribute",
 								Object: &provider.ObjectAttribute{
 									AttributeTypes: []schema.ObjectAttributeType{
@@ -683,6 +962,41 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 									},
 									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_attribute_types_string_custom_type",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name: "obj_string_attr",
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_custom_type",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.ObjectType",
+										ValueType: "basetypes.ObjectValue",
+									},
 								},
 							},
 							{
@@ -803,6 +1117,35 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "set_attribute_custom_type",
+								Set: &provider.SetAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.SetType",
+										ValueType: "basetypes.SetValue",
+									},
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
+								Name: "set_attribute_element_type_string_custom_type",
+								Set: &provider.SetAttribute{
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{
+											CustomType: &schema.CustomType{
+												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Type:      "basetypes.StringType",
+												ValueType: "basetypes.StringValue",
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "set_nested_bool_attribute",
 								SetNested: &provider.SetNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -887,6 +1230,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Name: "string_attribute",
 								String: &provider.StringAttribute{
 									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "string_attribute_custom_type",
+								String: &provider.StringAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Type:      "basetypes.StringType",
+										ValueType: "basetypes.StringValue",
+									},
 								},
 							},
 						},
@@ -1070,11 +1424,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "bool_attribute",
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
-										CustomType: &schema.CustomType{
-											Import:    pointer(""),
-											Type:      "",
-											ValueType: "",
-										},
 										PlanModifiers: []schema.BoolPlanModifier{
 											{},
 											{
@@ -1095,6 +1444,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_custom_type",
+									Bool: &resource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.BoolType",
+											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
 									Name: "bool_attribute_default_static",
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Optional,
@@ -1110,6 +1470,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute_custom_type",
+									Float64: &resource.Float64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.Float64Type",
+											ValueType: "basetypes.Float64Value",
+										},
+									},
+								},
+								{
 									Name: "float64_attribute_default_static",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Optional,
@@ -1122,6 +1493,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "int64_attribute",
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "int64_attribute_custom_type",
+									Int64: &resource.Int64Attribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.Int64Type",
+											ValueType: "basetypes.Int64Value",
+										},
 									},
 								},
 								{
@@ -1143,6 +1525,20 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_custom_type",
+									List: &resource.ListAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.ListType",
+											ValueType: "basetypes.ListValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "list_attribute_default_custom",
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Optional,
@@ -1154,6 +1550,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 										ElementType: schema.ElementType{
 											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "list_attribute_element_type_string_custom_type",
+									List: &resource.ListAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
 										},
 									},
 								},
@@ -1213,6 +1624,35 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_custom_type",
+									Map: &resource.MapAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.MapType",
+											ValueType: "basetypes.MapValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_element_type_string_custom_type",
+									Map: &resource.MapAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &resource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -1232,6 +1672,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "number_attribute",
 									Number: &resource.NumberAttribute{
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "number_attribute_custom_type",
+									Number: &resource.NumberAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.NumberType",
+											ValueType: "basetypes.NumberValue",
+										},
 									},
 								},
 								{
@@ -1256,6 +1707,41 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_string_custom_type",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_string_attr",
+												String: &schema.StringType{
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.StringType",
+														ValueType: "basetypes.StringValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_custom_type",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.ObjectType",
+											ValueType: "basetypes.ObjectValue",
+										},
 									},
 								},
 								{
@@ -1376,6 +1862,20 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_custom_type",
+									Set: &resource.SetAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.SetType",
+											ValueType: "basetypes.SetValue",
+										},
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "set_attribute_default_custom",
 									Set: &resource.SetAttribute{
 										ComputedOptionalRequired: schema.Optional,
@@ -1387,6 +1887,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 										ElementType: schema.ElementType{
 											String: &schema.StringType{},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_element_type_string_custom_type",
+									Set: &resource.SetAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.StringType",
+													ValueType: "basetypes.StringValue",
+												},
+											},
 										},
 									},
 								},
@@ -1475,6 +1990,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "string_attribute",
 									String: &resource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "string_attribute_custom_type",
+									String: &resource.StringAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Type:      "basetypes.StringType",
+											ValueType: "basetypes.StringValue",
+										},
 									},
 								},
 								{
