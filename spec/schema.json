@@ -49,17 +49,8 @@
           "$ref": "#/$defs/datasource_blocks"
         }
       },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
-        },
-        {
-          "required": [
-            "blocks"
-          ]
-        }
+      "required": [
+        "attributes"
       ]
     },
     "datasource_attributes": {
@@ -238,17 +229,8 @@
           "$ref": "#/$defs/resource_blocks"
         }
       },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
-        },
-        {
-          "required": [
-            "blocks"
-          ]
-        }
+      "required": [
+        "attributes"
       ]
     },
     "resource_attributes": {
@@ -349,7 +331,6 @@
             }
           },
           "required": [
-            "import",
             "type",
             "value_type"
           ]
@@ -839,10 +820,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "required": [
-        "attributes"
-      ]
+      }
     },
     "datasource_nested_block_object": {
       "type": "object",
@@ -859,19 +837,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
-        },
-        {
-          "required": [
-            "blocks"
-          ]
-        }
-      ]
+      }
     },
     "datasource_bool_attribute": {
       "type": "object",
@@ -1489,7 +1455,6 @@
             }
           },
           "required": [
-            "attributes",
             "computed_optional_required"
           ]
         }
@@ -1529,19 +1494,7 @@
             "validators": {
               "$ref": "#/$defs/schema_object_validators"
             }
-          },
-          "anyOf": [
-            {
-              "required": [
-                "attributes"
-              ]
-            },
-            {
-              "required": [
-                "blocks"
-              ]
-            }
-          ]
+          }
         }
       },
       "required": [
@@ -1561,10 +1514,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "required": [
-        "attributes"
-      ]
+      }
     },
     "provider_nested_block_object": {
       "type": "object",
@@ -1581,19 +1531,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
-        },
-        {
-          "required": [
-            "blocks"
-          ]
-        }
-      ]
+      }
     },
     "provider_bool_attribute": {
       "type": "object",
@@ -2172,7 +2110,6 @@
             }
           },
           "required": [
-            "attributes",
             "optional_required"
           ]
         }
@@ -2212,19 +2149,7 @@
             "validators": {
               "$ref": "#/$defs/schema_object_validators"
             }
-          },
-          "anyOf": [
-            {
-              "required": [
-                "attributes"
-              ]
-            },
-            {
-              "required": [
-                "blocks"
-              ]
-            }
-          ]
+          }
         }
       },
       "required": [
@@ -2286,10 +2211,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "required": [
-        "attributes"
-      ]
+      }
     },
     "resource_nested_block_object": {
       "type": "object",
@@ -2309,19 +2231,7 @@
         "validators": {
           "$ref": "#/$defs/schema_object_validators"
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "attributes"
-          ]
-        },
-        {
-          "required": [
-            "blocks"
-          ]
-        }
-      ]
+      }
     },
     "resource_bool_attribute": {
       "type": "object",
@@ -2985,7 +2895,6 @@
             }
           },
           "required": [
-            "attributes",
             "computed_optional_required"
           ]
         }
@@ -3031,19 +2940,7 @@
             "validators": {
               "$ref": "#/$defs/schema_object_validators"
             }
-          },
-          "anyOf": [
-            {
-              "required": [
-                "attributes"
-              ]
-            },
-            {
-              "required": [
-                "blocks"
-              ]
-            }
-          ]
+          }
         }
       },
       "required": [
