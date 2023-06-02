@@ -5,3 +5,7 @@ type CustomType struct {
 	Type      string  `json:"type"`
 	ValueType string  `json:"value_type"`
 }
+
+func (c CustomType) HasImport() bool {
+	return c.Import != nil && *c.Import != ""
+}
