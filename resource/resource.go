@@ -25,9 +25,7 @@ func (r Resource) Validate(ctx context.Context, req ValidateRequest) error {
 		return nil
 	}
 
-	schemaValidateRequest := SchemaValidateRequest{
-		Path: req.Path,
-	}
+	schemaValidateRequest := SchemaValidateRequest(req)
 
 	return r.Schema.Validate(ctx, schemaValidateRequest)
 }

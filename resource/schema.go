@@ -21,9 +21,7 @@ type SchemaValidateRequest struct {
 func (s Schema) Validate(ctx context.Context, req SchemaValidateRequest) error {
 	var errs []error
 
-	attributeValidateRequest := AttributeValidateRequest{
-		Path: req.Path,
-	}
+	attributeValidateRequest := AttributeValidateRequest(req)
 
 	err := s.Attributes.Validate(ctx, attributeValidateRequest)
 
@@ -31,9 +29,7 @@ func (s Schema) Validate(ctx context.Context, req SchemaValidateRequest) error {
 		errs = append(errs, err)
 	}
 
-	blockValidateRequest := BlockValidateRequest{
-		Path: req.Path,
-	}
+	blockValidateRequest := BlockValidateRequest(req)
 
 	err = s.Blocks.Validate(ctx, blockValidateRequest)
 

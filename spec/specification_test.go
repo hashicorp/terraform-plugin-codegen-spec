@@ -6697,7 +6697,7 @@ func TestSpecification_Generate(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, err := spec.Generate(context.Background(), testCase.data)
+			got, err := spec.Parse(context.Background(), testCase.data)
 
 			if err != nil {
 				if testCase.expectedError == nil {
