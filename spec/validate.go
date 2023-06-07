@@ -33,7 +33,8 @@ func Validate(ctx context.Context, document []byte) error {
 	return errs
 }
 
-func Generate(ctx context.Context, document []byte) (Specification, error) {
+// Parse returns a Specification from the JSON document contents or any validation errors.
+func Parse(ctx context.Context, document []byte) (Specification, error) {
 	if err := Validate(ctx, document); err != nil {
 		return Specification{}, err
 	}
