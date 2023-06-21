@@ -367,7 +367,7 @@
               "$ref": "#/$defs/schema_map_type"
             },
             "object": {
-              "$ref": "#/$defs/schema_object_attribute_types"
+              "$ref": "#/$defs/schema_object_type"
             },
             "set": {
               "$ref": "#/$defs/schema_set_type"
@@ -468,7 +468,7 @@
               "$ref": "#/$defs/schema_number_type"
             },
             "object": {
-              "$ref": "#/$defs/schema_object_attribute_types"
+              "$ref": "#/$defs/schema_object_type"
             },
             "set": {
               "$ref": "#/$defs/schema_set_type"
@@ -551,7 +551,7 @@
               "$ref": "#/$defs/schema_number_type"
             },
             "object": {
-              "$ref": "#/$defs/schema_object_attribute_types"
+              "$ref": "#/$defs/schema_object_type"
             },
             "set": {
               "$ref": "#/$defs/schema_set_type"
@@ -650,7 +650,7 @@
               "$ref": "#/$defs/schema_number_type"
             },
             "object": {
-              "$ref": "#/$defs/schema_object_attribute_types"
+              "$ref": "#/$defs/schema_object_type"
             },
             "set": {
               "$ref": "#/$defs/schema_set_type"
@@ -710,6 +710,18 @@
             }
           ]
         },
+        "schema_object_type": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attribute_types": {
+              "$ref": "#/$defs/schema_object_attribute_types"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            }
+          }
+        },
         "schema_optional_required": {
           "enum": [
             "optional",
@@ -742,7 +754,7 @@
               "$ref": "#/$defs/schema_number_type"
             },
             "object": {
-              "$ref": "#/$defs/schema_object_attribute_types"
+              "$ref": "#/$defs/schema_object_type"
             },
             "set": {
               "$ref": "#/$defs/schema_set_type"
