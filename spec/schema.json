@@ -324,9 +324,11 @@
               "type": "string"
             },
             "type": {
+              "minLength": 1,
               "type": "string"
             },
             "value_type": {
+              "minLength": 1,
               "type": "string"
             }
           },
