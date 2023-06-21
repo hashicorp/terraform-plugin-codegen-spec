@@ -247,12 +247,14 @@ func TestAttributes_Validate(t *testing.T) {
 						AttributeTypes: schema.ObjectAttributeTypes{
 							{
 								Name: "obj_attr_one",
-								Object: schema.ObjectAttributeTypes{
-									{
-										Name: "nested_obj_attr_one",
-									},
-									{
-										Name: "nested_obj_attr_one",
+								Object: &schema.ObjectType{
+									AttributeTypes: schema.ObjectAttributeTypes{
+										{
+											Name: "nested_obj_attr_one",
+										},
+										{
+											Name: "nested_obj_attr_one",
+										},
 									},
 								},
 							},

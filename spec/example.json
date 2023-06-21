@@ -109,12 +109,14 @@
             "list": {
               "computed_optional_required": "computed",
               "element_type": {
-                "object": [
-                  {
-                    "name": "obj_string_attr",
-                    "string": {}
-                  }
-                ]
+                "object": {
+                  "attribute_types": [
+                    {
+                      "name": "obj_string_attr",
+                      "string": {}
+                    }
+                  ]
+                }
               }
             }
           },
@@ -123,17 +125,21 @@
             "list": {
               "computed_optional_required": "computed",
               "element_type": {
-                "object": [
-                  {
-                    "name": "obj_obj_attr",
-                    "object": [
-                      {
-                        "name": "obj_obj_string_attr",
-                        "string": {}
+                "object": {
+                  "attribute_types": [
+                    {
+                      "name": "obj_obj_attr",
+                      "object": {
+                        "attribute_types": [
+                          {
+                            "name": "obj_obj_string_attr",
+                            "string": {}
+                          }
+                        ]
                       }
-                    ]
-                  }
-                ]
+                    }
+                  ]
+                }
               }
             }
           },
@@ -221,6 +227,30 @@
             }
           },
           {
+            "name": "object_attribute_attribute_types_object_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_object_attr",
+                  "object": {
+                    "attribute_types": [
+                      {
+                        "name": "obj_object_string_attr",
+                        "string": {}
+                      }
+                    ],
+                    "custom_type": {
+                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                      "type": "basetypes.ObjectType",
+                      "value_type": "basetypes.ObjectValue"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
             "name": "object_attribute_attribute_types_string_custom_type",
             "object": {
               "computed_optional_required": "computed",
@@ -277,12 +307,14 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "object": [
-                      {
-                        "name": "obj_list_obj_attr",
-                        "string": {}
-                      }
-                    ]
+                    "object": {
+                      "attribute_types": [
+                        {
+                          "name": "obj_list_obj_attr",
+                          "string": {}
+                        }
+                      ]
+                    }
                   }
                 }
               ]
@@ -777,12 +809,14 @@
           "list": {
             "optional_required": "optional",
             "element_type": {
-              "object": [
-                {
-                  "name": "obj_string_attr",
-                  "string": {}
-                }
-              ]
+              "object": {
+                "attribute_types": [
+                  {
+                    "name": "obj_string_attr",
+                    "string": {}
+                  }
+                ]
+              }
             }
           }
         },
@@ -791,17 +825,21 @@
           "list": {
             "optional_required": "optional",
             "element_type": {
-              "object": [
-                {
-                  "name": "obj_obj_attr",
-                  "object": [
-                    {
-                      "name": "obj_obj_string_attr",
-                      "string": {}
+              "object": {
+                "attribute_types": [
+                  {
+                    "name": "obj_obj_attr",
+                    "object": {
+                      "attribute_types": [
+                        {
+                          "name": "obj_obj_string_attr",
+                          "string": {}
+                        }
+                      ]
                     }
-                  ]
-                }
-              ]
+                  }
+                ]
+              }
             }
           }
         },
@@ -889,6 +927,30 @@
           }
         },
         {
+          "name": "object_attribute_attribute_types_object_custom_type",
+          "object": {
+            "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "obj_object_attr",
+                "object": {
+                  "attribute_types": [
+                    {
+                      "name": "obj_object_string_attr",
+                      "string": {}
+                    }
+                  ],
+                  "custom_type": {
+                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                    "type": "basetypes.ObjectType",
+                    "value_type": "basetypes.ObjectValue"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "object_attribute_attribute_types_string_custom_type",
           "object": {
             "optional_required": "optional",
@@ -945,12 +1007,14 @@
               {
                 "name": "obj_list_attr",
                 "list": {
-                  "object": [
-                    {
-                      "name": "obj_list_obj_attr",
-                      "string": {}
-                    }
-                  ]
+                  "object": {
+                    "attribute_types": [
+                      {
+                        "name": "obj_list_obj_attr",
+                        "string": {}
+                      }
+                    ]
+                  }
                 }
               }
             ]
@@ -1506,12 +1570,14 @@
             "list": {
               "computed_optional_required": "computed",
               "element_type": {
-                "object": [
-                  {
-                    "name": "obj_string_attr",
-                    "string": {}
-                  }
-                ]
+                "object": {
+                  "attribute_types": [
+                    {
+                      "name": "obj_string_attr",
+                      "string": {}
+                    }
+                  ]
+                }
               }
             }
           },
@@ -1520,17 +1586,21 @@
             "list": {
               "computed_optional_required": "computed",
               "element_type": {
-                "object": [
-                  {
-                    "name": "obj_obj_attr",
-                    "object": [
-                      {
-                        "name": "obj_obj_string_attr",
-                        "string": {}
+                "object": {
+                  "attribute_types": [
+                    {
+                      "name": "obj_obj_attr",
+                      "object": {
+                        "attribute_types": [
+                          {
+                            "name": "obj_obj_string_attr",
+                            "string": {}
+                          }
+                        ]
                       }
-                    ]
-                  }
-                ]
+                    }
+                  ]
+                }
               }
             }
           },
@@ -1630,6 +1700,30 @@
             }
           },
           {
+            "name": "object_attribute_attribute_types_object_custom_type",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_object_attr",
+                  "object": {
+                    "attribute_types": [
+                      {
+                        "name": "obj_object_string_attr",
+                        "string": {}
+                      }
+                    ],
+                    "custom_type": {
+                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+                      "type": "basetypes.ObjectType",
+                      "value_type": "basetypes.ObjectValue"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
             "name": "object_attribute_attribute_types_string_custom_type",
             "object": {
               "computed_optional_required": "computed",
@@ -1686,12 +1780,14 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "object": [
-                      {
-                        "name": "obj_list_obj_attr",
-                        "string": {}
-                      }
-                    ]
+                    "object": {
+                      "attribute_types": [
+                        {
+                          "name": "obj_list_obj_attr",
+                          "string": {}
+                        }
+                      ]
+                    }
                   }
                 }
               ]

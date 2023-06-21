@@ -185,10 +185,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_string_attr",
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -199,13 +201,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_obj_attr",
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_obj_string_attr",
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -297,6 +303,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_object_custom_type",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_object_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_object_string_attr",
+															String: &schema.StringType{},
+														},
+													},
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.ObjectType",
+														ValueType: "basetypes.ObjectValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_string_custom_type",
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -355,10 +385,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Name: "obj_list_attr",
 												List: &schema.ListType{
 													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_list_obj_attr",
+																	String: &schema.StringType{},
+																},
 															},
 														},
 													},
@@ -859,10 +891,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									ElementType: schema.ElementType{
-										Object: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
+										Object: &schema.ObjectType{
+											AttributeTypes: []schema.ObjectAttributeType{
+												{
+													Name:   "obj_string_attr",
+													String: &schema.StringType{},
+												},
 											},
 										},
 									},
@@ -873,13 +907,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									ElementType: schema.ElementType{
-										Object: []schema.ObjectAttributeType{
-											{
-												Name: "obj_obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name:   "obj_obj_string_attr",
-														String: &schema.StringType{},
+										Object: &schema.ObjectType{
+											AttributeTypes: []schema.ObjectAttributeType{
+												{
+													Name: "obj_obj_attr",
+													Object: &schema.ObjectType{
+														AttributeTypes: []schema.ObjectAttributeType{
+															{
+																Name:   "obj_obj_string_attr",
+																String: &schema.StringType{},
+															},
+														},
 													},
 												},
 											},
@@ -971,6 +1009,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_attribute_types_object_custom_type",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name: "obj_object_attr",
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_object_string_attr",
+														String: &schema.StringType{},
+													},
+												},
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.ObjectType",
+													ValueType: "basetypes.ObjectValue",
+												},
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "object_attribute_attribute_types_string_custom_type",
 								Object: &provider.ObjectAttribute{
 									AttributeTypes: []schema.ObjectAttributeType{
@@ -1029,10 +1091,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Name: "obj_list_attr",
 											List: &schema.ListType{
 												ElementType: schema.ElementType{
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_list_obj_attr",
-															String: &schema.StringType{},
+													Object: &schema.ObjectType{
+														AttributeTypes: []schema.ObjectAttributeType{
+															{
+																Name:   "obj_list_obj_attr",
+																String: &schema.StringType{},
+															},
 														},
 													},
 												},
@@ -1592,10 +1656,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_string_attr",
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -1606,13 +1672,17 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_obj_attr",
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_obj_string_attr",
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -1716,6 +1786,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_object_custom_type",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_object_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_object_string_attr",
+															String: &schema.StringType{},
+														},
+													},
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.ObjectType",
+														ValueType: "basetypes.ObjectValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_string_custom_type",
 									Object: &resource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -1774,10 +1868,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Name: "obj_list_attr",
 												List: &schema.ListType{
 													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_list_obj_attr",
+																	String: &schema.StringType{},
+																},
 															},
 														},
 													},
@@ -2957,12 +3053,14 @@ func TestSpecification_Validate_DataSources(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name: "obj_obj_attr",
-													},
-													{
-														Name: "obj_obj_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name: "obj_obj_attr",
+														},
+														{
+															Name: "obj_obj_attr",
+														},
 													},
 												},
 											},
@@ -2989,9 +3087,11 @@ func TestSpecification_Validate_DataSources(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name: "obj_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name: "obj_attr",
+														},
 													},
 												},
 											},
@@ -3682,12 +3782,14 @@ func TestSpecification_Validate_Provider(t *testing.T) {
 									AttributeTypes: []schema.ObjectAttributeType{
 										{
 											Name: "obj_attr",
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_obj_attr",
-												},
-												{
-													Name: "obj_obj_attr",
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_obj_attr",
+													},
+													{
+														Name: "obj_obj_attr",
+													},
 												},
 											},
 										},
@@ -3712,9 +3814,11 @@ func TestSpecification_Validate_Provider(t *testing.T) {
 									AttributeTypes: []schema.ObjectAttributeType{
 										{
 											Name: "obj_attr",
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_attr",
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_attr",
+													},
 												},
 											},
 										},
@@ -4484,12 +4588,14 @@ func TestSpecification_Validate_Resources(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name: "obj_obj_attr",
-													},
-													{
-														Name: "obj_obj_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name: "obj_obj_attr",
+														},
+														{
+															Name: "obj_obj_attr",
+														},
 													},
 												},
 											},
@@ -4516,9 +4622,11 @@ func TestSpecification_Validate_Resources(t *testing.T) {
 										AttributeTypes: []schema.ObjectAttributeType{
 											{
 												Name: "obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name: "obj_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name: "obj_attr",
+														},
 													},
 												},
 											},
@@ -4681,10 +4789,12 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_string_attr",
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -4695,13 +4805,17 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_obj_attr",
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_obj_string_attr",
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -4793,6 +4907,30 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_object_custom_type",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_object_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_object_string_attr",
+															String: &schema.StringType{},
+														},
+													},
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.ObjectType",
+														ValueType: "basetypes.ObjectValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_string_custom_type",
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -4851,10 +4989,12 @@ func TestSpecification_Generate(t *testing.T) {
 												Name: "obj_list_attr",
 												List: &schema.ListType{
 													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_list_obj_attr",
+																	String: &schema.StringType{},
+																},
 															},
 														},
 													},
@@ -5355,10 +5495,12 @@ func TestSpecification_Generate(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									ElementType: schema.ElementType{
-										Object: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
+										Object: &schema.ObjectType{
+											AttributeTypes: []schema.ObjectAttributeType{
+												{
+													Name:   "obj_string_attr",
+													String: &schema.StringType{},
+												},
 											},
 										},
 									},
@@ -5369,13 +5511,17 @@ func TestSpecification_Generate(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									ElementType: schema.ElementType{
-										Object: []schema.ObjectAttributeType{
-											{
-												Name: "obj_obj_attr",
-												Object: []schema.ObjectAttributeType{
-													{
-														Name:   "obj_obj_string_attr",
-														String: &schema.StringType{},
+										Object: &schema.ObjectType{
+											AttributeTypes: []schema.ObjectAttributeType{
+												{
+													Name: "obj_obj_attr",
+													Object: &schema.ObjectType{
+														AttributeTypes: []schema.ObjectAttributeType{
+															{
+																Name:   "obj_obj_string_attr",
+																String: &schema.StringType{},
+															},
+														},
 													},
 												},
 											},
@@ -5467,6 +5613,30 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_attribute_types_object_custom_type",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name: "obj_object_attr",
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_object_string_attr",
+														String: &schema.StringType{},
+													},
+												},
+												CustomType: &schema.CustomType{
+													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Type:      "basetypes.ObjectType",
+													ValueType: "basetypes.ObjectValue",
+												},
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "object_attribute_attribute_types_string_custom_type",
 								Object: &provider.ObjectAttribute{
 									AttributeTypes: []schema.ObjectAttributeType{
@@ -5525,10 +5695,12 @@ func TestSpecification_Generate(t *testing.T) {
 											Name: "obj_list_attr",
 											List: &schema.ListType{
 												ElementType: schema.ElementType{
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_list_obj_attr",
-															String: &schema.StringType{},
+													Object: &schema.ObjectType{
+														AttributeTypes: []schema.ObjectAttributeType{
+															{
+																Name:   "obj_list_obj_attr",
+																String: &schema.StringType{},
+															},
 														},
 													},
 												},
@@ -6088,10 +6260,12 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name:   "obj_string_attr",
-													String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name:   "obj_string_attr",
+														String: &schema.StringType{},
+													},
 												},
 											},
 										},
@@ -6102,13 +6276,17 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										ElementType: schema.ElementType{
-											Object: []schema.ObjectAttributeType{
-												{
-													Name: "obj_obj_attr",
-													Object: []schema.ObjectAttributeType{
-														{
-															Name:   "obj_obj_string_attr",
-															String: &schema.StringType{},
+											Object: &schema.ObjectType{
+												AttributeTypes: []schema.ObjectAttributeType{
+													{
+														Name: "obj_obj_attr",
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_obj_string_attr",
+																	String: &schema.StringType{},
+																},
+															},
 														},
 													},
 												},
@@ -6212,6 +6390,30 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_object_custom_type",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name: "obj_object_attr",
+												Object: &schema.ObjectType{
+													AttributeTypes: []schema.ObjectAttributeType{
+														{
+															Name:   "obj_object_string_attr",
+															String: &schema.StringType{},
+														},
+													},
+													CustomType: &schema.CustomType{
+														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Type:      "basetypes.ObjectType",
+														ValueType: "basetypes.ObjectValue",
+													},
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_string_custom_type",
 									Object: &resource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -6270,10 +6472,12 @@ func TestSpecification_Generate(t *testing.T) {
 												Name: "obj_list_attr",
 												List: &schema.ListType{
 													ElementType: schema.ElementType{
-														Object: []schema.ObjectAttributeType{
-															{
-																Name:   "obj_list_obj_attr",
-																String: &schema.StringType{},
+														Object: &schema.ObjectType{
+															AttributeTypes: []schema.ObjectAttributeType{
+																{
+																	Name:   "obj_list_obj_attr",
+																	String: &schema.StringType{},
+																},
 															},
 														},
 													},

@@ -12,15 +12,15 @@ import (
 type ObjectAttributeType struct {
 	Name string `json:"name"`
 
-	Bool    *BoolType            `json:"bool,omitempty"`
-	Float64 *Float64Type         `json:"float64,omitempty"`
-	Int64   *Int64Type           `json:"int64,omitempty"`
-	List    *ListType            `json:"list,omitempty"`
-	Map     *MapType             `json:"map,omitempty"`
-	Number  *NumberType          `json:"number,omitempty"`
-	Object  ObjectAttributeTypes `json:"object,omitempty"`
-	Set     *SetType             `json:"set,omitempty"`
-	String  *StringType          `json:"string,omitempty"`
+	Bool    *BoolType    `json:"bool,omitempty"`
+	Float64 *Float64Type `json:"float64,omitempty"`
+	Int64   *Int64Type   `json:"int64,omitempty"`
+	List    *ListType    `json:"list,omitempty"`
+	Map     *MapType     `json:"map,omitempty"`
+	Number  *NumberType  `json:"number,omitempty"`
+	Object  *ObjectType  `json:"object,omitempty"`
+	Set     *SetType     `json:"set,omitempty"`
+	String  *StringType  `json:"string,omitempty"`
 }
 
 type ObjectValidateRequest struct {
@@ -46,7 +46,7 @@ func (o ObjectAttributeTypes) Validate(ctx context.Context, req ObjectValidateRe
 				Path: fmt.Sprintf("%s object attribute type %q", req.Path, attributeType.Name),
 			}
 
-			err := attributeType.Object.Validate(ctx, objectValidateRequest)
+			err := attributeType.Object.AttributeTypes.Validate(ctx, objectValidateRequest)
 
 			nestedErrs = errors.Join(nestedErrs, err)
 		}
