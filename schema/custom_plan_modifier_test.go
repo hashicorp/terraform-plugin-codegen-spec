@@ -22,15 +22,34 @@ func TestCustomPlanModifier_HasImport(t *testing.T) {
 			customType: schema.CustomPlanModifier{},
 			expected:   false,
 		},
-		"import-empty-string": {
+		"import-empty": {
 			customType: schema.CustomPlanModifier{
-				Import: pointer(""),
+				Imports: []string{}, // disallowed by spec, but still worth checking
 			},
 			expected: false,
 		},
+		"import-empty-string": {
+			customType: schema.CustomPlanModifier{
+				Imports: []string{
+					"", // disallowed by spec, but still worth checking
+				},
+			},
+			expected: true,
+		},
 		"import-string": {
 			customType: schema.CustomPlanModifier{
-				Import: pointer("github.com/owner/repo/pkg"),
+				Imports: []string{
+					"github.com/owner/repo/pkg",
+				},
+			},
+			expected: true,
+		},
+		"import-strings": {
+			customType: schema.CustomPlanModifier{
+				Imports: []string{
+					"github.com/owner/repo/pkg1",
+					"github.com/owner/repo/pkg2",
+				},
 			},
 			expected: true,
 		},

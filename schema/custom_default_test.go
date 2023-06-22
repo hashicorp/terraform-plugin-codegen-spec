@@ -22,15 +22,34 @@ func TestCustomDefault_HasImport(t *testing.T) {
 			customType: schema.CustomDefault{},
 			expected:   false,
 		},
-		"import-empty-string": {
+		"import-empty": {
 			customType: schema.CustomDefault{
-				Import: pointer(""),
+				Imports: []string{}, // disallowed by spec, but still worth checking
 			},
 			expected: false,
 		},
+		"import-empty-string": {
+			customType: schema.CustomDefault{
+				Imports: []string{
+					"", // disallowed by spec, but still worth checking
+				},
+			},
+			expected: true,
+		},
 		"import-string": {
 			customType: schema.CustomDefault{
-				Import: pointer("github.com/owner/repo/pkg"),
+				Imports: []string{
+					"github.com/owner/repo/pkg",
+				},
+			},
+			expected: true,
+		},
+		"import-strings": {
+			customType: schema.CustomDefault{
+				Imports: []string{
+					"github.com/owner/repo/pkg1",
+					"github.com/owner/repo/pkg2",
+				},
 			},
 			expected: true,
 		},

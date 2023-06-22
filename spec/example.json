@@ -1426,7 +1426,7 @@
                 },
                 {
                   "custom": {
-                    "import": "github.com/my_account/my_project/boolplanmodifier",
+                    "imports": ["github.com/my_account/my_project/boolplanmodifier"],
                     "schema_definition": "myboolplanmodifier.Modify()"
                   }
                 }
@@ -1434,7 +1434,7 @@
               "validators": [
                 {
                   "custom": {
-                    "import": "github.com/my_account/my_project/myboolvalidator",
+                    "imports": ["github.com/my_account/my_project/myboolvalidator"],
                     "schema_definition": "myboolvalidator.Validate()"
                   }
                 }
@@ -1542,8 +1542,12 @@
               "computed_optional_required": "optional",
               "default": {
                 "custom": {
-                  "import":           "github.com/hashicorp/terraform-plugin-framework/types",
-                  "schema_definition": "types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")})"
+                  "imports": [
+                    "github.com/hashicorp/terraform-plugin-framework/attr",
+                    "github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
+                    "github.com/hashicorp/terraform-plugin-framework/types"
+                  ],
+                  "schema_definition": "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))"
                 }
               },
               "element_type": {
@@ -1695,8 +1699,11 @@
               "computed_optional_required": "optional",
               "default": {
                 "custom": {
-                  "import": "math/big",
-                  "schema_definition": "big.NewFloat(123.45)"
+                  "imports": [
+                    "math/big",
+                    "github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault"
+                  ],
+                  "schema_definition": "numberdefault.StaticBigFloat(big.NewFloat(123.45))"
                 }
               }
             }
@@ -1911,8 +1918,12 @@
               "computed_optional_required": "optional",
               "default": {
                 "custom": {
-                  "import":           "github.com/hashicorp/terraform-plugin-framework/types",
-                  "schema_definition": "types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")})"
+                  "imports": [
+                    "github.com/hashicorp/terraform-plugin-framework/attr",
+                    "github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
+                    "github.com/hashicorp/terraform-plugin-framework/types"
+                  ],
+                  "schema_definition": "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))"
                 }
               },
               "element_type": {

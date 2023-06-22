@@ -1498,7 +1498,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
-													Import:           pointer("github.com/my_account/my_project/boolplanmodifier"),
+													Imports:          []string{"github.com/my_account/my_project/boolplanmodifier"},
 													SchemaDefinition: "myboolplanmodifier.Modify()",
 												},
 											},
@@ -1506,7 +1506,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Validators: []schema.BoolValidator{
 											{
 												Custom: &schema.CustomValidator{
-													Import:           pointer("github.com/my_account/my_project/myboolvalidator"),
+													Imports:          []string{"github.com/my_account/my_project/myboolvalidator"},
 													SchemaDefinition: "myboolvalidator.Validate()",
 												},
 											},
@@ -1614,8 +1614,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.ListDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("github.com/hashicorp/terraform-plugin-framework/types"),
-												SchemaDefinition: "types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")})",
+												Imports: []string{
+													"github.com/hashicorp/terraform-plugin-framework/attr",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
+													"github.com/hashicorp/terraform-plugin-framework/types",
+												},
+												SchemaDefinition: "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
 										},
 										ElementType: schema.ElementType{
@@ -1767,8 +1771,11 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.NumberDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("math/big"),
-												SchemaDefinition: "big.NewFloat(123.45)",
+												Imports: []string{
+													"math/big",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+												},
+												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
 									},
@@ -1983,8 +1990,12 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.SetDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("github.com/hashicorp/terraform-plugin-framework/types"),
-												SchemaDefinition: "types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")})",
+												Imports: []string{
+													"github.com/hashicorp/terraform-plugin-framework/attr",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
+													"github.com/hashicorp/terraform-plugin-framework/types",
+												},
+												SchemaDefinition: "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
 										},
 										ElementType: schema.ElementType{
@@ -6102,7 +6113,7 @@ func TestSpecification_Generate(t *testing.T) {
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
-													Import:           pointer("github.com/my_account/my_project/boolplanmodifier"),
+													Imports:          []string{"github.com/my_account/my_project/boolplanmodifier"},
 													SchemaDefinition: "myboolplanmodifier.Modify()",
 												},
 											},
@@ -6110,7 +6121,7 @@ func TestSpecification_Generate(t *testing.T) {
 										Validators: []schema.BoolValidator{
 											{
 												Custom: &schema.CustomValidator{
-													Import:           pointer("github.com/my_account/my_project/myboolvalidator"),
+													Imports:          []string{"github.com/my_account/my_project/myboolvalidator"},
 													SchemaDefinition: "myboolvalidator.Validate()",
 												},
 											},
@@ -6218,8 +6229,12 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.ListDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("github.com/hashicorp/terraform-plugin-framework/types"),
-												SchemaDefinition: "types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")})",
+												Imports: []string{
+													"github.com/hashicorp/terraform-plugin-framework/attr",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
+													"github.com/hashicorp/terraform-plugin-framework/types",
+												},
+												SchemaDefinition: "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
 										},
 										ElementType: schema.ElementType{
@@ -6371,8 +6386,11 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.NumberDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("math/big"),
-												SchemaDefinition: "big.NewFloat(123.45)",
+												Imports: []string{
+													"math/big",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+												},
+												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
 									},
@@ -6587,8 +6605,12 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.SetDefault{
 											Custom: &schema.CustomDefault{
-												Import:           pointer("github.com/hashicorp/terraform-plugin-framework/types"),
-												SchemaDefinition: "types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")})",
+												Imports: []string{
+													"github.com/hashicorp/terraform-plugin-framework/attr",
+													"github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
+													"github.com/hashicorp/terraform-plugin-framework/types",
+												},
+												SchemaDefinition: "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
 										},
 										ElementType: schema.ElementType{

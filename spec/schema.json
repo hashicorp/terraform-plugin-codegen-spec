@@ -2885,8 +2885,13 @@
     "schema_custom_default": {
       "type": "object",
       "properties": {
-        "import": {
-          "type": "string"
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
         },
         "schema_definition": {
           "type": "string"
@@ -2899,8 +2904,13 @@
     "schema_custom_plan_modifier": {
       "type": "object",
       "properties": {
-        "import": {
-          "type": "string"
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
         },
         "schema_definition": {
           "type": "string"
@@ -2913,8 +2923,13 @@
     "schema_custom_validator": {
       "type": "object",
       "properties": {
-        "import": {
-          "type": "string"
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
         },
         "schema_definition": {
           "type": "string"
