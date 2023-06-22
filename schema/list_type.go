@@ -4,7 +4,7 @@
 package schema
 
 type ListType struct {
-	ElementType
+	ElementType ElementType `json:"element_type"`
 
 	// CustomType is a customization of the ListType.
 	CustomType *CustomType `json:"custom_type,omitempty"`

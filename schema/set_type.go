@@ -4,7 +4,7 @@
 package schema
 
 type SetType struct {
-	ElementType
+	ElementType ElementType `json:"element_type"`
 
 	// CustomType is a customization of the SetType.
 	CustomType *CustomType `json:"custom_type,omitempty"`

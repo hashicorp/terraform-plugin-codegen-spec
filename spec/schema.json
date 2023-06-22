@@ -448,166 +448,30 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "bool": {
-              "$ref": "#/$defs/schema_bool_type"
-            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
-            "float64": {
-              "$ref": "#/$defs/schema_float64_type"
-            },
-            "int64": {
-              "$ref": "#/$defs/schema_int64_type"
-            },
-            "list": {
-              "$ref": "#/$defs/schema_list_type"
-            },
-            "map": {
-              "$ref": "#/$defs/schema_map_type"
-            },
-            "number": {
-              "$ref": "#/$defs/schema_number_type"
-            },
-            "object": {
-              "$ref": "#/$defs/schema_object_type"
-            },
-            "set": {
-              "$ref": "#/$defs/schema_set_type"
-            },
-            "string": {
-              "$ref": "#/$defs/schema_string_type"
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
             }
           },
-          "oneOf": [
-            {
-              "required": [
-                "bool"
-              ]
-            },
-            {
-              "required": [
-                "float64"
-              ]
-            },
-            {
-              "required": [
-                "int64"
-              ]
-            },
-            {
-              "required": [
-                "list"
-              ]
-            },
-            {
-              "required": [
-                "map"
-              ]
-            },
-            {
-              "required": [
-                "number"
-              ]
-            },
-            {
-              "required": [
-                "object"
-              ]
-            },
-            {
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "required": [
-                "string"
-              ]
-            }
+          "required": [
+            "element_type"
           ]
         },
         "schema_map_type": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "bool": {
-              "$ref": "#/$defs/schema_bool_type"
-            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
-            "float64": {
-              "$ref": "#/$defs/schema_float64_type"
-            },
-            "int64": {
-              "$ref": "#/$defs/schema_int64_type"
-            },
-            "list": {
-              "$ref": "#/$defs/schema_list_type"
-            },
-            "map": {
-              "$ref": "#/$defs/schema_map_type"
-            },
-            "number": {
-              "$ref": "#/$defs/schema_number_type"
-            },
-            "object": {
-              "$ref": "#/$defs/schema_object_type"
-            },
-            "set": {
-              "$ref": "#/$defs/schema_set_type"
-            },
-            "string": {
-              "$ref": "#/$defs/schema_string_type"
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
             }
           },
-          "oneOf": [
-            {
-              "required": [
-                "bool"
-              ]
-            },
-            {
-              "required": [
-                "float64"
-              ]
-            },
-            {
-              "required": [
-                "int64"
-              ]
-            },
-            {
-              "required": [
-                "list"
-              ]
-            },
-            {
-              "required": [
-                "map"
-              ]
-            },
-            {
-              "required": [
-                "number"
-              ]
-            },
-            {
-              "required": [
-                "object"
-              ]
-            },
-            {
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "required": [
-                "string"
-              ]
-            }
+          "required": [
+            "element_type"
           ]
         },
         "schema_number_type": {
@@ -734,83 +598,15 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "bool": {
-              "$ref": "#/$defs/schema_bool_type"
-            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
-            "float64": {
-              "$ref": "#/$defs/schema_float64_type"
-            },
-            "int64": {
-              "$ref": "#/$defs/schema_int64_type"
-            },
-            "list": {
-              "$ref": "#/$defs/schema_list_type"
-            },
-            "map": {
-              "$ref": "#/$defs/schema_map_type"
-            },
-            "number": {
-              "$ref": "#/$defs/schema_number_type"
-            },
-            "object": {
-              "$ref": "#/$defs/schema_object_type"
-            },
-            "set": {
-              "$ref": "#/$defs/schema_set_type"
-            },
-            "string": {
-              "$ref": "#/$defs/schema_string_type"
+            "element_type": {
+              "$ref": "#/$defs/schema_element_type"
             }
           },
-          "oneOf": [
-            {
-              "required": [
-                "bool"
-              ]
-            },
-            {
-              "required": [
-                "float64"
-              ]
-            },
-            {
-              "required": [
-                "int64"
-              ]
-            },
-            {
-              "required": [
-                "list"
-              ]
-            },
-            {
-              "required": [
-                "map"
-              ]
-            },
-            {
-              "required": [
-                "number"
-              ]
-            },
-            {
-              "required": [
-                "object"
-              ]
-            },
-            {
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "required": [
-                "string"
-              ]
-            }
+          "required": [
+            "element_type"
           ]
         },
         "schema_string_type": {

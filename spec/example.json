@@ -99,7 +99,9 @@
               "computed_optional_required": "computed",
               "element_type": {
                 "map": {
-                  "string": {}
+                  "element_type": {
+                    "string": {}
+                  }
                 }
               }
             }
@@ -293,7 +295,9 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "string": {}
+                    "element_type": {
+                      "string": {}
+                    }
                   }
                 }
               ]
@@ -307,13 +311,15 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "object": {
-                      "attribute_types": [
-                        {
-                          "name": "obj_list_obj_attr",
-                          "string": {}
-                        }
-                      ]
+                    "element_type": {
+                      "object": {
+                        "attribute_types": [
+                          {
+                            "name": "obj_list_obj_attr",
+                            "string": {}
+                          }
+                        ]
+                      }
                     }
                   }
                 }
@@ -799,7 +805,9 @@
             "optional_required": "optional",
             "element_type": {
               "map": {
-                "string": {}
+                "element_type": {
+                  "string": {}
+                }
               }
             }
           }
@@ -993,7 +1001,9 @@
               {
                 "name": "obj_list_attr",
                 "list": {
-                  "string": {}
+                  "element_type": {
+                    "string": {}
+                  }
                 }
               }
             ]
@@ -1007,13 +1017,15 @@
               {
                 "name": "obj_list_attr",
                 "list": {
-                  "object": {
-                    "attribute_types": [
-                      {
-                        "name": "obj_list_obj_attr",
-                        "string": {}
-                      }
-                    ]
+                  "element_type": {
+                    "object": {
+                      "attribute_types": [
+                        {
+                          "name": "obj_list_obj_attr",
+                          "string": {}
+                        }
+                      ]
+                    }
                   }
                 }
               }
@@ -1560,7 +1572,9 @@
               "computed_optional_required": "computed",
               "element_type": {
                 "map": {
-                  "string": {}
+                  "element_type": {
+                    "string": {}
+                  }
                 }
               }
             }
@@ -1766,7 +1780,9 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "string": {}
+                    "element_type": {
+                      "string": {}
+                    }
                   }
                 }
               ]
@@ -1780,13 +1796,15 @@
                 {
                   "name": "obj_list_attr",
                   "list": {
-                    "object": {
-                      "attribute_types": [
-                        {
-                          "name": "obj_list_obj_attr",
-                          "string": {}
-                        }
-                      ]
+                    "element_type": {
+                      "object": {
+                        "attribute_types": [
+                          {
+                            "name": "obj_list_obj_attr",
+                            "string": {}
+                          }
+                        ]
+                      }
                     }
                   }
                 }
