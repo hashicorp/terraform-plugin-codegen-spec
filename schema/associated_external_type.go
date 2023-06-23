@@ -11,5 +11,5 @@ type AssociatedExternalType struct {
 }
 
 func (a AssociatedExternalType) HasImport() bool {
-	return a.Import != nil && a.Import.Import != ""
+	return a.Import != nil && a.Import.Path != ""
 }

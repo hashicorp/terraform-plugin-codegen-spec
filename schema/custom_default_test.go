@@ -33,7 +33,7 @@ func TestCustomDefault_HasImport(t *testing.T) {
 			customType: schema.CustomDefault{
 				Imports: []code.Import{
 					{
-						Import: "", // disallowed by spec, but still worth checking
+						Path: "", // disallowed by spec, but still worth checking
 					},
 				},
 			},
@@ -43,7 +43,7 @@ func TestCustomDefault_HasImport(t *testing.T) {
 			customType: schema.CustomDefault{
 				Imports: []code.Import{
 					{
-						Import: "github.com/owner/repo/pkg",
+						Path: "github.com/owner/repo/pkg",
 					},
 				},
 			},
@@ -53,10 +53,10 @@ func TestCustomDefault_HasImport(t *testing.T) {
 			customType: schema.CustomDefault{
 				Imports: []code.Import{
 					{
-						Import: "github.com/owner/repo/pkg1",
+						Path: "github.com/owner/repo/pkg1",
 					},
 					{
-						Import: "github.com/owner/repo/pkg2",
+						Path: "github.com/owner/repo/pkg2",
 					},
 				},
 			},

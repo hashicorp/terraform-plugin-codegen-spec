@@ -16,7 +16,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.BoolType",
                 "value_type": "basetypes.BoolValue"
@@ -30,7 +30,7 @@
               "custom_type": {
                 "import": {
                   "alias": "fwtype",
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "fwtype.BoolType",
                 "value_type": "fwtype.BoolValue"
@@ -49,7 +49,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.Float64Type",
                 "value_type": "basetypes.Float64Value"
@@ -68,7 +68,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.Int64Type",
                 "value_type": "basetypes.Int64Value"
@@ -90,7 +90,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.ListType",
                 "value_type": "basetypes.ListValue"
@@ -108,7 +108,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -184,7 +184,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.MapType",
                 "value_type": "basetypes.MapValue"
@@ -202,7 +202,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -239,7 +239,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.NumberType",
                 "value_type": "basetypes.NumberValue"
@@ -274,7 +274,7 @@
                     ],
                     "custom_type": {
                       "import": {
-                        "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                        "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                       },
                       "type": "basetypes.ObjectType",
                       "value_type": "basetypes.ObjectValue"
@@ -294,7 +294,7 @@
                   "string": {
                     "custom_type": {
                       "import": {
-                        "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                        "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                       },
                       "type": "basetypes.StringType",
                       "value_type": "basetypes.StringValue"
@@ -310,7 +310,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.ObjectType",
                 "value_type": "basetypes.ObjectValue"
@@ -448,7 +448,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.SetType",
                 "value_type": "basetypes.SetValue"
@@ -466,7 +466,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -496,7 +496,7 @@
             "single_nested": {
               "associated_external_type": {
                 "import": {
-                  "import": "example.com/apisdk"
+                  "path": "example.com/apisdk"
                 },
                 "type": "*apisdk.DataSourceProperty"
               },
@@ -570,7 +570,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.StringType",
                 "value_type": "basetypes.StringValue"
@@ -766,7 +766,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.BoolType",
               "value_type": "basetypes.BoolValue"
@@ -780,7 +780,7 @@
             "custom_type": {
               "import": {
                 "alias": "fwtype",
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "fwtype.BoolType",
               "value_type": "fwtype.BoolValue"
@@ -799,7 +799,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.Float64Type",
               "value_type": "basetypes.Float64Value"
@@ -818,7 +818,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.Int64Type",
               "value_type": "basetypes.Int64Value"
@@ -840,7 +840,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.ListType",
               "value_type": "basetypes.ListValue"
@@ -858,7 +858,7 @@
               "string": {
                 "custom_type": {
                   "import": {
-                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                    "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                   },
                   "type": "basetypes.StringType",
                   "value_type": "basetypes.StringValue"
@@ -934,7 +934,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.MapType",
               "value_type": "basetypes.MapValue"
@@ -952,7 +952,7 @@
               "string": {
                 "custom_type": {
                   "import": {
-                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                    "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                   },
                   "type": "basetypes.StringType",
                   "value_type": "basetypes.StringValue"
@@ -989,7 +989,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.NumberType",
               "value_type": "basetypes.NumberValue"
@@ -1024,7 +1024,7 @@
                   ],
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.ObjectType",
                     "value_type": "basetypes.ObjectValue"
@@ -1044,7 +1044,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -1060,7 +1060,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.ObjectType",
               "value_type": "basetypes.ObjectValue"
@@ -1198,7 +1198,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.SetType",
               "value_type": "basetypes.SetValue"
@@ -1216,7 +1216,7 @@
               "string": {
                 "custom_type": {
                   "import": {
-                    "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                    "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                   },
                   "type": "basetypes.StringType",
                   "value_type": "basetypes.StringValue"
@@ -1246,7 +1246,7 @@
           "single_nested": {
             "associated_external_type": {
               "import": {
-                "import": "example.com/apisdk"
+                "path": "example.com/apisdk"
               },
               "type": "*apisdk.ProviderProperty"
             },
@@ -1320,7 +1320,7 @@
             "optional_required": "optional",
             "custom_type": {
               "import": {
-                "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
               },
               "type": "basetypes.StringType",
               "value_type": "basetypes.StringValue"
@@ -1516,7 +1516,7 @@
                   "custom": {
                     "imports": [
                       {
-                        "import": "github.com/my_account/my_project/boolplanmodifier"
+                        "path": "github.com/my_account/my_project/boolplanmodifier"
                       }
                     ],
                     "schema_definition": "myboolplanmodifier.Modify()"
@@ -1528,7 +1528,7 @@
                   "custom": {
                     "imports": [
                       {
-                        "import": "github.com/my_account/my_project/myboolvalidator"
+                        "path": "github.com/my_account/my_project/myboolvalidator"
                       }
                     ],
                     "schema_definition": "myboolvalidator.Validate()"
@@ -1543,7 +1543,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.BoolType",
                 "value_type": "basetypes.BoolValue"
@@ -1557,7 +1557,7 @@
               "custom_type": {
                 "import": {
                   "alias": "fwtype",
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "fwtype.BoolType",
                 "value_type": "fwtype.BoolValue"
@@ -1585,7 +1585,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.Float64Type",
                 "value_type": "basetypes.Float64Value"
@@ -1613,7 +1613,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.Int64Type",
                 "value_type": "basetypes.Int64Value"
@@ -1644,7 +1644,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.ListType",
                 "value_type": "basetypes.ListValue"
@@ -1662,13 +1662,13 @@
                 "custom": {
                   "imports": [
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/attr"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/attr"
                     },
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
                     },
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types"
                     }
                   ],
                   "schema_definition": "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))"
@@ -1687,7 +1687,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -1763,7 +1763,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.MapType",
                 "value_type": "basetypes.MapValue"
@@ -1781,7 +1781,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -1818,7 +1818,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.NumberType",
                 "value_type": "basetypes.NumberValue"
@@ -1833,10 +1833,10 @@
                 "custom": {
                   "imports": [
                     {
-                      "import": "math/big"
+                      "path": "math/big"
                     },
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault"
                     }
                   ],
                   "schema_definition": "numberdefault.StaticBigFloat(big.NewFloat(123.45))"
@@ -1872,7 +1872,7 @@
                     ],
                     "custom_type": {
                       "import": {
-                        "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                        "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                       },
                       "type": "basetypes.ObjectType",
                       "value_type": "basetypes.ObjectValue"
@@ -1892,7 +1892,7 @@
                   "string": {
                     "custom_type": {
                       "import": {
-                        "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                        "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                       },
                       "type": "basetypes.StringType",
                       "value_type": "basetypes.StringValue"
@@ -1908,7 +1908,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.ObjectType",
                 "value_type": "basetypes.ObjectValue"
@@ -2046,7 +2046,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.SetType",
                 "value_type": "basetypes.SetValue"
@@ -2064,13 +2064,13 @@
                 "custom": {
                   "imports": [
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/attr"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/attr"
                     },
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault"
                     },
                     {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types"
                     }
                   ],
                   "schema_definition": "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))"
@@ -2089,7 +2089,7 @@
                 "string": {
                   "custom_type": {
                     "import": {
-                      "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                     },
                     "type": "basetypes.StringType",
                     "value_type": "basetypes.StringValue"
@@ -2119,7 +2119,7 @@
             "single_nested": {
               "associated_external_type": {
                 "import": {
-                  "import": "example.com/apisdk"
+                  "path": "example.com/apisdk"
                 },
                 "type": "*apisdk.DataSourceProperty"
               },
@@ -2193,7 +2193,7 @@
               "computed_optional_required": "computed",
               "custom_type": {
                 "import": {
-                  "import": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
                 },
                 "type": "basetypes.StringType",
                 "value_type": "basetypes.StringValue"

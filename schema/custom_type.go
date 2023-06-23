@@ -12,5 +12,5 @@ type CustomType struct {
 }
 
 func (c CustomType) HasImport() bool {
-	return c.Import != nil && c.Import.Import != ""
+	return c.Import != nil && c.Import.Path != ""
 }

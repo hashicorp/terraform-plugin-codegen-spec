@@ -16,10 +16,10 @@ type Import struct {
 	// the package solely for its initialization side-effects.
 	Alias *string `json:"alias,omitempty"`
 
-	// Import is a non-empty string containing the reference to the code for
-	// importing.
+	// Path contains the source of the code for importing, typically a fully
+	// qualified path or name, based on the programming language.
 	//
-	// For example in Go, this is a package, such as
+	// For example in Go, this is a package path, such as
 	// github.com/hashicorp/terraform-plugin-framework/types.
-	Import string `json:"import"`
+	Path string `json:"path"`
 }

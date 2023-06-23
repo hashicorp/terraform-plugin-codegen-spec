@@ -26,7 +26,7 @@ func TestCustomType_HasImport(t *testing.T) {
 		"import-empty-string": {
 			customType: schema.CustomType{
 				Import: &code.Import{
-					Import: "",
+					Path: "",
 				},
 			},
 			expected: false,
@@ -34,7 +34,7 @@ func TestCustomType_HasImport(t *testing.T) {
 		"import-string": {
 			customType: schema.CustomType{
 				Import: &code.Import{
-					Import: "github.com/owner/repo/pkg",
+					Path: "github.com/owner/repo/pkg",
 				},
 			},
 			expected: true,

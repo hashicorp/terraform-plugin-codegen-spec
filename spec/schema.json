@@ -30,13 +30,13 @@
           "type": "string",
           "minLength": 1
         },
-        "import": {
+        "path": {
           "type": "string",
           "minLength": 1
         }
       },
       "required": [
-        "import"
+        "path"
       ]
     },
     "code_imports": {
