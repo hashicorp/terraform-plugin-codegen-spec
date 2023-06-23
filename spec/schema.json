@@ -23,6 +23,29 @@
     "provider"
   ],
   "$defs": {
+    "code_import": {
+      "type": "object",
+      "properties": {
+        "alias": {
+          "type": "string",
+          "minLength": 1
+        },
+        "import": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "import"
+      ]
+    },
+    "code_imports": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/code_import"
+      },
+      "minItems": 1
+    },
     "datasource": {
       "type": "object",
       "properties": {
@@ -299,7 +322,7 @@
           "type": "object",
           "properties": {
             "import": {
-              "type": "string"
+              "$ref": "#/$defs/code_import"
             },
             "type": {
               "type": "string"
@@ -321,7 +344,7 @@
           "type": "object",
           "properties": {
             "import": {
-              "type": "string"
+              "$ref": "#/$defs/code_import"
             },
             "type": {
               "minLength": 1,
@@ -2886,12 +2909,7 @@
       "type": "object",
       "properties": {
         "imports": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1
+          "$ref": "#/$defs/code_imports"
         },
         "schema_definition": {
           "type": "string"
@@ -2905,12 +2923,7 @@
       "type": "object",
       "properties": {
         "imports": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1
+          "$ref": "#/$defs/code_imports"
         },
         "schema_definition": {
           "type": "string"
@@ -2924,12 +2937,7 @@
       "type": "object",
       "properties": {
         "imports": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1
-          },
-          "minItems": 1
+          "$ref": "#/$defs/code_imports"
         },
         "schema_definition": {
           "type": "string"

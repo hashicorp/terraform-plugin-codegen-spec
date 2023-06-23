@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 	"github.com/hashicorp/terraform-plugin-codegen-spec/datasource"
 	"github.com/hashicorp/terraform-plugin-codegen-spec/provider"
 	"github.com/hashicorp/terraform-plugin-codegen-spec/resource"
@@ -89,9 +90,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Bool: &datasource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.BoolType",
 											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
+									Name: "bool_attribute_custom_type_import_alias",
+									Bool: &datasource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias:  pointer("fwtype"),
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.BoolType",
+											ValueType: "fwtype.BoolValue",
 										},
 									},
 								},
@@ -106,7 +123,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Float64Type",
 											ValueType: "basetypes.Float64Value",
 										},
@@ -123,7 +142,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
@@ -143,7 +164,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ListType",
 											ValueType: "basetypes.ListValue",
 										},
@@ -159,7 +182,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -233,7 +258,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.MapType",
 											ValueType: "basetypes.MapValue",
 										},
@@ -249,7 +276,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -284,7 +313,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Number: &datasource.NumberAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
@@ -316,7 +347,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 														},
 													},
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.ObjectType",
 														ValueType: "basetypes.ObjectValue",
 													},
@@ -334,7 +367,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Name: "obj_string_attr",
 												String: &schema.StringType{
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.StringType",
 														ValueType: "basetypes.StringValue",
 													},
@@ -355,7 +390,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ObjectType",
 											ValueType: "basetypes.ObjectValue",
 										},
@@ -485,7 +522,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Set: &datasource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.SetType",
 											ValueType: "basetypes.SetValue",
 										},
@@ -501,7 +540,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -529,8 +570,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "single_nested_bool_attribute",
 									SingleNested: &datasource.SingleNestedAttribute{
 										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: pointer("example.com/apisdk"),
-											Type:   "*apisdk.DataSourceProperty",
+											Import: &code.Import{
+												Import: "example.com/apisdk",
+											},
+											Type: "*apisdk.DataSourceProperty",
 										},
 										Attributes: []datasource.Attribute{
 											{
@@ -601,7 +644,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
@@ -795,9 +840,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Bool: &provider.BoolAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.BoolType",
 										ValueType: "basetypes.BoolValue",
+									},
+								},
+							},
+							{
+								Name: "bool_attribute_custom_type_import_alias",
+								Bool: &provider.BoolAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Alias:  pointer("fwtype"),
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "fwtype.BoolType",
+										ValueType: "fwtype.BoolValue",
 									},
 								},
 							},
@@ -812,7 +873,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.Float64Type",
 										ValueType: "basetypes.Float64Value",
 									},
@@ -829,7 +892,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
@@ -849,7 +914,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.ListType",
 										ValueType: "basetypes.ListValue",
 									},
@@ -865,7 +932,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -939,7 +1008,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.MapType",
 										ValueType: "basetypes.MapValue",
 									},
@@ -955,7 +1026,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -990,7 +1063,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Number: &provider.NumberAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
@@ -1022,7 +1097,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													},
 												},
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.ObjectType",
 													ValueType: "basetypes.ObjectValue",
 												},
@@ -1040,7 +1117,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Name: "obj_string_attr",
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -1061,7 +1140,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.ObjectType",
 										ValueType: "basetypes.ObjectValue",
 									},
@@ -1191,7 +1272,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Set: &provider.SetAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.SetType",
 										ValueType: "basetypes.SetValue",
 									},
@@ -1207,7 +1290,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -1235,8 +1320,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								Name: "single_nested_bool_attribute",
 								SingleNested: &provider.SingleNestedAttribute{
 									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: pointer("example.com/apisdk"),
-										Type:   "*apisdk.ProviderProperty",
+										Import: &code.Import{
+											Import: "example.com/apisdk",
+										},
+										Type: "*apisdk.ProviderProperty",
 									},
 									Attributes: []provider.Attribute{
 										{
@@ -1307,7 +1394,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								String: &provider.StringAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
@@ -1498,7 +1587,11 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
-													Imports:          []string{"github.com/my_account/my_project/boolplanmodifier"},
+													Imports: []code.Import{
+														{
+															Import: "github.com/my_account/my_project/boolplanmodifier",
+														},
+													},
 													SchemaDefinition: "myboolplanmodifier.Modify()",
 												},
 											},
@@ -1506,7 +1599,11 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Validators: []schema.BoolValidator{
 											{
 												Custom: &schema.CustomValidator{
-													Imports:          []string{"github.com/my_account/my_project/myboolvalidator"},
+													Imports: []code.Import{
+														{
+															Import: "github.com/my_account/my_project/myboolvalidator",
+														},
+													},
 													SchemaDefinition: "myboolvalidator.Validate()",
 												},
 											},
@@ -1518,9 +1615,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.BoolType",
 											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
+									Name: "bool_attribute_custom_type_import_alias",
+									Bool: &resource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias:  pointer("fwtype"),
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.BoolType",
+											ValueType: "fwtype.BoolValue",
 										},
 									},
 								},
@@ -1544,7 +1657,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Float64Type",
 											ValueType: "basetypes.Float64Value",
 										},
@@ -1570,7 +1685,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
@@ -1599,7 +1716,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ListType",
 											ValueType: "basetypes.ListValue",
 										},
@@ -1614,10 +1733,16 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.ListDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"github.com/hashicorp/terraform-plugin-framework/attr",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
-													"github.com/hashicorp/terraform-plugin-framework/types",
+												Imports: []code.Import{
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/attr",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
 												},
 												SchemaDefinition: "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
@@ -1634,7 +1759,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -1708,7 +1835,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.MapType",
 											ValueType: "basetypes.MapValue",
 										},
@@ -1724,7 +1853,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -1759,7 +1890,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Number: &resource.NumberAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
@@ -1771,9 +1904,13 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.NumberDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"math/big",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+												Imports: []code.Import{
+													{
+														Import: "math/big",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+													},
 												},
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
@@ -1806,7 +1943,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 														},
 													},
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.ObjectType",
 														ValueType: "basetypes.ObjectValue",
 													},
@@ -1824,7 +1963,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												Name: "obj_string_attr",
 												String: &schema.StringType{
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.StringType",
 														ValueType: "basetypes.StringValue",
 													},
@@ -1845,7 +1986,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ObjectType",
 											ValueType: "basetypes.ObjectValue",
 										},
@@ -1975,7 +2118,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Set: &resource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.SetType",
 											ValueType: "basetypes.SetValue",
 										},
@@ -1990,10 +2135,16 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.SetDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"github.com/hashicorp/terraform-plugin-framework/attr",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
-													"github.com/hashicorp/terraform-plugin-framework/types",
+												Imports: []code.Import{
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/attr",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
 												},
 												SchemaDefinition: "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
@@ -2010,7 +2161,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -2038,8 +2191,10 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "single_nested_bool_attribute",
 									SingleNested: &resource.SingleNestedAttribute{
 										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: pointer("example.com/apisdk"),
-											Type:   "*apisdk.DataSourceProperty",
+											Import: &code.Import{
+												Import: "example.com/apisdk",
+											},
+											Type: "*apisdk.DataSourceProperty",
 										},
 										Attributes: []resource.Attribute{
 											{
@@ -2110,7 +2265,9 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									String: &resource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
@@ -4704,9 +4861,25 @@ func TestSpecification_Generate(t *testing.T) {
 									Bool: &datasource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.BoolType",
 											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
+									Name: "bool_attribute_custom_type_import_alias",
+									Bool: &datasource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias:  pointer("fwtype"),
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.BoolType",
+											ValueType: "fwtype.BoolValue",
 										},
 									},
 								},
@@ -4721,7 +4894,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Float64Type",
 											ValueType: "basetypes.Float64Value",
 										},
@@ -4738,7 +4913,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
@@ -4758,7 +4935,9 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &datasource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ListType",
 											ValueType: "basetypes.ListValue",
 										},
@@ -4774,7 +4953,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -4848,7 +5029,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.MapType",
 											ValueType: "basetypes.MapValue",
 										},
@@ -4864,7 +5047,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -4899,7 +5084,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Number: &datasource.NumberAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
@@ -4931,7 +5118,9 @@ func TestSpecification_Generate(t *testing.T) {
 														},
 													},
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.ObjectType",
 														ValueType: "basetypes.ObjectValue",
 													},
@@ -4949,7 +5138,9 @@ func TestSpecification_Generate(t *testing.T) {
 												Name: "obj_string_attr",
 												String: &schema.StringType{
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.StringType",
 														ValueType: "basetypes.StringValue",
 													},
@@ -4970,7 +5161,9 @@ func TestSpecification_Generate(t *testing.T) {
 										},
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ObjectType",
 											ValueType: "basetypes.ObjectValue",
 										},
@@ -5100,7 +5293,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Set: &datasource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.SetType",
 											ValueType: "basetypes.SetValue",
 										},
@@ -5116,7 +5311,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -5144,8 +5341,10 @@ func TestSpecification_Generate(t *testing.T) {
 									Name: "single_nested_bool_attribute",
 									SingleNested: &datasource.SingleNestedAttribute{
 										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: pointer("example.com/apisdk"),
-											Type:   "*apisdk.DataSourceProperty",
+											Import: &code.Import{
+												Import: "example.com/apisdk",
+											},
+											Type: "*apisdk.DataSourceProperty",
 										},
 										Attributes: []datasource.Attribute{
 											{
@@ -5216,7 +5415,9 @@ func TestSpecification_Generate(t *testing.T) {
 									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
@@ -5410,9 +5611,25 @@ func TestSpecification_Generate(t *testing.T) {
 								Bool: &provider.BoolAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.BoolType",
 										ValueType: "basetypes.BoolValue",
+									},
+								},
+							},
+							{
+								Name: "bool_attribute_custom_type_import_alias",
+								Bool: &provider.BoolAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Alias:  pointer("fwtype"),
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "fwtype.BoolType",
+										ValueType: "fwtype.BoolValue",
 									},
 								},
 							},
@@ -5427,7 +5644,9 @@ func TestSpecification_Generate(t *testing.T) {
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.Float64Type",
 										ValueType: "basetypes.Float64Value",
 									},
@@ -5444,7 +5663,9 @@ func TestSpecification_Generate(t *testing.T) {
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
@@ -5464,7 +5685,9 @@ func TestSpecification_Generate(t *testing.T) {
 								List: &provider.ListAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.ListType",
 										ValueType: "basetypes.ListValue",
 									},
@@ -5480,7 +5703,9 @@ func TestSpecification_Generate(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -5554,7 +5779,9 @@ func TestSpecification_Generate(t *testing.T) {
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.MapType",
 										ValueType: "basetypes.MapValue",
 									},
@@ -5570,7 +5797,9 @@ func TestSpecification_Generate(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -5605,7 +5834,9 @@ func TestSpecification_Generate(t *testing.T) {
 								Number: &provider.NumberAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
@@ -5637,7 +5868,9 @@ func TestSpecification_Generate(t *testing.T) {
 													},
 												},
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.ObjectType",
 													ValueType: "basetypes.ObjectValue",
 												},
@@ -5655,7 +5888,9 @@ func TestSpecification_Generate(t *testing.T) {
 											Name: "obj_string_attr",
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -5676,7 +5911,9 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.ObjectType",
 										ValueType: "basetypes.ObjectValue",
 									},
@@ -5806,7 +6043,9 @@ func TestSpecification_Generate(t *testing.T) {
 								Set: &provider.SetAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.SetType",
 										ValueType: "basetypes.SetValue",
 									},
@@ -5822,7 +6061,9 @@ func TestSpecification_Generate(t *testing.T) {
 									ElementType: schema.ElementType{
 										String: &schema.StringType{
 											CustomType: &schema.CustomType{
-												Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+												Import: &code.Import{
+													Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+												},
 												Type:      "basetypes.StringType",
 												ValueType: "basetypes.StringValue",
 											},
@@ -5850,8 +6091,10 @@ func TestSpecification_Generate(t *testing.T) {
 								Name: "single_nested_bool_attribute",
 								SingleNested: &provider.SingleNestedAttribute{
 									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: pointer("example.com/apisdk"),
-										Type:   "*apisdk.ProviderProperty",
+										Import: &code.Import{
+											Import: "example.com/apisdk",
+										},
+										Type: "*apisdk.ProviderProperty",
 									},
 									Attributes: []provider.Attribute{
 										{
@@ -5922,7 +6165,9 @@ func TestSpecification_Generate(t *testing.T) {
 								String: &provider.StringAttribute{
 									OptionalRequired: schema.Optional,
 									CustomType: &schema.CustomType{
-										Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+										Import: &code.Import{
+											Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
@@ -6113,7 +6358,11 @@ func TestSpecification_Generate(t *testing.T) {
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
-													Imports:          []string{"github.com/my_account/my_project/boolplanmodifier"},
+													Imports: []code.Import{
+														{
+															Import: "github.com/my_account/my_project/boolplanmodifier",
+														},
+													},
 													SchemaDefinition: "myboolplanmodifier.Modify()",
 												},
 											},
@@ -6121,7 +6370,11 @@ func TestSpecification_Generate(t *testing.T) {
 										Validators: []schema.BoolValidator{
 											{
 												Custom: &schema.CustomValidator{
-													Imports:          []string{"github.com/my_account/my_project/myboolvalidator"},
+													Imports: []code.Import{
+														{
+															Import: "github.com/my_account/my_project/myboolvalidator",
+														},
+													},
 													SchemaDefinition: "myboolvalidator.Validate()",
 												},
 											},
@@ -6133,9 +6386,25 @@ func TestSpecification_Generate(t *testing.T) {
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.BoolType",
 											ValueType: "basetypes.BoolValue",
+										},
+									},
+								},
+								{
+									Name: "bool_attribute_custom_type_import_alias",
+									Bool: &resource.BoolAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias:  pointer("fwtype"),
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.BoolType",
+											ValueType: "fwtype.BoolValue",
 										},
 									},
 								},
@@ -6159,7 +6428,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Float64Type",
 											ValueType: "basetypes.Float64Value",
 										},
@@ -6185,7 +6456,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
@@ -6214,7 +6487,9 @@ func TestSpecification_Generate(t *testing.T) {
 									List: &resource.ListAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ListType",
 											ValueType: "basetypes.ListValue",
 										},
@@ -6229,10 +6504,16 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.ListDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"github.com/hashicorp/terraform-plugin-framework/attr",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
-													"github.com/hashicorp/terraform-plugin-framework/types",
+												Imports: []code.Import{
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/attr",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
 												},
 												SchemaDefinition: "listdefault.StaticValue(types.ListValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
@@ -6249,7 +6530,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -6323,7 +6606,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.MapType",
 											ValueType: "basetypes.MapValue",
 										},
@@ -6339,7 +6624,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -6374,7 +6661,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Number: &resource.NumberAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
@@ -6386,9 +6675,13 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.NumberDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"math/big",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+												Imports: []code.Import{
+													{
+														Import: "math/big",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/numberdefault",
+													},
 												},
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
@@ -6421,7 +6714,9 @@ func TestSpecification_Generate(t *testing.T) {
 														},
 													},
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.ObjectType",
 														ValueType: "basetypes.ObjectValue",
 													},
@@ -6439,7 +6734,9 @@ func TestSpecification_Generate(t *testing.T) {
 												Name: "obj_string_attr",
 												String: &schema.StringType{
 													CustomType: &schema.CustomType{
-														Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+														Import: &code.Import{
+															Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+														},
 														Type:      "basetypes.StringType",
 														ValueType: "basetypes.StringValue",
 													},
@@ -6460,7 +6757,9 @@ func TestSpecification_Generate(t *testing.T) {
 										},
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.ObjectType",
 											ValueType: "basetypes.ObjectValue",
 										},
@@ -6590,7 +6889,9 @@ func TestSpecification_Generate(t *testing.T) {
 									Set: &resource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.SetType",
 											ValueType: "basetypes.SetValue",
 										},
@@ -6605,10 +6906,16 @@ func TestSpecification_Generate(t *testing.T) {
 										ComputedOptionalRequired: schema.Optional,
 										Default: &schema.SetDefault{
 											Custom: &schema.CustomDefault{
-												Imports: []string{
-													"github.com/hashicorp/terraform-plugin-framework/attr",
-													"github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
-													"github.com/hashicorp/terraform-plugin-framework/types",
+												Imports: []code.Import{
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/attr",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/resource/schema/setdefault",
+													},
+													{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
 												},
 												SchemaDefinition: "setdefault.StaticValue(types.SetValueMust(types.String, []attr.Value{types.StringValue(\"example\")}))",
 											},
@@ -6625,7 +6932,9 @@ func TestSpecification_Generate(t *testing.T) {
 										ElementType: schema.ElementType{
 											String: &schema.StringType{
 												CustomType: &schema.CustomType{
-													Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+													Import: &code.Import{
+														Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+													},
 													Type:      "basetypes.StringType",
 													ValueType: "basetypes.StringValue",
 												},
@@ -6653,8 +6962,10 @@ func TestSpecification_Generate(t *testing.T) {
 									Name: "single_nested_bool_attribute",
 									SingleNested: &resource.SingleNestedAttribute{
 										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: pointer("example.com/apisdk"),
-											Type:   "*apisdk.DataSourceProperty",
+											Import: &code.Import{
+												Import: "example.com/apisdk",
+											},
+											Type: "*apisdk.DataSourceProperty",
 										},
 										Attributes: []resource.Attribute{
 											{
@@ -6725,7 +7036,9 @@ func TestSpecification_Generate(t *testing.T) {
 									String: &resource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										CustomType: &schema.CustomType{
-											Import:    pointer("github.com/hashicorp/terraform-plugin-framework/types/basetypes"),
+											Import: &code.Import{
+												Import: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},

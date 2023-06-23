@@ -8,6 +8,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 	"github.com/hashicorp/terraform-plugin-codegen-spec/schema"
 )
 
@@ -24,13 +25,17 @@ func TestAssociatedExternalType_HasImport(t *testing.T) {
 		},
 		"import-empty-string": {
 			customType: schema.AssociatedExternalType{
-				Import: pointer(""),
+				Import: &code.Import{
+					Import: "",
+				},
 			},
 			expected: false,
 		},
 		"import-string": {
 			customType: schema.AssociatedExternalType{
-				Import: pointer("github.com/owner/repo/pkg"),
+				Import: &code.Import{
+					Import: "github.com/owner/repo/pkg",
+				},
 			},
 			expected: true,
 		},
