@@ -3,11 +3,13 @@
 
 package schema
 
+import "github.com/hashicorp/terraform-plugin-codegen-spec/code"
+
 type AssociatedExternalType struct {
-	Import *string `json:"import,omitempty"`
-	Type   string  `json:"type"`
+	Import *code.Import `json:"import,omitempty"`
+	Type   string       `json:"type"`
 }
 
 func (a AssociatedExternalType) HasImport() bool {
-	return a.Import != nil && *a.Import != ""
+	return a.Import != nil && a.Import.Path != ""
 }

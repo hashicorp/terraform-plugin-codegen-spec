@@ -8,6 +8,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 	"github.com/hashicorp/terraform-plugin-codegen-spec/schema"
 )
 
@@ -24,31 +25,39 @@ func TestCustomValidator_HasImport(t *testing.T) {
 		},
 		"import-empty": {
 			customType: schema.CustomValidator{
-				Imports: []string{}, // disallowed by spec, but still worth checking
+				Imports: []code.Import{}, // disallowed by spec, but still worth checking
 			},
 			expected: false,
 		},
 		"import-empty-string": {
 			customType: schema.CustomValidator{
-				Imports: []string{
-					"", // disallowed by spec, but still worth checking
+				Imports: []code.Import{
+					{
+						Path: "", // disallowed by spec, but still worth checking
+					},
 				},
 			},
 			expected: true,
 		},
 		"import-string": {
 			customType: schema.CustomValidator{
-				Imports: []string{
-					"github.com/owner/repo/pkg",
+				Imports: []code.Import{
+					{
+						Path: "github.com/owner/repo/pkg",
+					},
 				},
 			},
 			expected: true,
 		},
 		"import-strings": {
 			customType: schema.CustomValidator{
-				Imports: []string{
-					"github.com/owner/repo/pkg1",
-					"github.com/owner/repo/pkg2",
+				Imports: []code.Import{
+					{
+						Path: "github.com/owner/repo/pkg1",
+					},
+					{
+						Path: "github.com/owner/repo/pkg2",
+					},
 				},
 			},
 			expected: true,
