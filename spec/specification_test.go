@@ -113,6 +113,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_associated_external_type",
+									Bool: &datasource.BoolAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -132,6 +144,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute_associated_external_type",
+									Float64: &datasource.Float64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "int64_attribute",
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -148,6 +172,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
+									},
+								},
+								{
+									Name: "int64_attribute_associated_external_type",
+									Int64: &datasource.Int64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -245,6 +281,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &datasource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -287,10 +338,47 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_associated_external_type",
+									Map: &datasource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &datasource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										NestedObject: datasource.NestedAttributeObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "map_nested_bool_attribute_associated_external_type",
+									MapNested: &datasource.MapNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []datasource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -319,6 +407,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
+									},
+								},
+								{
+									Name: "number_attribute_associated_external_type",
+									Number: &datasource.NumberAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -438,6 +538,24 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &datasource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &datasource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -509,6 +627,28 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_bool_attribute_associated_external_type",
+									ListNested: &datasource.ListNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_attribute",
 									Set: &datasource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -551,6 +691,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_associated_external_type",
+									Set: &datasource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &datasource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -567,14 +722,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_nested_bool_attribute_associated_external_type",
+									SetNested: &datasource.SetNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "single_nested_bool_attribute",
 									SingleNested: &datasource.SingleNestedAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.DataSourceProperty",
-										},
 										Attributes: []datasource.Attribute{
 											{
 												Name: "bool_attribute",
@@ -634,6 +805,26 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "single_nested_bool_attribute_associated_external_type",
+									SingleNested: &datasource.SingleNestedAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []datasource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &datasource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "string_attribute",
 									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -650,6 +841,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
+									},
+								},
+								{
+									Name: "string_attribute_associated_external_type",
+									String: &datasource.StringAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -735,9 +938,51 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_block_bool_attribute_associated_external_type",
+									ListNested: &datasource.ListNestedBlock{
+										NestedObject: datasource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_nested_block_bool_attribute",
 									SetNested: &datasource.SetNestedBlock{
 										NestedObject: datasource.NestedBlockObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "set_nested_block_bool_attribute_associated_external_type",
+									SetNested: &datasource.SetNestedBlock{
+										NestedObject: datasource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []datasource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -821,6 +1066,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										},
 									},
 								},
+								{
+									Name: "single_nested_block_bool_attribute_associated_external_type",
+									SingleNested: &datasource.SingleNestedBlock{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []datasource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &datasource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+									},
+								},
 							},
 						},
 					},
@@ -863,6 +1127,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "bool_attribute_associated_external_type",
+								Bool: &provider.BoolAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -882,6 +1158,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "float64_attribute_associated_external_type",
+								Float64: &provider.Float64Attribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "int64_attribute",
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
@@ -898,6 +1186,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
+								},
+							},
+							{
+								Name: "int64_attribute_associated_external_type",
+								Int64: &provider.Int64Attribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -995,6 +1295,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_attribute_associated_external_type",
+								List: &provider.ListAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -1037,10 +1352,47 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "map_attribute_associated_external_type",
+								Map: &provider.MapAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_nested_bool_attribute",
 								MapNested: &provider.MapNestedAttribute{
 									OptionalRequired: schema.Optional,
 									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "map_nested_bool_attribute_associated_external_type",
+								MapNested: &provider.MapNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
 										Attributes: []provider.Attribute{
 											{
 												Name: "bool_attribute",
@@ -1069,6 +1421,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
+								},
+							},
+							{
+								Name: "number_attribute_associated_external_type",
+								Number: &provider.NumberAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -1188,6 +1552,24 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_associated_external_type",
+								Object: &provider.ObjectAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "list_nested_bool_attribute",
 								ListNested: &provider.ListNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -1259,6 +1641,28 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_nested_bool_attribute_associated_external_type",
+								ListNested: &provider.ListNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "set_attribute",
 								Set: &provider.SetAttribute{
 									OptionalRequired: schema.Optional,
@@ -1301,6 +1705,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "set_attribute_associated_external_type",
+								Set: &provider.SetAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "set_nested_bool_attribute",
 								SetNested: &provider.SetNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -1317,14 +1736,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "set_nested_bool_attribute_associated_external_type",
+								SetNested: &provider.SetNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "single_nested_bool_attribute",
 								SingleNested: &provider.SingleNestedAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.ProviderProperty",
-									},
 									Attributes: []provider.Attribute{
 										{
 											Name: "bool_attribute",
@@ -1384,6 +1819,26 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "single_nested_bool_attribute_associated_external_type",
+								SingleNested: &provider.SingleNestedAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "string_attribute",
 								String: &provider.StringAttribute{
 									OptionalRequired: schema.Optional,
@@ -1400,6 +1855,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
+								},
+							},
+							{
+								Name: "string_attribute_associated_external_type",
+								String: &provider.StringAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 						},
@@ -1485,9 +1952,51 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_nested_block_bool_attribute_associated_external_type",
+								ListNested: &provider.ListNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "set_nested_block_bool_attribute",
 								SetNested: &provider.SetNestedBlock{
 									NestedObject: provider.NestedBlockObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "set_nested_block_bool_attribute_associated_external_type",
+								SetNested: &provider.SetNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
 										Attributes: []provider.Attribute{
 											{
 												Name: "bool_attribute",
@@ -1571,6 +2080,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 							},
+							{
+								Name: "single_nested_block_bool_attribute_associated_external_type",
+								SingleNested: &provider.SingleNestedBlock{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+								},
+							},
 						},
 					},
 				},
@@ -1647,6 +2175,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_associated_external_type",
+									Bool: &resource.BoolAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Optional,
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -1675,6 +2215,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute_associated_external_type",
+									Float64: &resource.Float64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "int64_attribute",
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -1700,6 +2252,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Default: &schema.Int64Default{
 											Static: pointer(int64(123)),
 										},
+									},
+								},
+								{
+									Name: "int64_attribute_associated_external_type",
+									Int64: &resource.Int64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -1822,6 +2386,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &resource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -1864,10 +2443,47 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_associated_external_type",
+									Map: &resource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &resource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										NestedObject: resource.NestedAttributeObject{
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "map_nested_bool_attribute_associated_external_type",
+									MapNested: &resource.MapNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []resource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -1915,6 +2531,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
+									},
+								},
+								{
+									Name: "number_attribute_associated_external_type",
+									Number: &resource.NumberAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -2034,6 +2662,24 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &resource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &resource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2098,6 +2744,28 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 																},
 															},
 														},
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "list_nested_bool_attribute_associated_external_type",
+									ListNested: &resource.ListNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
 													},
 												},
 											},
@@ -2172,6 +2840,21 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_associated_external_type",
+									Set: &resource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &resource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2188,14 +2871,30 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_nested_bool_attribute_associated_external_type",
+									SetNested: &resource.SetNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "single_nested_bool_attribute",
 									SingleNested: &resource.SingleNestedAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.DataSourceProperty",
-										},
 										Attributes: []resource.Attribute{
 											{
 												Name: "bool_attribute",
@@ -2255,6 +2954,26 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "single_nested_bool_attribute_associated_external_type",
+									SingleNested: &resource.SingleNestedAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []resource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &resource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "string_attribute",
 									String: &resource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2280,6 +2999,18 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Default: &schema.StringDefault{
 											Static: pointer("example"),
 										},
+									},
+								},
+								{
+									Name: "string_attribute_associated_external_type",
+									String: &resource.StringAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -2365,9 +3096,51 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_block_bool_attribute_associated_external_type",
+									ListNested: &resource.ListNestedBlock{
+										NestedObject: resource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_nested_block_bool_attribute",
 									SetNested: &resource.SetNestedBlock{
 										NestedObject: resource.NestedBlockObject{
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "set_nested_block_bool_attribute_associated_external_type",
+									SetNested: &resource.SetNestedBlock{
+										NestedObject: resource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []resource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -2446,6 +3219,25 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 															},
 														},
 													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "single_nested_block_bool_attribute_associated_external_type",
+									SingleNested: &resource.SingleNestedBlock{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []resource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &resource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
 												},
 											},
 										},
@@ -4884,6 +5676,18 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_associated_external_type",
+									Bool: &datasource.BoolAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -4903,6 +5707,18 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute_associated_external_type",
+									Float64: &datasource.Float64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "int64_attribute",
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -4919,6 +5735,18 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
+									},
+								},
+								{
+									Name: "int64_attribute_associated_external_type",
+									Int64: &datasource.Int64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -5016,6 +5844,21 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &datasource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5058,10 +5901,47 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_associated_external_type",
+									Map: &datasource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &datasource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										NestedObject: datasource.NestedAttributeObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "map_nested_bool_attribute_associated_external_type",
+									MapNested: &datasource.MapNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []datasource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -5090,6 +5970,18 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
+									},
+								},
+								{
+									Name: "number_attribute_associated_external_type",
+									Number: &datasource.NumberAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -5209,6 +6101,24 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &datasource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &datasource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5280,6 +6190,28 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_bool_attribute_associated_external_type",
+									ListNested: &datasource.ListNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_attribute",
 									Set: &datasource.SetAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5322,6 +6254,21 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_associated_external_type",
+									Set: &datasource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &datasource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5338,14 +6285,30 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_nested_bool_attribute_associated_external_type",
+									SetNested: &datasource.SetNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: datasource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "single_nested_bool_attribute",
 									SingleNested: &datasource.SingleNestedAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.DataSourceProperty",
-										},
 										Attributes: []datasource.Attribute{
 											{
 												Name: "bool_attribute",
@@ -5405,6 +6368,26 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "single_nested_bool_attribute_associated_external_type",
+									SingleNested: &datasource.SingleNestedAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []datasource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &datasource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "string_attribute",
 									String: &datasource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5421,6 +6404,18 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
+									},
+								},
+								{
+									Name: "string_attribute_associated_external_type",
+									String: &datasource.StringAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -5506,9 +6501,51 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_block_bool_attribute_associated_external_type",
+									ListNested: &datasource.ListNestedBlock{
+										NestedObject: datasource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_nested_block_bool_attribute",
 									SetNested: &datasource.SetNestedBlock{
 										NestedObject: datasource.NestedBlockObject{
+											Attributes: []datasource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &datasource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "set_nested_block_bool_attribute_associated_external_type",
+									SetNested: &datasource.SetNestedBlock{
+										NestedObject: datasource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []datasource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -5592,6 +6629,25 @@ func TestSpecification_Generate(t *testing.T) {
 										},
 									},
 								},
+								{
+									Name: "single_nested_block_bool_attribute_associated_external_type",
+									SingleNested: &datasource.SingleNestedBlock{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []datasource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &datasource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+									},
+								},
 							},
 						},
 					},
@@ -5634,6 +6690,18 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "bool_attribute_associated_external_type",
+								Bool: &provider.BoolAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -5653,6 +6721,18 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "float64_attribute_associated_external_type",
+								Float64: &provider.Float64Attribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "int64_attribute",
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
@@ -5669,6 +6749,18 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
+								},
+							},
+							{
+								Name: "int64_attribute_associated_external_type",
+								Int64: &provider.Int64Attribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -5766,6 +6858,21 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_attribute_associated_external_type",
+								List: &provider.ListAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -5808,10 +6915,47 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "map_attribute_associated_external_type",
+								Map: &provider.MapAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_nested_bool_attribute",
 								MapNested: &provider.MapNestedAttribute{
 									OptionalRequired: schema.Optional,
 									NestedObject: provider.NestedAttributeObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "map_nested_bool_attribute_associated_external_type",
+								MapNested: &provider.MapNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
 										Attributes: []provider.Attribute{
 											{
 												Name: "bool_attribute",
@@ -5840,6 +6984,18 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
+								},
+							},
+							{
+								Name: "number_attribute_associated_external_type",
+								Number: &provider.NumberAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -5959,6 +7115,24 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_associated_external_type",
+								Object: &provider.ObjectAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "list_nested_bool_attribute",
 								ListNested: &provider.ListNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -6030,6 +7204,28 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_nested_bool_attribute_associated_external_type",
+								ListNested: &provider.ListNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "set_attribute",
 								Set: &provider.SetAttribute{
 									OptionalRequired: schema.Optional,
@@ -6072,6 +7268,21 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "set_attribute_associated_external_type",
+								Set: &provider.SetAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "set_nested_bool_attribute",
 								SetNested: &provider.SetNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -6088,14 +7299,30 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "set_nested_bool_attribute_associated_external_type",
+								SetNested: &provider.SetNestedAttribute{
+									OptionalRequired: schema.Optional,
+									NestedObject: provider.NestedAttributeObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "single_nested_bool_attribute",
 								SingleNested: &provider.SingleNestedAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.ProviderProperty",
-									},
 									Attributes: []provider.Attribute{
 										{
 											Name: "bool_attribute",
@@ -6155,6 +7382,26 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "single_nested_bool_attribute_associated_external_type",
+								SingleNested: &provider.SingleNestedAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "string_attribute",
 								String: &provider.StringAttribute{
 									OptionalRequired: schema.Optional,
@@ -6171,6 +7418,18 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
+								},
+							},
+							{
+								Name: "string_attribute_associated_external_type",
+								String: &provider.StringAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
 								},
 							},
 						},
@@ -6256,9 +7515,51 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_nested_block_bool_attribute_associated_external_type",
+								ListNested: &provider.ListNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "set_nested_block_bool_attribute",
 								SetNested: &provider.SetNestedBlock{
 									NestedObject: provider.NestedBlockObject{
+										Attributes: []provider.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &provider.BoolAttribute{
+													OptionalRequired: schema.Optional,
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								Name: "set_nested_block_bool_attribute_associated_external_type",
+								SetNested: &provider.SetNestedBlock{
+									NestedObject: provider.NestedBlockObject{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
 										Attributes: []provider.Attribute{
 											{
 												Name: "bool_attribute",
@@ -6342,6 +7643,25 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 							},
+							{
+								Name: "single_nested_block_bool_attribute_associated_external_type",
+								SingleNested: &provider.SingleNestedBlock{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									Attributes: []provider.Attribute{
+										{
+											Name: "bool_attribute",
+											Bool: &provider.BoolAttribute{
+												OptionalRequired: schema.Optional,
+											},
+										},
+									},
+								},
+							},
 						},
 					},
 				},
@@ -6418,6 +7738,18 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "bool_attribute_associated_external_type",
+									Bool: &resource.BoolAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Optional,
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6446,6 +7778,18 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "float64_attribute_associated_external_type",
+									Float64: &resource.Float64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "int64_attribute",
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6471,6 +7815,18 @@ func TestSpecification_Generate(t *testing.T) {
 										Default: &schema.Int64Default{
 											Static: pointer(int64(123)),
 										},
+									},
+								},
+								{
+									Name: "int64_attribute_associated_external_type",
+									Int64: &resource.Int64Attribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -6593,6 +7949,21 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &resource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6635,10 +8006,47 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "map_attribute_associated_external_type",
+									Map: &resource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_nested_bool_attribute",
 									MapNested: &resource.MapNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										NestedObject: resource.NestedAttributeObject{
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "map_nested_bool_attribute_associated_external_type",
+									MapNested: &resource.MapNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []resource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -6686,6 +8094,18 @@ func TestSpecification_Generate(t *testing.T) {
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
+									},
+								},
+								{
+									Name: "number_attribute_associated_external_type",
+									Number: &resource.NumberAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -6805,6 +8225,24 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &resource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &resource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6869,6 +8307,28 @@ func TestSpecification_Generate(t *testing.T) {
 																},
 															},
 														},
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "list_nested_bool_attribute_associated_external_type",
+									ListNested: &resource.ListNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
 													},
 												},
 											},
@@ -6943,6 +8403,21 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_attribute_associated_external_type",
+									Set: &resource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &resource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6959,14 +8434,30 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "set_nested_bool_attribute_associated_external_type",
+									SetNested: &resource.SetNestedAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										NestedObject: resource.NestedAttributeObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "single_nested_bool_attribute",
 									SingleNested: &resource.SingleNestedAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.DataSourceProperty",
-										},
 										Attributes: []resource.Attribute{
 											{
 												Name: "bool_attribute",
@@ -7026,6 +8517,26 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "single_nested_bool_attribute_associated_external_type",
+									SingleNested: &resource.SingleNestedAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []resource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &resource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
+												},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "string_attribute",
 									String: &resource.StringAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -7051,6 +8562,18 @@ func TestSpecification_Generate(t *testing.T) {
 										Default: &schema.StringDefault{
 											Static: pointer("example"),
 										},
+									},
+								},
+								{
+									Name: "string_attribute_associated_external_type",
+									String: &resource.StringAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -7136,9 +8659,51 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_nested_block_bool_attribute_associated_external_type",
+									ListNested: &resource.ListNestedBlock{
+										NestedObject: resource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "set_nested_block_bool_attribute",
 									SetNested: &resource.SetNestedBlock{
 										NestedObject: resource.NestedBlockObject{
+											Attributes: []resource.Attribute{
+												{
+													Name: "bool_attribute",
+													Bool: &resource.BoolAttribute{
+														ComputedOptionalRequired: schema.Computed,
+													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "set_nested_block_bool_attribute_associated_external_type",
+									SetNested: &resource.SetNestedBlock{
+										NestedObject: resource.NestedBlockObject{
+											AssociatedExternalType: &schema.AssociatedExternalType{
+												Import: &code.Import{
+													Path: "example.com/apisdk",
+												},
+												Type: "*apisdk.Type",
+											},
 											Attributes: []resource.Attribute{
 												{
 													Name: "bool_attribute",
@@ -7217,6 +8782,25 @@ func TestSpecification_Generate(t *testing.T) {
 															},
 														},
 													},
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "single_nested_block_bool_attribute_associated_external_type",
+									SingleNested: &resource.SingleNestedBlock{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										Attributes: []resource.Attribute{
+											{
+												Name: "bool_attribute",
+												Bool: &resource.BoolAttribute{
+													ComputedOptionalRequired: schema.Computed,
 												},
 											},
 										},
