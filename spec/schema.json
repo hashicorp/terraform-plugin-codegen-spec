@@ -320,6 +320,7 @@
     },
     "schema_associated_external_type": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "import": {
           "$ref": "#/$defs/code_import"
