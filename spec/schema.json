@@ -318,332 +318,336 @@
         ]
       }
     },
-        "schema_associated_external_type": {
-          "type": "object",
-          "properties": {
-            "import": {
-              "$ref": "#/$defs/code_import"
-            },
-            "type": {
-              "type": "string"
-            }
-          },
+    "schema_associated_external_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "import": {
+          "$ref": "#/$defs/code_import"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "schema_computed_optional_required": {
+      "enum": [
+        "computed",
+        "computed_optional",
+        "optional",
+        "required"
+      ]
+    },
+    "schema_custom_type": {
+      "type": "object",
+      "properties": {
+        "import": {
+          "$ref": "#/$defs/code_import"
+        },
+        "type": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "value_type": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "value_type"
+      ]
+    },
+    "schema_bool_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
+    "schema_element_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bool": {
+          "$ref": "#/$defs/schema_bool_type"
+        },
+        "float64": {
+          "$ref": "#/$defs/schema_float64_type"
+        },
+        "int64": {
+          "$ref": "#/$defs/schema_int64_type"
+        },
+        "list": {
+          "$ref": "#/$defs/schema_list_type"
+        },
+        "number": {
+          "$ref": "#/$defs/schema_number_type"
+        },
+        "map": {
+          "$ref": "#/$defs/schema_map_type"
+        },
+        "object": {
+          "$ref": "#/$defs/schema_object_type"
+        },
+        "set": {
+          "$ref": "#/$defs/schema_set_type"
+        },
+        "string": {
+          "$ref": "#/$defs/schema_string_type"
+        }
+      },
+      "oneOf": [
+        {
           "required": [
-            "type"
+            "bool"
           ]
         },
-        "schema_computed_optional_required": {
-          "enum": [
-            "computed",
-            "computed_optional",
-            "optional",
-            "required"
-          ]
-        },
-        "schema_custom_type": {
-          "type": "object",
-          "properties": {
-            "import": {
-              "$ref": "#/$defs/code_import"
-            },
-            "type": {
-              "minLength": 1,
-              "type": "string"
-            },
-            "value_type": {
-              "minLength": 1,
-              "type": "string"
-            }
-          },
+        {
           "required": [
-            "type",
-            "value_type"
+            "float64"
           ]
         },
-        "schema_bool_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
-        },
-        "schema_element_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "bool": {
-              "$ref": "#/$defs/schema_bool_type"
-            },
-            "float64": {
-              "$ref": "#/$defs/schema_float64_type"
-            },
-            "int64": {
-              "$ref": "#/$defs/schema_int64_type"
-            },
-            "list": {
-              "$ref": "#/$defs/schema_list_type"
-            },
-            "number": {
-              "$ref": "#/$defs/schema_number_type"
-            },
-            "map": {
-              "$ref": "#/$defs/schema_map_type"
-            },
-            "object": {
-              "$ref": "#/$defs/schema_object_type"
-            },
-            "set": {
-              "$ref": "#/$defs/schema_set_type"
-            },
-            "string": {
-              "$ref": "#/$defs/schema_string_type"
-            }
-          },
-          "oneOf": [
-            {
-              "required": [
-                "bool"
-              ]
-            },
-            {
-              "required": [
-                "float64"
-              ]
-            },
-            {
-              "required": [
-                "int64"
-              ]
-            },
-            {
-              "required": [
-                "list"
-              ]
-            },
-            {
-              "required": [
-                "map"
-              ]
-            },
-            {
-              "required": [
-                "number"
-              ]
-            },
-            {
-              "required": [
-                "object"
-              ]
-            },
-            {
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "required": [
-                "string"
-              ]
-            }
-          ]
-        },
-        "schema_float64_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
-        },
-        "schema_int64_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
-        },
-        "schema_list_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            },
-            "element_type": {
-              "$ref": "#/$defs/schema_element_type"
-            }
-          },
+        {
           "required": [
-            "element_type"
+            "int64"
           ]
         },
-        "schema_map_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            },
-            "element_type": {
-              "$ref": "#/$defs/schema_element_type"
-            }
-          },
+        {
           "required": [
-            "element_type"
+            "list"
           ]
         },
-        "schema_number_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
-        },
-        "schema_object_attribute_types": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/schema_object_attribute_type"
-          }
-        },
-        "schema_object_attribute_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "bool": {
-              "$ref": "#/$defs/schema_bool_type"
-            },
-            "float64": {
-              "$ref": "#/$defs/schema_float64_type"
-            },
-            "int64": {
-              "$ref": "#/$defs/schema_int64_type"
-            },
-            "list": {
-              "$ref": "#/$defs/schema_list_type"
-            },
-            "map": {
-              "$ref": "#/$defs/schema_map_type"
-            },
-            "number": {
-              "$ref": "#/$defs/schema_number_type"
-            },
-            "object": {
-              "$ref": "#/$defs/schema_object_type"
-            },
-            "set": {
-              "$ref": "#/$defs/schema_set_type"
-            },
-            "string": {
-              "$ref": "#/$defs/schema_string_type"
-            }
-          },
+        {
           "required": [
-            "name"
-          ],
-          "oneOf": [
-            {
-              "required": [
-                "bool"
-              ]
-            },
-            {
-              "required": [
-                "float64"
-              ]
-            },
-            {
-              "required": [
-                "int64"
-              ]
-            },
-            {
-              "required": [
-                "list"
-              ]
-            },
-            {
-              "required": [
-                "map"
-              ]
-            },
-            {
-              "required": [
-                "number"
-              ]
-            },
-            {
-              "required": [
-                "object"
-              ]
-            },
-            {
-              "required": [
-                "set"
-              ]
-            },
-            {
-              "required": [
-                "string"
-              ]
-            }
+            "map"
           ]
         },
-        "schema_object_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "attribute_types": {
-              "$ref": "#/$defs/schema_object_attribute_types"
-            },
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
-        },
-        "schema_optional_required": {
-          "enum": [
-            "optional",
-            "required"
-          ]
-        },
-        "schema_set_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            },
-            "element_type": {
-              "$ref": "#/$defs/schema_element_type"
-            }
-          },
+        {
           "required": [
-            "element_type"
+            "number"
           ]
         },
-        "schema_string_type": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            }
-          }
+        {
+          "required": [
+            "object"
+          ]
         },
+        {
+          "required": [
+            "set"
+          ]
+        },
+        {
+          "required": [
+            "string"
+          ]
+        }
+      ]
+    },
+    "schema_float64_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
+    "schema_int64_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
+    "schema_list_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "element_type": {
+          "$ref": "#/$defs/schema_element_type"
+        }
+      },
+      "required": [
+        "element_type"
+      ]
+    },
+    "schema_map_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "element_type": {
+          "$ref": "#/$defs/schema_element_type"
+        }
+      },
+      "required": [
+        "element_type"
+      ]
+    },
+    "schema_number_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
+    "schema_object_attribute_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/schema_object_attribute_type"
+      }
+    },
+    "schema_object_attribute_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "bool": {
+          "$ref": "#/$defs/schema_bool_type"
+        },
+        "float64": {
+          "$ref": "#/$defs/schema_float64_type"
+        },
+        "int64": {
+          "$ref": "#/$defs/schema_int64_type"
+        },
+        "list": {
+          "$ref": "#/$defs/schema_list_type"
+        },
+        "map": {
+          "$ref": "#/$defs/schema_map_type"
+        },
+        "number": {
+          "$ref": "#/$defs/schema_number_type"
+        },
+        "object": {
+          "$ref": "#/$defs/schema_object_type"
+        },
+        "set": {
+          "$ref": "#/$defs/schema_set_type"
+        },
+        "string": {
+          "$ref": "#/$defs/schema_string_type"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "oneOf": [
+        {
+          "required": [
+            "bool"
+          ]
+        },
+        {
+          "required": [
+            "float64"
+          ]
+        },
+        {
+          "required": [
+            "int64"
+          ]
+        },
+        {
+          "required": [
+            "list"
+          ]
+        },
+        {
+          "required": [
+            "map"
+          ]
+        },
+        {
+          "required": [
+            "number"
+          ]
+        },
+        {
+          "required": [
+            "object"
+          ]
+        },
+        {
+          "required": [
+            "set"
+          ]
+        },
+        {
+          "required": [
+            "string"
+          ]
+        }
+      ]
+    },
+    "schema_object_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attribute_types": {
+          "$ref": "#/$defs/schema_object_attribute_types"
+        },
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
+    "schema_optional_required": {
+      "enum": [
+        "optional",
+        "required"
+      ]
+    },
+    "schema_set_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        },
+        "element_type": {
+          "$ref": "#/$defs/schema_element_type"
+        }
+      },
+      "required": [
+        "element_type"
+      ]
+    },
+    "schema_string_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
     "datasource_nested_attribute_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/datasource_attributes"
         },
@@ -658,6 +662,9 @@
     "datasource_nested_block_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/datasource_attributes"
         },
@@ -683,6 +690,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -700,7 +710,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_bool_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -722,6 +733,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -739,7 +753,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_float64_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -761,6 +776,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -778,7 +796,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_int64_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -800,6 +819,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -926,6 +948,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1014,6 +1039,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1031,7 +1059,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_number_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -1053,6 +1082,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -1097,6 +1129,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1223,6 +1258,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1240,7 +1278,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_string_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -1309,6 +1348,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attributes": {
               "$ref": "#/$defs/datasource_attributes"
             },
@@ -1338,6 +1380,9 @@
     "provider_nested_attribute_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/provider_attributes"
         },
@@ -1352,6 +1397,9 @@
     "provider_nested_block_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/provider_attributes"
         },
@@ -1377,6 +1425,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1394,7 +1445,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_bool_validators"
-            }          },
+            }
+          },
           "required": [
             "optional_required"
           ]
@@ -1416,6 +1468,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1433,7 +1488,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_float64_validators"
-            }          },
+            }
+          },
           "required": [
             "optional_required"
           ]
@@ -1455,6 +1511,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1472,7 +1531,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_int64_validators"
-            }          },
+            }
+          },
           "required": [
             "optional_required"
           ]
@@ -1494,6 +1554,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1620,6 +1683,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1708,6 +1774,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1725,7 +1794,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_number_validators"
-            }          },
+            }
+          },
           "required": [
             "optional_required"
           ]
@@ -1747,6 +1817,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -1791,6 +1864,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1964,6 +2040,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attributes": {
               "$ref": "#/$defs/provider_attributes"
             },
@@ -2001,6 +2080,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -2018,7 +2100,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_string_validators"
-            }          },
+            }
+          },
           "required": [
             "optional_required"
           ]
@@ -2032,6 +2115,9 @@
     "resource_nested_attribute_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/resource_attributes"
         },
@@ -2049,6 +2135,9 @@
     "resource_nested_block_object": {
       "type": "object",
       "properties": {
+        "associated_external_type": {
+          "$ref": "#/$defs/schema_associated_external_type"
+        },
         "attributes": {
           "$ref": "#/$defs/resource_attributes"
         },
@@ -2077,6 +2166,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2123,6 +2215,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2146,7 +2241,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_float64_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -2168,6 +2264,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2191,7 +2290,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_int64_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -2213,6 +2313,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2357,6 +2460,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2407,6 +2513,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2457,6 +2566,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2480,7 +2592,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_number_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]
@@ -2502,6 +2615,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -2552,6 +2668,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2749,6 +2868,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attributes": {
               "$ref": "#/$defs/resource_attributes"
             },
@@ -2792,6 +2914,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2815,7 +2940,8 @@
             },
             "validators": {
               "$ref": "#/$defs/schema_string_validators"
-            }          },
+            }
+          },
           "required": [
             "computed_optional_required"
           ]

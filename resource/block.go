@@ -80,9 +80,10 @@ type NestedBlockObject struct {
 	Attributes Attributes `json:"attributes,omitempty"`
 	Blocks     Blocks     `json:"blocks,omitempty"`
 
-	CustomType    *schema.CustomType          `json:"custom_type,omitempty"`
-	PlanModifiers []schema.ObjectPlanModifier `json:"plan_modifiers,omitempty"`
-	Validators    []schema.ObjectValidator    `json:"validators,omitempty"`
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
+	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
+	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
 }
 
 type ListNestedBlock struct {
