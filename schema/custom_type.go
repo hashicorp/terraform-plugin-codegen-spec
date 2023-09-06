@@ -37,24 +37,21 @@ func (c *CustomType) Equal(other *CustomType) bool {
 	}
 
 	if c.Import != nil && other.Import != nil {
-		cImport := *c.Import
-		otherImport := *other.Import
-
-		if cImport.Alias == nil && otherImport.Alias != nil {
+		if c.Import.Alias == nil && other.Import.Alias != nil {
 			return false
 		}
 
-		if cImport.Alias != nil && otherImport.Alias == nil {
+		if c.Import.Alias != nil && other.Import.Alias == nil {
 			return false
 		}
 
-		if cImport.Alias != nil && otherImport.Alias != nil {
-			if *cImport.Alias != *otherImport.Alias {
+		if c.Import.Alias != nil && other.Import.Alias != nil {
+			if *c.Import.Alias != *other.Import.Alias {
 				return false
 			}
 		}
 
-		if cImport.Path != otherImport.Path {
+		if c.Import.Path != other.Import.Path {
 			return false
 		}
 	}
