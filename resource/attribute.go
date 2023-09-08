@@ -102,7 +102,7 @@ type BoolAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.BoolPlanModifier      `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.BoolValidator         `json:"validators,omitempty"`
+	Validators             schema.BoolValidators          `json:"validators,omitempty"`
 }
 
 type Float64Attribute struct {

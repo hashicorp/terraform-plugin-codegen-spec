@@ -99,7 +99,7 @@ type BoolAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.BoolValidator         `json:"validators,omitempty"`
+	Validators             schema.BoolValidators          `json:"validators,omitempty"`
 }
 
 type Float64Attribute struct {
