@@ -89,7 +89,7 @@ type NestedAttributeObject struct {
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
 	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type BoolAttribute struct {
@@ -115,7 +115,7 @@ type Float64Attribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.Float64PlanModifier   `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.Float64Validator      `json:"validators,omitempty"`
+	Validators             schema.Float64Validators       `json:"validators,omitempty"`
 }
 
 type Int64Attribute struct {
@@ -128,7 +128,7 @@ type Int64Attribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.Int64PlanModifier     `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.Int64Validator        `json:"validators,omitempty"`
+	Validators             schema.Int64Validators         `json:"validators,omitempty"`
 }
 
 type ListAttribute struct {
@@ -142,7 +142,7 @@ type ListAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.ListPlanModifier      `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ListValidator         `json:"validators,omitempty"`
+	Validators             schema.ListValidators          `json:"validators,omitempty"`
 }
 
 type ListNestedAttribute struct {
@@ -155,7 +155,7 @@ type ListNestedAttribute struct {
 	Description        *string                   `json:"description,omitempty"`
 	PlanModifiers      []schema.ListPlanModifier `json:"plan_modifiers,omitempty"`
 	Sensitive          *bool                     `json:"sensitive,omitempty"`
-	Validators         []schema.ListValidator    `json:"validators,omitempty"`
+	Validators         schema.ListValidators     `json:"validators,omitempty"`
 }
 
 type MapAttribute struct {
@@ -169,7 +169,7 @@ type MapAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.MapPlanModifier       `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.MapValidator          `json:"validators,omitempty"`
+	Validators             schema.MapValidators           `json:"validators,omitempty"`
 }
 
 type MapNestedAttribute struct {
@@ -182,7 +182,7 @@ type MapNestedAttribute struct {
 	Description        *string                  `json:"description,omitempty"`
 	PlanModifiers      []schema.MapPlanModifier `json:"plan_modifiers,omitempty"`
 	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         []schema.MapValidator    `json:"validators,omitempty"`
+	Validators         schema.MapValidators     `json:"validators,omitempty"`
 }
 
 type NumberAttribute struct {
@@ -195,7 +195,7 @@ type NumberAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.NumberPlanModifier    `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.NumberValidator       `json:"validators,omitempty"`
+	Validators             schema.NumberValidators        `json:"validators,omitempty"`
 }
 
 type ObjectAttribute struct {
@@ -209,7 +209,7 @@ type ObjectAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type SetAttribute struct {
@@ -223,7 +223,7 @@ type SetAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.SetPlanModifier       `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.SetValidator          `json:"validators,omitempty"`
+	Validators             schema.SetValidators           `json:"validators,omitempty"`
 }
 
 type SetNestedAttribute struct {
@@ -236,7 +236,7 @@ type SetNestedAttribute struct {
 	Description        *string                  `json:"description,omitempty"`
 	PlanModifiers      []schema.SetPlanModifier `json:"plan_modifiers,omitempty"`
 	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         []schema.SetValidator    `json:"validators,omitempty"`
+	Validators         schema.SetValidators     `json:"validators,omitempty"`
 }
 
 type SingleNestedAttribute struct {
@@ -249,7 +249,7 @@ type SingleNestedAttribute struct {
 	Description              *string                         `json:"description,omitempty"`
 	PlanModifiers            []schema.ObjectPlanModifier     `json:"plan_modifiers,omitempty"`
 	Sensitive                *bool                           `json:"sensitive,omitempty"`
-	Validators               []schema.ObjectValidator        `json:"validators,omitempty"`
+	Validators               schema.ObjectValidators         `json:"validators,omitempty"`
 }
 
 type StringAttribute struct {
@@ -262,5 +262,5 @@ type StringAttribute struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.StringPlanModifier    `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.StringValidator       `json:"validators,omitempty"`
+	Validators             schema.StringValidators        `json:"validators,omitempty"`
 }
