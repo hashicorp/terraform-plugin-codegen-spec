@@ -2124,7 +2124,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												},
 											},
 										},
-										Validators: []schema.BoolValidator{
+										Validators: schema.BoolValidators{
 											{
 												Custom: &schema.CustomValidator{
 													Imports: []code.Import{
@@ -7687,7 +7687,7 @@ func TestSpecification_Generate(t *testing.T) {
 												},
 											},
 										},
-										Validators: []schema.BoolValidator{
+										Validators: schema.BoolValidators{
 											{
 												Custom: &schema.CustomValidator{
 													Imports: []code.Import{

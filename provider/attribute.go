@@ -88,7 +88,7 @@ type NestedAttributeObject struct {
 
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type BoolAttribute struct {
@@ -99,7 +99,7 @@ type BoolAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.BoolValidator         `json:"validators,omitempty"`
+	Validators             schema.BoolValidators          `json:"validators,omitempty"`
 }
 
 type Float64Attribute struct {
@@ -110,7 +110,7 @@ type Float64Attribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.Float64Validator      `json:"validators,omitempty"`
+	Validators             schema.Float64Validators       `json:"validators,omitempty"`
 }
 
 type Int64Attribute struct {
@@ -121,7 +121,7 @@ type Int64Attribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.Int64Validator        `json:"validators,omitempty"`
+	Validators             schema.Int64Validators         `json:"validators,omitempty"`
 }
 
 type ListAttribute struct {
@@ -133,18 +133,18 @@ type ListAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ListValidator         `json:"validators,omitempty"`
+	Validators             schema.ListValidators          `json:"validators,omitempty"`
 }
 
 type ListNestedAttribute struct {
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 	NestedObject     NestedAttributeObject   `json:"nested_object"`
 
-	CustomType         *schema.CustomType     `json:"custom_type,omitempty"`
-	DeprecationMessage *string                `json:"deprecation_message,omitempty"`
-	Description        *string                `json:"description,omitempty"`
-	Sensitive          *bool                  `json:"sensitive,omitempty"`
-	Validators         []schema.ListValidator `json:"validators,omitempty"`
+	CustomType         *schema.CustomType    `json:"custom_type,omitempty"`
+	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
+	Description        *string               `json:"description,omitempty"`
+	Sensitive          *bool                 `json:"sensitive,omitempty"`
+	Validators         schema.ListValidators `json:"validators,omitempty"`
 }
 
 type MapAttribute struct {
@@ -156,18 +156,18 @@ type MapAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.MapValidator          `json:"validators,omitempty"`
+	Validators             schema.MapValidators           `json:"validators,omitempty"`
 }
 
 type MapNestedAttribute struct {
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 	NestedObject     NestedAttributeObject   `json:"nested_object"`
 
-	CustomType         *schema.CustomType    `json:"custom_type,omitempty"`
-	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
-	Description        *string               `json:"description,omitempty"`
-	Sensitive          *bool                 `json:"sensitive,omitempty"`
-	Validators         []schema.MapValidator `json:"validators,omitempty"`
+	CustomType         *schema.CustomType   `json:"custom_type,omitempty"`
+	DeprecationMessage *string              `json:"deprecation_message,omitempty"`
+	Description        *string              `json:"description,omitempty"`
+	Sensitive          *bool                `json:"sensitive,omitempty"`
+	Validators         schema.MapValidators `json:"validators,omitempty"`
 }
 
 type NumberAttribute struct {
@@ -178,7 +178,7 @@ type NumberAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.NumberValidator       `json:"validators,omitempty"`
+	Validators             schema.NumberValidators        `json:"validators,omitempty"`
 }
 
 type ObjectAttribute struct {
@@ -190,7 +190,7 @@ type ObjectAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type SetAttribute struct {
@@ -202,18 +202,18 @@ type SetAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.SetValidator          `json:"validators,omitempty"`
+	Validators             schema.SetValidators           `json:"validators,omitempty"`
 }
 
 type SetNestedAttribute struct {
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 	NestedObject     NestedAttributeObject   `json:"nested_object"`
 
-	CustomType         *schema.CustomType    `json:"custom_type,omitempty"`
-	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
-	Description        *string               `json:"description,omitempty"`
-	Sensitive          *bool                 `json:"sensitive,omitempty"`
-	Validators         []schema.SetValidator `json:"validators,omitempty"`
+	CustomType         *schema.CustomType   `json:"custom_type,omitempty"`
+	DeprecationMessage *string              `json:"deprecation_message,omitempty"`
+	Description        *string              `json:"description,omitempty"`
+	Sensitive          *bool                `json:"sensitive,omitempty"`
+	Validators         schema.SetValidators `json:"validators,omitempty"`
 }
 
 type SingleNestedAttribute struct {
@@ -224,7 +224,7 @@ type SingleNestedAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type StringAttribute struct {
@@ -235,5 +235,5 @@ type StringAttribute struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.StringValidator       `json:"validators,omitempty"`
+	Validators             schema.StringValidators        `json:"validators,omitempty"`
 }
