@@ -83,7 +83,7 @@ type NestedBlockObject struct {
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
 	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type ListNestedBlock struct {
@@ -96,7 +96,7 @@ type ListNestedBlock struct {
 	Description        *string                   `json:"description,omitempty"`
 	PlanModifiers      []schema.ListPlanModifier `json:"plan_modifiers,omitempty"`
 	Sensitive          *bool                     `json:"sensitive,omitempty"`
-	Validators         []schema.ListValidator    `json:"validators,omitempty"`
+	Validators         schema.ListValidators     `json:"validators,omitempty"`
 }
 
 type SetNestedBlock struct {
@@ -109,7 +109,7 @@ type SetNestedBlock struct {
 	Description        *string                  `json:"description,omitempty"`
 	PlanModifiers      []schema.SetPlanModifier `json:"plan_modifiers,omitempty"`
 	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         []schema.SetValidator    `json:"validators,omitempty"`
+	Validators         schema.SetValidators     `json:"validators,omitempty"`
 }
 
 type SingleNestedBlock struct {
@@ -124,5 +124,5 @@ type SingleNestedBlock struct {
 	Description            *string                        `json:"description,omitempty"`
 	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }

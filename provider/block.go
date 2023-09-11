@@ -82,21 +82,10 @@ type NestedBlockObject struct {
 
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
 type ListNestedBlock struct {
-	OptionalRequired schema.OptionalRequired `json:"optional_required"`
-	NestedObject     NestedBlockObject       `json:"nested_object"`
-
-	CustomType         *schema.CustomType     `json:"custom_type,omitempty"`
-	DeprecationMessage *string                `json:"deprecation_message,omitempty"`
-	Description        *string                `json:"description,omitempty"`
-	Sensitive          *bool                  `json:"sensitive,omitempty"`
-	Validators         []schema.ListValidator `json:"validators,omitempty"`
-}
-
-type SetNestedBlock struct {
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 	NestedObject     NestedBlockObject       `json:"nested_object"`
 
@@ -104,7 +93,18 @@ type SetNestedBlock struct {
 	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
 	Description        *string               `json:"description,omitempty"`
 	Sensitive          *bool                 `json:"sensitive,omitempty"`
-	Validators         []schema.SetValidator `json:"validators,omitempty"`
+	Validators         schema.ListValidators `json:"validators,omitempty"`
+}
+
+type SetNestedBlock struct {
+	OptionalRequired schema.OptionalRequired `json:"optional_required"`
+	NestedObject     NestedBlockObject       `json:"nested_object"`
+
+	CustomType         *schema.CustomType   `json:"custom_type,omitempty"`
+	DeprecationMessage *string              `json:"deprecation_message,omitempty"`
+	Description        *string              `json:"description,omitempty"`
+	Sensitive          *bool                `json:"sensitive,omitempty"`
+	Validators         schema.SetValidators `json:"validators,omitempty"`
 }
 
 type SingleNestedBlock struct {
@@ -117,5 +117,5 @@ type SingleNestedBlock struct {
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             []schema.ObjectValidator       `json:"validators,omitempty"`
+	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
