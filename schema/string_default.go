@@ -7,3 +7,27 @@ type StringDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 	Static *string        `json:"static,omitempty"`
 }
+
+func (d *StringDefault) Equal(other *StringDefault) bool {
+	if d == nil && other == nil {
+		return true
+	}
+
+	if d == nil || other == nil {
+		return false
+	}
+
+	if !d.Custom.Equal(other.Custom) {
+		return false
+	}
+
+	if d.Static == nil && other.Static != nil {
+		return false
+	}
+
+	if d.Static != nil && other.Static == nil {
+		return false
+	}
+
+	return *d.Static == *other.Static
+}
