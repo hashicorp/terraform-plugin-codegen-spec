@@ -88,7 +88,7 @@ type NestedAttributeObject struct {
 
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.ObjectPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
@@ -100,7 +100,7 @@ type BoolAttribute struct {
 	Default                *schema.BoolDefault            `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.BoolPlanModifier      `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.BoolPlanModifiers       `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.BoolValidators          `json:"validators,omitempty"`
 }
@@ -113,7 +113,7 @@ type Float64Attribute struct {
 	Default                *schema.Float64Default         `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.Float64PlanModifier   `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.Float64PlanModifiers    `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.Float64Validators       `json:"validators,omitempty"`
 }
@@ -126,7 +126,7 @@ type Int64Attribute struct {
 	Default                *schema.Int64Default           `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.Int64PlanModifier     `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.Int64PlanModifiers      `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.Int64Validators         `json:"validators,omitempty"`
 }
@@ -140,7 +140,7 @@ type ListAttribute struct {
 	Default                *schema.ListDefault            `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.ListPlanModifier      `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.ListPlanModifiers       `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.ListValidators          `json:"validators,omitempty"`
 }
@@ -149,13 +149,13 @@ type ListNestedAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	NestedObject             NestedAttributeObject           `json:"nested_object"`
 
-	CustomType         *schema.CustomType        `json:"custom_type,omitempty"`
-	Default            *schema.ListDefault       `json:"default,omitempty"`
-	DeprecationMessage *string                   `json:"deprecation_message,omitempty"`
-	Description        *string                   `json:"description,omitempty"`
-	PlanModifiers      []schema.ListPlanModifier `json:"plan_modifiers,omitempty"`
-	Sensitive          *bool                     `json:"sensitive,omitempty"`
-	Validators         schema.ListValidators     `json:"validators,omitempty"`
+	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
+	Default            *schema.ListDefault      `json:"default,omitempty"`
+	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
+	Description        *string                  `json:"description,omitempty"`
+	PlanModifiers      schema.ListPlanModifiers `json:"plan_modifiers,omitempty"`
+	Sensitive          *bool                    `json:"sensitive,omitempty"`
+	Validators         schema.ListValidators    `json:"validators,omitempty"`
 }
 
 type MapAttribute struct {
@@ -167,7 +167,7 @@ type MapAttribute struct {
 	Default                *schema.MapDefault             `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.MapPlanModifier       `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.MapPlanModifiers        `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.MapValidators           `json:"validators,omitempty"`
 }
@@ -176,13 +176,13 @@ type MapNestedAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	NestedObject             NestedAttributeObject           `json:"nested_object"`
 
-	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
-	Default            *schema.MapDefault       `json:"default,omitempty"`
-	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
-	Description        *string                  `json:"description,omitempty"`
-	PlanModifiers      []schema.MapPlanModifier `json:"plan_modifiers,omitempty"`
-	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         schema.MapValidators     `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	Default            *schema.MapDefault      `json:"default,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	PlanModifiers      schema.MapPlanModifiers `json:"plan_modifiers,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.MapValidators    `json:"validators,omitempty"`
 }
 
 type NumberAttribute struct {
@@ -193,7 +193,7 @@ type NumberAttribute struct {
 	Default                *schema.NumberDefault          `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.NumberPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.NumberPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.NumberValidators        `json:"validators,omitempty"`
 }
@@ -207,7 +207,7 @@ type ObjectAttribute struct {
 	Default                *schema.ObjectDefault          `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.ObjectPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
@@ -221,7 +221,7 @@ type SetAttribute struct {
 	Default                *schema.SetDefault             `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.SetPlanModifier       `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.SetPlanModifiers        `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.SetValidators           `json:"validators,omitempty"`
 }
@@ -230,13 +230,13 @@ type SetNestedAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	NestedObject             NestedAttributeObject           `json:"nested_object"`
 
-	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
-	Default            *schema.SetDefault       `json:"default,omitempty"`
-	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
-	Description        *string                  `json:"description,omitempty"`
-	PlanModifiers      []schema.SetPlanModifier `json:"plan_modifiers,omitempty"`
-	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         schema.SetValidators     `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	Default            *schema.SetDefault      `json:"default,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	PlanModifiers      schema.SetPlanModifiers `json:"plan_modifiers,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.SetValidators    `json:"validators,omitempty"`
 }
 
 type SingleNestedAttribute struct {
@@ -247,7 +247,7 @@ type SingleNestedAttribute struct {
 	Default                  *schema.ObjectDefault           `json:"default,omitempty"`
 	DeprecationMessage       *string                         `json:"deprecation_message,omitempty"`
 	Description              *string                         `json:"description,omitempty"`
-	PlanModifiers            []schema.ObjectPlanModifier     `json:"plan_modifiers,omitempty"`
+	PlanModifiers            schema.ObjectPlanModifiers      `json:"plan_modifiers,omitempty"`
 	Sensitive                *bool                           `json:"sensitive,omitempty"`
 	Validators               schema.ObjectValidators         `json:"validators,omitempty"`
 }
@@ -260,7 +260,7 @@ type StringAttribute struct {
 	Default                *schema.StringDefault          `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.StringPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.StringPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.StringValidators        `json:"validators,omitempty"`
 }

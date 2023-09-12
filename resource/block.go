@@ -82,7 +82,7 @@ type NestedBlockObject struct {
 
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
 	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.ObjectPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
 
@@ -90,26 +90,26 @@ type ListNestedBlock struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	NestedObject             NestedBlockObject               `json:"nested_object"`
 
-	CustomType         *schema.CustomType        `json:"custom_type,omitempty"`
-	Default            *schema.ListDefault       `json:"default,omitempty"`
-	DeprecationMessage *string                   `json:"deprecation_message,omitempty"`
-	Description        *string                   `json:"description,omitempty"`
-	PlanModifiers      []schema.ListPlanModifier `json:"plan_modifiers,omitempty"`
-	Sensitive          *bool                     `json:"sensitive,omitempty"`
-	Validators         schema.ListValidators     `json:"validators,omitempty"`
+	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
+	Default            *schema.ListDefault      `json:"default,omitempty"`
+	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
+	Description        *string                  `json:"description,omitempty"`
+	PlanModifiers      schema.ListPlanModifiers `json:"plan_modifiers,omitempty"`
+	Sensitive          *bool                    `json:"sensitive,omitempty"`
+	Validators         schema.ListValidators    `json:"validators,omitempty"`
 }
 
 type SetNestedBlock struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	NestedObject             NestedBlockObject               `json:"nested_object"`
 
-	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
-	Default            *schema.SetDefault       `json:"default,omitempty"`
-	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
-	Description        *string                  `json:"description,omitempty"`
-	PlanModifiers      []schema.SetPlanModifier `json:"plan_modifiers,omitempty"`
-	Sensitive          *bool                    `json:"sensitive,omitempty"`
-	Validators         schema.SetValidators     `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	Default            *schema.SetDefault      `json:"default,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	PlanModifiers      schema.SetPlanModifiers `json:"plan_modifiers,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.SetValidators    `json:"validators,omitempty"`
 }
 
 type SingleNestedBlock struct {
@@ -122,7 +122,7 @@ type SingleNestedBlock struct {
 	Default                *schema.ObjectDefault          `json:"default,omitempty"`
 	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
 	Description            *string                        `json:"description,omitempty"`
-	PlanModifiers          []schema.ObjectPlanModifier    `json:"plan_modifiers,omitempty"`
+	PlanModifiers          schema.ObjectPlanModifiers     `json:"plan_modifiers,omitempty"`
 	Sensitive              *bool                          `json:"sensitive,omitempty"`
 	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
 }
