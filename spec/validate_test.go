@@ -27,6 +27,128 @@ func TestValidate(t *testing.T) {
 			document: []byte{},
 			expected: fmt.Errorf("empty document"),
 		},
+		"datasource-attributes-only": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"datasource-blocks-only": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"blocks": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"datasource-attributes-and-blocks": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": [],
+		"blocks": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"datasource-no-attributes-or-blocks": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+			expected: fmt.Errorf("datasources.0.schema: Must have at least 1 properties"),
+		},
+		"resource-attributes-only": {
+			document: []byte(`{
+  "resources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"resource-blocks-only": {
+			document: []byte(`{
+  "resources": [
+    {
+      "name": "example",
+      "schema": {
+		"blocks": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"resource-attributes-and-blocks": {
+			document: []byte(`{
+  "resources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": [],
+		"blocks": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+		},
+		"resource-no-attributes-or-blocks": {
+			document: []byte(`{
+  "resources": [
+    {
+      "name": "example",
+      "schema": {
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+			expected: fmt.Errorf("resources.0.schema: Must have at least 1 properties"),
+		},
 		"example": {
 			document: testReadFile("example.json"),
 		},

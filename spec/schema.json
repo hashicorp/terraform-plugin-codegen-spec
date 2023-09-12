@@ -72,9 +72,7 @@
           "$ref": "#/$defs/datasource_blocks"
         }
       },
-      "required": [
-        "attributes"
-      ]
+      "minProperties": 1
     },
     "datasource_attributes": {
       "type": "array",
@@ -252,9 +250,7 @@
           "$ref": "#/$defs/resource_blocks"
         }
       },
-      "required": [
-        "attributes"
-      ]
+      "minProperties": 1
     },
     "resource_attributes": {
       "type": "array",
