@@ -78,3 +78,163 @@ func TestCustomPlanModifier_HasImport(t *testing.T) {
 		})
 	}
 }
+
+func TestCustomPlanModifier_Equal(t *testing.T) {
+	t.Parallel()
+
+	testCases := map[string]struct {
+		planModifier *schema.CustomPlanModifier
+		other        *schema.CustomPlanModifier
+		expected     bool
+	}{
+		"plan_modifier_both_nil": {
+			expected: true,
+		},
+		"plan_modifier_nil_other_not_nil": {
+			other:    &schema.CustomPlanModifier{},
+			expected: false,
+		},
+		"plan_modifier_imports_nil_other_not_nil": {
+			planModifier: &schema.CustomPlanModifier{},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{},
+			},
+			expected: false,
+		},
+		"plan_modifier_imports_not_nil_other_nil": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{},
+			},
+			other:    &schema.CustomPlanModifier{},
+			expected: false,
+		},
+		"plan_modifier_imports_alias_nil_other_not_nil": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("alias"),
+					},
+				},
+			},
+			expected: false,
+		},
+		"plan_modifier_imports_alias_not_nil_other_nil": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("alias"),
+					},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{},
+				},
+			},
+			expected: false,
+		},
+		"plan_modifier_imports_path_empty_other_not_empty": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Path: "path",
+					},
+				},
+			},
+			expected: false,
+		},
+		"plan_modifier_imports_path_not_empty_other_empty": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Path: "path",
+					},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{},
+				},
+			},
+			expected: false,
+		},
+		"plan_modifier_imports_same_order": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("one"),
+						Path:  "one",
+					},
+					{
+						Alias: pointer("two"),
+						Path:  "two",
+					},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("one"),
+						Path:  "one",
+					},
+					{
+						Alias: pointer("two"),
+						Path:  "two",
+					},
+				},
+			},
+			expected: true,
+		},
+		"plan_modifier_imports_different_order": {
+			planModifier: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("one"),
+						Path:  "one",
+					},
+					{
+						Alias: pointer("two"),
+						Path:  "two",
+					},
+				},
+			},
+			other: &schema.CustomPlanModifier{
+				Imports: []code.Import{
+					{
+						Alias: pointer("two"),
+						Path:  "two",
+					},
+					{
+						Alias: pointer("one"),
+						Path:  "one",
+					},
+				},
+			},
+			expected: true,
+		},
+	}
+
+	for name, testCase := range testCases {
+		name, testCase := name, testCase
+
+		t.Run(name, func(t *testing.T) {
+			t.Parallel()
+
+			got := testCase.planModifier.Equal(testCase.other)
+
+			if diff := cmp.Diff(got, testCase.expected); diff != "" {
+				t.Errorf("unexpected difference: %s", diff)
+			}
+		})
+	}
+}

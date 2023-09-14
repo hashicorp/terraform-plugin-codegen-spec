@@ -6,3 +6,15 @@ package schema
 type ObjectDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
+
+func (d *ObjectDefault) Equal(other *ObjectDefault) bool {
+	if d == nil && other == nil {
+		return true
+	}
+
+	if d == nil || other == nil {
+		return false
+	}
+
+	return d.Custom.Equal(other.Custom)
+}

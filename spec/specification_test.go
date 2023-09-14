@@ -2111,7 +2111,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									Name: "bool_attribute",
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
-										PlanModifiers: []schema.BoolPlanModifier{
+										PlanModifiers: schema.BoolPlanModifiers{
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
@@ -7674,7 +7674,7 @@ func TestSpecification_Generate(t *testing.T) {
 									Name: "bool_attribute",
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
-										PlanModifiers: []schema.BoolPlanModifier{
+										PlanModifiers: schema.BoolPlanModifiers{
 											{},
 											{
 												Custom: &schema.CustomPlanModifier{
