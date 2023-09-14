@@ -3460,32 +3460,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_object_plan_modifiers": {
