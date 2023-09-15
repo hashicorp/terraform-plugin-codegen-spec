@@ -129,6 +129,15 @@ func TestElementType_Equal(t *testing.T) {
 			},
 			expected: false,
 		},
+		"match": {
+			elementType: schema.ElementType{
+				String: &schema.StringType{},
+			},
+			other: schema.ElementType{
+				String: &schema.StringType{},
+			},
+			expected: true,
+		},
 	}
 
 	for name, testCase := range testCases {
