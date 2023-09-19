@@ -94,46 +94,42 @@ type NestedAttributeObject struct {
 type BoolAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.BoolValidators          `json:"validators,omitempty"`
+	CustomType         *schema.CustomType    `json:"custom_type,omitempty"`
+	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
+	Description        *string               `json:"description,omitempty"`
+	Sensitive          *bool                 `json:"sensitive,omitempty"`
+	Validators         schema.BoolValidators `json:"validators,omitempty"`
 }
 
 type Float64Attribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.Float64Validators       `json:"validators,omitempty"`
+	CustomType         *schema.CustomType       `json:"custom_type,omitempty"`
+	DeprecationMessage *string                  `json:"deprecation_message,omitempty"`
+	Description        *string                  `json:"description,omitempty"`
+	Sensitive          *bool                    `json:"sensitive,omitempty"`
+	Validators         schema.Float64Validators `json:"validators,omitempty"`
 }
 
 type Int64Attribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.Int64Validators         `json:"validators,omitempty"`
+	CustomType         *schema.CustomType     `json:"custom_type,omitempty"`
+	DeprecationMessage *string                `json:"deprecation_message,omitempty"`
+	Description        *string                `json:"description,omitempty"`
+	Sensitive          *bool                  `json:"sensitive,omitempty"`
+	Validators         schema.Int64Validators `json:"validators,omitempty"`
 }
 
 type ListAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	ElementType              schema.ElementType              `json:"element_type"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.ListValidators          `json:"validators,omitempty"`
+	CustomType         *schema.CustomType    `json:"custom_type,omitempty"`
+	DeprecationMessage *string               `json:"deprecation_message,omitempty"`
+	Description        *string               `json:"description,omitempty"`
+	Sensitive          *bool                 `json:"sensitive,omitempty"`
+	Validators         schema.ListValidators `json:"validators,omitempty"`
 }
 
 type ListNestedAttribute struct {
@@ -151,12 +147,11 @@ type MapAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	ElementType              schema.ElementType              `json:"element_type"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.MapValidators           `json:"validators,omitempty"`
+	CustomType         *schema.CustomType   `json:"custom_type,omitempty"`
+	DeprecationMessage *string              `json:"deprecation_message,omitempty"`
+	Description        *string              `json:"description,omitempty"`
+	Sensitive          *bool                `json:"sensitive,omitempty"`
+	Validators         schema.MapValidators `json:"validators,omitempty"`
 }
 
 type MapNestedAttribute struct {
@@ -173,36 +168,33 @@ type MapNestedAttribute struct {
 type NumberAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.NumberValidators        `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.NumberValidators `json:"validators,omitempty"`
 }
 
 type ObjectAttribute struct {
 	AttributeTypes           schema.ObjectAttributeTypes     `json:"attribute_types"`
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.ObjectValidators        `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.ObjectValidators `json:"validators,omitempty"`
 }
 
 type SetAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 	ElementType              schema.ElementType              `json:"element_type"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.SetValidators           `json:"validators,omitempty"`
+	CustomType         *schema.CustomType   `json:"custom_type,omitempty"`
+	DeprecationMessage *string              `json:"deprecation_message,omitempty"`
+	Description        *string              `json:"description,omitempty"`
+	Sensitive          *bool                `json:"sensitive,omitempty"`
+	Validators         schema.SetValidators `json:"validators,omitempty"`
 }
 
 type SetNestedAttribute struct {
@@ -230,10 +222,9 @@ type SingleNestedAttribute struct {
 type StringAttribute struct {
 	ComputedOptionalRequired schema.ComputedOptionalRequired `json:"computed_optional_required"`
 
-	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
-	CustomType             *schema.CustomType             `json:"custom_type,omitempty"`
-	DeprecationMessage     *string                        `json:"deprecation_message,omitempty"`
-	Description            *string                        `json:"description,omitempty"`
-	Sensitive              *bool                          `json:"sensitive,omitempty"`
-	Validators             schema.StringValidators        `json:"validators,omitempty"`
+	CustomType         *schema.CustomType      `json:"custom_type,omitempty"`
+	DeprecationMessage *string                 `json:"deprecation_message,omitempty"`
+	Description        *string                 `json:"description,omitempty"`
+	Sensitive          *bool                   `json:"sensitive,omitempty"`
+	Validators         schema.StringValidators `json:"validators,omitempty"`
 }
