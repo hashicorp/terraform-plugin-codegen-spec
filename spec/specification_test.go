@@ -5262,11 +5262,13 @@ func TestSpecification_Generate(t *testing.T) {
 
 	testCases := map[string]struct {
 		data          []byte
+		version       string
 		expected      spec.Specification
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("example.json"),
+			data:    testReadFile("example.json"),
+			version: "v1.0",
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -8082,7 +8084,7 @@ func TestSpecification_Generate(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, err := spec.Parse(context.Background(), testCase.data)
+			got, err := spec.Parse(context.Background(), testCase.data, testCase.version)
 
 			if err != nil {
 				if testCase.expectedError == nil {

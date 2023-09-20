@@ -11,13 +11,40 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-func Validate(ctx context.Context, document []byte) error {
+// Parse returns a Specification from the JSON document contents or any validation errors.
+func Parse(ctx context.Context, document []byte, schemaVersion string) (Specification, error) {
+	if err := Validate(ctx, document, schemaVersion); err != nil {
+		return Specification{}, err
+	}
+
+	var spec Specification
+
+	if err := json.Unmarshal(document, &spec); err != nil {
+		return spec, err
+	}
+
+	if err := spec.Validate(ctx); err != nil {
+		return spec, err
+	}
+
+	return spec, nil
+}
+
+// Validate loads the schema version specified and validates the document.
+func Validate(ctx context.Context, document []byte, version string) error {
 	if len(document) == 0 {
 		return errors.New("empty document")
 	}
 
 	documentLoader := gojsonschema.NewBytesLoader(document)
-	schemaLoader := gojsonschema.NewBytesLoader(schema)
+
+	schemaVersion, err := Schema(version)
+
+	if err != nil {
+		return err
+	}
+
+	schemaLoader := gojsonschema.NewBytesLoader(schemaVersion)
 
 	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
 
@@ -34,23 +61,4 @@ func Validate(ctx context.Context, document []byte) error {
 	}
 
 	return errs
-}
-
-// Parse returns a Specification from the JSON document contents or any validation errors.
-func Parse(ctx context.Context, document []byte) (Specification, error) {
-	if err := Validate(ctx, document); err != nil {
-		return Specification{}, err
-	}
-
-	var spec Specification
-
-	if err := json.Unmarshal(document, &spec); err != nil {
-		return spec, err
-	}
-
-	if err := spec.Validate(ctx); err != nil {
-		return spec, err
-	}
-
-	return spec, nil
 }

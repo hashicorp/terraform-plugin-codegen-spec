@@ -17,14 +17,17 @@ func TestValidate(t *testing.T) {
 
 	testCases := map[string]struct {
 		document []byte
+		version  string
 		expected error
 	}{
 		"nil": {
 			document: nil,
+			version:  "v1.0",
 			expected: fmt.Errorf("empty document"),
 		},
 		"empty": {
 			document: []byte{},
+			version:  "v1.0",
 			expected: fmt.Errorf("empty document"),
 		},
 		"datasource-attributes-only": {
@@ -41,6 +44,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"datasource-blocks-only": {
 			document: []byte(`{
@@ -56,6 +60,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"datasource-attributes-and-blocks": {
 			document: []byte(`{
@@ -72,6 +77,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"datasource-no-attributes-or-blocks": {
 			document: []byte(`{
@@ -86,6 +92,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version:  "v1.0",
 			expected: fmt.Errorf("datasources.0.schema: Must have at least 1 properties"),
 		},
 		"resource-attributes-only": {
@@ -102,6 +109,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"resource-blocks-only": {
 			document: []byte(`{
@@ -117,6 +125,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"resource-attributes-and-blocks": {
 			document: []byte(`{
@@ -133,6 +142,7 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version: "v1.0",
 		},
 		"resource-no-attributes-or-blocks": {
 			document: []byte(`{
@@ -147,10 +157,12 @@ func TestValidate(t *testing.T) {
     "name": "provider"
   }
 }`),
+			version:  "v1.0",
 			expected: fmt.Errorf("resources.0.schema: Must have at least 1 properties"),
 		},
 		"example": {
 			document: testReadFile("example.json"),
+			version:  "v1.0",
 		},
 	}
 
@@ -160,7 +172,7 @@ func TestValidate(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			err := spec.Validate(context.Background(), testCase.document)
+			err := spec.Validate(context.Background(), testCase.document, testCase.version)
 
 			if err != nil {
 				if testCase.expected == nil {
