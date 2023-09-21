@@ -7,13 +7,14 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 
 	"github.com/xeipuuv/gojsonschema"
 )
 
 // Parse returns a Specification from the JSON document contents or any validation errors.
-func Parse(ctx context.Context, document []byte, schemaVersion string) (Specification, error) {
-	if err := Validate(ctx, document, schemaVersion); err != nil {
+func Parse(ctx context.Context, document []byte) (Specification, error) {
+	if err := Validate(ctx, document); err != nil {
 		return Specification{}, err
 	}
 
@@ -31,17 +32,28 @@ func Parse(ctx context.Context, document []byte, schemaVersion string) (Specific
 }
 
 // Validate loads the schema version specified and validates the document.
-func Validate(ctx context.Context, document []byte, version string) error {
+func Validate(ctx context.Context, document []byte) error {
 	if len(document) == 0 {
 		return errors.New("empty document")
 	}
 
 	documentLoader := gojsonschema.NewBytesLoader(document)
 
-	schemaVersion, err := Schema(version)
+	var versionedDocument struct {
+		Version string `json:"version"`
+	}
 
-	if err != nil {
+	if err := json.Unmarshal(document, &versionedDocument); err != nil {
 		return err
+	}
+
+	var schemaVersion []byte
+
+	switch versionedDocument.Version {
+	case Version1_0:
+		schemaVersion = JSONSchemaVersion1_0
+	default:
+		return fmt.Errorf("version: %q is unsupported", versionedDocument.Version)
 	}
 
 	schemaLoader := gojsonschema.NewBytesLoader(schemaVersion)

@@ -63,7 +63,7 @@ func TestSpecification_JSONMarshal(t *testing.T) {
 	}
 }
 
-func TestSpecification_JSONUnmarshal(t *testing.T) {
+func TestSpecification_JSONUnmarshal_Version1_0(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -72,7 +72,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("example.json"),
+			data: testReadFile("./v1.0/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -5257,18 +5257,16 @@ func TestSpecification_Validate_Resources(t *testing.T) {
 	}
 }
 
-func TestSpecification_Generate(t *testing.T) {
+func TestSpecification_Generate_Version1_0(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
 		data          []byte
-		version       string
 		expected      spec.Specification
 		expectedError error
 	}{
 		"example": {
-			data:    testReadFile("example.json"),
-			version: "v1.0",
+			data: testReadFile("./v1.0/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -8084,7 +8082,7 @@ func TestSpecification_Generate(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Parallel()
 
-			got, err := spec.Parse(context.Background(), testCase.data, testCase.version)
+			got, err := spec.Parse(context.Background(), testCase.data)
 
 			if err != nil {
 				if testCase.expectedError == nil {

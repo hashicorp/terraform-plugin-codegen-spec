@@ -17,10 +17,14 @@
       "items": {
         "$ref": "#/$defs/resource"
       }
+    },
+    "version": {
+      "type": "string"
     }
   },
   "required": [
-    "provider"
+    "provider",
+    "version"
   ],
   "$defs": {
     "code_import": {
