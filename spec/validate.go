@@ -12,7 +12,7 @@ import (
 	"github.com/xeipuuv/gojsonschema"
 )
 
-// Parse returns a Specification from the JSON document contents or any validation errors.
+// Parse returns a Specification from the JSON document contents, or any validation errors.
 func Parse(ctx context.Context, document []byte) (Specification, error) {
 	if err := Validate(ctx, document); err != nil {
 		return Specification{}, err
@@ -31,7 +31,7 @@ func Parse(ctx context.Context, document []byte) (Specification, error) {
 	return spec, nil
 }
 
-// Validate loads the schema version specified and validates the document.
+// Validate loads the schema version specified in the document, and validates the document.
 func Validate(ctx context.Context, document []byte) error {
 	if len(document) == 0 {
 		return errors.New("empty document")

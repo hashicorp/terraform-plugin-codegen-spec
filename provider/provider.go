@@ -8,13 +8,18 @@ import (
 	"fmt"
 )
 
+// ValidateRequest defines the Path of the provider that is
+// being validated.
 type ValidateRequest struct {
 	Path string
 }
 
+// Provider defines an individual provider.
 type Provider struct {
+	// Name is the string identifier for the provider.
 	Name string `json:"name"`
 
+	// Schema defines the Attributes and Blocks for the provider.
 	Schema *Schema `json:"schema,omitempty"`
 }
 

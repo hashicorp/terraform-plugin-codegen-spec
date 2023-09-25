@@ -8,11 +8,16 @@ import (
 	"errors"
 )
 
+// Schema defines the Attributes and Blocks associated with a Resource.
 type Schema struct {
+	// Attributes defines the Attribute types for the Schema..
 	Attributes Attributes `json:"attributes,omitempty"`
-	Blocks     Blocks     `json:"blocks,omitempty"`
+
+	// Blocks defines the Block types for the Schema.
+	Blocks Blocks `json:"blocks,omitempty"`
 }
 
+// SchemaValidateRequest specifies the resource being validated.
 type SchemaValidateRequest struct {
 	Path string
 }
