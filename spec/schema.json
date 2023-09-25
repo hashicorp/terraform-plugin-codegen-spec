@@ -50,7 +50,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "schema": {
           "type": "object",
@@ -140,7 +141,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "schema": {
           "type": "object",
@@ -228,7 +230,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "schema": {
           "type": "object",
@@ -515,7 +518,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "bool": {
           "$ref": "#/$defs/schema_bool_type"
@@ -680,7 +684,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "bool": {
           "type": "object",
@@ -723,7 +728,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "float64": {
           "type": "object",
@@ -766,7 +772,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "int64": {
           "type": "object",
@@ -809,7 +816,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list": {
           "type": "object",
@@ -856,7 +864,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -901,7 +910,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -938,7 +947,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map": {
           "type": "object",
@@ -985,7 +995,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map_nested": {
           "type": "object",
@@ -1029,7 +1040,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "number": {
           "type": "object",
@@ -1072,7 +1084,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "object": {
           "type": "object",
@@ -1119,7 +1132,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set": {
           "type": "object",
@@ -1166,7 +1180,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -1211,7 +1226,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -1248,7 +1263,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "string": {
           "type": "object",
@@ -1291,7 +1307,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -1338,7 +1355,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -1415,7 +1432,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "bool": {
           "type": "object",
@@ -1458,7 +1476,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "float64": {
           "type": "object",
@@ -1501,7 +1520,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "int64": {
           "type": "object",
@@ -1544,7 +1564,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list": {
           "type": "object",
@@ -1591,7 +1612,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -1636,7 +1658,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -1673,7 +1695,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map": {
           "type": "object",
@@ -1720,7 +1743,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map_nested": {
           "type": "object",
@@ -1764,7 +1788,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "number": {
           "type": "object",
@@ -1807,7 +1832,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "object": {
           "type": "object",
@@ -1854,7 +1880,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set": {
           "type": "object",
@@ -1901,7 +1928,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -1946,7 +1974,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -1983,7 +2011,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -2030,7 +2059,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -2070,7 +2099,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "string": {
           "type": "object",
@@ -2156,7 +2186,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "bool": {
           "type": "object",
@@ -2205,7 +2236,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "float64": {
           "type": "object",
@@ -2254,7 +2286,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "int64": {
           "type": "object",
@@ -2303,7 +2336,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list": {
           "type": "object",
@@ -2356,7 +2390,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -2407,7 +2442,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "list_nested": {
           "type": "object",
@@ -2450,7 +2485,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map": {
           "type": "object",
@@ -2503,7 +2539,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "map_nested": {
           "type": "object",
@@ -2556,7 +2593,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "number": {
           "type": "object",
@@ -2605,7 +2643,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "object": {
           "type": "object",
@@ -2658,7 +2697,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set": {
           "type": "object",
@@ -2711,7 +2751,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -2762,7 +2803,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "set_nested": {
           "type": "object",
@@ -2805,7 +2846,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -2858,7 +2900,7 @@
       "properties": {
         "name": {
           "type": "string",
-          "pattern": "^[^\\s]*$"
+          "$ref": "#/$defs/valid_identifier"
         },
         "single_nested": {
           "type": "object",
@@ -2904,7 +2946,8 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "$ref": "#/$defs/valid_identifier"
         },
         "string": {
           "type": "object",
@@ -3638,6 +3681,10 @@
       "items": {
         "$ref": "#/$defs/schema_string_validator"
       }
+    },
+    "valid_identifier": {
+      "type": "string",
+      "pattern": "^[a-z_][a-z0-9_]*$"
     }
   }
 }
