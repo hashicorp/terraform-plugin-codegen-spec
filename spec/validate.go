@@ -50,8 +50,8 @@ func Validate(ctx context.Context, document []byte) error {
 	var schemaVersion []byte
 
 	switch versionedDocument.Version {
-	case Version1_0:
-		schemaVersion = JSONSchemaVersion1_0
+	case Version0_1:
+		schemaVersion = JSONSchemaVersion0_1
 	default:
 		return fmt.Errorf("version: %q is unsupported", versionedDocument.Version)
 	}

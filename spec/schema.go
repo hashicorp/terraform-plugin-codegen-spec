@@ -8,10 +8,10 @@ import (
 )
 
 const (
-	Version1_0 = "1.0"
+	Version0_1 = "0.1"
 )
 
 var (
-	//go:embed v1.0/schema.json
-	JSONSchemaVersion1_0 []byte
+	//go:embed v0.1/schema.json
+	JSONSchemaVersion0_1 []byte
 )

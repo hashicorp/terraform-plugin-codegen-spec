@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/spec"
 )
 
-func TestValidate_Version1_0(t *testing.T) {
+func TestValidate_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -57,7 +57,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"datasource-blocks-only": {
@@ -73,7 +73,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"datasource-attributes-and-blocks": {
@@ -90,7 +90,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"datasource-no-attributes-or-blocks": {
@@ -105,7 +105,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema: Must have at least 1 properties"),
 		},
@@ -122,7 +122,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"resource-blocks-only": {
@@ -138,7 +138,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"resource-attributes-and-blocks": {
@@ -155,7 +155,7 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 		},
 		"resource-no-attributes-or-blocks": {
@@ -170,12 +170,12 @@ func TestValidate_Version1_0(t *testing.T) {
   "provider": {
     "name": "provider"
   },
-  "version": "1.0"
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema: Must have at least 1 properties"),
 		},
 		"example": {
-			document: testReadFile("./v1.0/example.json"),
+			document: testReadFile("./v0.1/example.json"),
 		},
 	}
 

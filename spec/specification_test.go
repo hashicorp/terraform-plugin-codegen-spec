@@ -63,7 +63,7 @@ func TestSpecification_JSONMarshal(t *testing.T) {
 	}
 }
 
-func TestSpecification_JSONUnmarshal_Version1_0(t *testing.T) {
+func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -72,7 +72,7 @@ func TestSpecification_JSONUnmarshal_Version1_0(t *testing.T) {
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("./v1.0/example.json"),
+			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -5257,7 +5257,7 @@ func TestSpecification_Validate_Resources(t *testing.T) {
 	}
 }
 
-func TestSpecification_Generate_Version1_0(t *testing.T) {
+func TestSpecification_Generate_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -5266,7 +5266,7 @@ func TestSpecification_Generate_Version1_0(t *testing.T) {
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("./v1.0/example.json"),
+			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
