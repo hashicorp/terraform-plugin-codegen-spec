@@ -10,6 +10,7 @@ import (
 	"sort"
 )
 
+// ObjectAttributeTypes type defines ObjectAttributeType types
 type ObjectAttributeTypes []ObjectAttributeType
 
 func (o ObjectAttributeTypes) Equal(other ObjectAttributeTypes) bool {
@@ -44,6 +45,7 @@ func (o ObjectAttributeTypes) Equal(other ObjectAttributeTypes) bool {
 	return true
 }
 
+// Validate returns true if each of the object attribute names is unique within the object.
 func (o ObjectAttributeTypes) Validate(ctx context.Context, req ObjectValidateRequest) error {
 	attrTypeNames := make(map[string]struct{}, len(o))
 
@@ -70,6 +72,7 @@ func (o ObjectAttributeTypes) Validate(ctx context.Context, req ObjectValidateRe
 	return errors.Join(errs, nestedErrs)
 }
 
+// ObjectAttributeType defines the types within an object.
 type ObjectAttributeType struct {
 	Name string `json:"name"`
 
@@ -84,6 +87,7 @@ type ObjectAttributeType struct {
 	String  *StringType  `json:"string,omitempty"`
 }
 
+// Equal returns true if all fields of the given ObjectAttributeType are equal.
 func (o ObjectAttributeType) Equal(other ObjectAttributeType) bool {
 	if o.Name != other.Name {
 		return false

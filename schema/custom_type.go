@@ -5,16 +5,26 @@ package schema
 
 import "github.com/hashicorp/terraform-plugin-codegen-spec/code"
 
+// CustomType defines a custom type, and value type for a schema type,
+// and associated value.
 type CustomType struct {
-	Import    *code.Import `json:"import,omitempty"`
-	Type      string       `json:"type"`
-	ValueType string       `json:"value_type"`
+	// Import defines a path, and optional alias for imported code.
+	Import *code.Import `json:"import,omitempty"`
+
+	// Type defines the type for use in the schema.
+	Type string `json:"type"`
+
+	// ValueType defines the type for use with the value associated
+	// with the schema type.
+	ValueType string `json:"value_type"`
 }
 
+// HasImport returns true if the CustomType has a non-empty import path.
 func (c *CustomType) HasImport() bool {
 	return c.Import != nil && c.Import.Path != ""
 }
 
+// Equal returns true if all fields of the given CustomType are equal.
 func (c *CustomType) Equal(other *CustomType) bool {
 	if c == nil && other == nil {
 		return true
