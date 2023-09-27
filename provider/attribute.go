@@ -138,7 +138,7 @@ type BoolAttribute struct {
 // for a 512-bit generic number attribute.
 type Float64Attribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
@@ -166,7 +166,7 @@ type Float64Attribute struct {
 // NumberAttribute for a 512-bit generic number attribute.
 type Int64Attribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
@@ -191,7 +191,7 @@ type Int64Attribute struct {
 // element type.
 type ListAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// ElementType is the type for all elements of the list.
@@ -220,7 +220,7 @@ type ListAttribute struct {
 // objects, where the object attributes can be fully defined.
 type ListNestedAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// NestedObject defines the underlying object attributes.
@@ -249,7 +249,7 @@ type ListNestedAttribute struct {
 // element type.
 type MapAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// ElementType is the type for all elements of the map.
@@ -278,7 +278,7 @@ type MapAttribute struct {
 // name to objects, where the object attributes can be fully defined.
 type MapNestedAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// NestedObject defines the underlying object attributes.
@@ -310,7 +310,7 @@ type MapNestedAttribute struct {
 // or Int64Attribute for a 64-bit integer number attribute.
 type NumberAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
@@ -339,7 +339,7 @@ type ObjectAttribute struct {
 	AttributeTypes schema.ObjectAttributeTypes `json:"attribute_types"`
 
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
@@ -365,7 +365,7 @@ type ObjectAttribute struct {
 // element type.
 type SetAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// ElementType is the type for all elements of the set.
@@ -394,7 +394,7 @@ type SetAttribute struct {
 // objects, where the object attributes can be fully defined.
 type SetNestedAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// NestedObject defines the underlying object attributes.
@@ -423,7 +423,7 @@ type SetNestedAttribute struct {
 // the object attributes can be fully defined
 type SingleNestedAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// Attributes defines the Attribute types associated with a SingleNestedAttribute.
@@ -454,7 +454,7 @@ type SingleNestedAttribute struct {
 // StringAttribute represents a Schema attribute that is a string.
 type StringAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
