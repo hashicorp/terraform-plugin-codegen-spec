@@ -39,12 +39,17 @@ func Validate(ctx context.Context, document []byte) error {
 
 	documentLoader := gojsonschema.NewBytesLoader(document)
 
+	// We only need to grab the version here, the JSON schema can do the remaining of the validation
 	var versionedDocument struct {
 		Version string `json:"version"`
 	}
 
 	if err := json.Unmarshal(document, &versionedDocument); err != nil {
 		return err
+	}
+
+	if versionedDocument.Version == "" {
+		return errors.New("version is required")
 	}
 
 	var schemaVersion []byte
