@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// BoolValidators type defines BoolValidator types
 type BoolValidators []BoolValidator
 
 // Equal returns true if the given BoolValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the BoolValidator entries is
-// equal.
+// length, and each of the BoolValidator entries is equal.
 func (v BoolValidators) Equal(other BoolValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v BoolValidators) Equal(other BoolValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,14 @@ func (v BoolValidators) Equal(other BoolValidators) bool {
 	return true
 }
 
+// BoolValidator type defines type and function that provides validation
+// functionality.
 type BoolValidator struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given BoolValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given BoolValidator equal.
 func (v BoolValidator) Equal(other BoolValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

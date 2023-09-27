@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// ObjectValidators type defines ObjectValidator types
 type ObjectValidators []ObjectValidator
 
 // Equal returns true if the given ObjectValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the ObjectValidator entries is
-// equal.
+// length, and each of the ObjectValidator entries is equal.
 func (v ObjectValidators) Equal(other ObjectValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v ObjectValidators) Equal(other ObjectValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v ObjectValidators) Equal(other ObjectValidators) bool {
 	return true
 }
 
+// ObjectValidator type defines type and function that provides validation
+// functionality.
 type ObjectValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given ObjectValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given ObjectValidator equal.
 func (v ObjectValidator) Equal(other ObjectValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

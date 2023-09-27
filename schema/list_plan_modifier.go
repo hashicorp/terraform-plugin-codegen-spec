@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// ListPlanModifiers type defines ListPlanModifier types
 type ListPlanModifiers []ListPlanModifier
 
 // Equal returns true if the given ListPlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the ListPlanModifier entries is
-// equal.
+// length, and each of the ListPlanModifier entries is equal.
 func (v ListPlanModifiers) Equal(other ListPlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v ListPlanModifiers) Equal(other ListPlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v ListPlanModifiers) Equal(other ListPlanModifiers) bool {
 	return true
 }
 
+// ListPlanModifier type defines type and function that provides plan modification
+// functionality.
 type ListPlanModifier struct {
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given ListPlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given ListPlanModifier are equal.
 func (v ListPlanModifier) Equal(other ListPlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

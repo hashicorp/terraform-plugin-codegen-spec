@@ -3,7 +3,10 @@
 
 package schema
 
+// SetType is a representation of a set.
 type SetType struct {
+	// ElementType defines the type of the elements within
+	// the set.
 	ElementType ElementType `json:"element_type"`
 
 	// CustomType is a customization of the SetType.

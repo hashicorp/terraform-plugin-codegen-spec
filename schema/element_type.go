@@ -3,6 +3,7 @@
 
 package schema
 
+// ElementType defines the type within a list, map, or set.
 type ElementType struct {
 	Bool    *BoolType    `json:"bool,omitempty"`
 	Float64 *Float64Type `json:"float64,omitempty"`
@@ -15,6 +16,7 @@ type ElementType struct {
 	String  *StringType  `json:"string,omitempty"`
 }
 
+// Equal returns true if all fields of the given ElementType are equal.
 func (e ElementType) Equal(other ElementType) bool {
 	if e.Bool == nil && other.Bool != nil {
 		return false

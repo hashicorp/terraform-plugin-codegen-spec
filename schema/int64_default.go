@@ -3,11 +3,16 @@
 
 package schema
 
+// Int64Default defines a value, or a custom type for a default 64-bit integer value.
 type Int64Default struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
-	Static *int64         `json:"static,omitempty"`
+
+	// Static defines a specific 64-bit integer value.
+	Static *int64 `json:"static,omitempty"`
 }
 
+// Equal returns true if all fields of the given Int64Default are equal.
 func (d *Int64Default) Equal(other *Int64Default) bool {
 	if d == nil && other == nil {
 		return true

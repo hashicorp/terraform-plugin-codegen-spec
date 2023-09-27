@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/spec"
 )
 
-func TestValidate(t *testing.T) {
+func TestValidate_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -27,6 +27,23 @@ func TestValidate(t *testing.T) {
 			document: []byte{},
 			expected: fmt.Errorf("empty document"),
 		},
+		"unsupported_version": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  },
+  "version": "a.b"
+}`),
+			expected: fmt.Errorf(`version: "a.b" is unsupported`),
+		},
 		"datasource-attributes-only": {
 			document: []byte(`{
   "datasources": [
@@ -39,7 +56,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"datasource-blocks-only": {
@@ -54,7 +72,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"datasource-attributes-and-blocks": {
@@ -70,7 +89,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"datasource-no-attributes-or-blocks": {
@@ -84,7 +104,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema: Must have at least 1 properties"),
 		},
@@ -100,7 +121,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"resource-blocks-only": {
@@ -115,7 +137,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"resource-attributes-and-blocks": {
@@ -131,7 +154,8 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 		},
 		"resource-no-attributes-or-blocks": {
@@ -145,12 +169,13 @@ func TestValidate(t *testing.T) {
   ],
   "provider": {
     "name": "provider"
-  }
+  },
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema: Must have at least 1 properties"),
 		},
 		"example": {
-			document: testReadFile("example.json"),
+			document: testReadFile("./v0.1/example.json"),
 		},
 	}
 

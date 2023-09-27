@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// MapPlanModifiers type defines MapPlanModifier types
 type MapPlanModifiers []MapPlanModifier
 
 // Equal returns true if the given MapPlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the MapPlanModifier entries is
-// equal.
+// length, and each of the MapPlanModifier entries is equal.
 func (v MapPlanModifiers) Equal(other MapPlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v MapPlanModifiers) Equal(other MapPlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v MapPlanModifiers) Equal(other MapPlanModifiers) bool {
 	return true
 }
 
+// MapPlanModifier type defines type and function that provides plan modification
+// functionality.
 type MapPlanModifier struct {
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given MapPlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given MapPlanModifier are equal.
 func (v MapPlanModifier) Equal(other MapPlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

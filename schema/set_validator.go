@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// SetValidators type defines SetValidator types
 type SetValidators []SetValidator
 
 // Equal returns true if the given SetValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the SetValidator entries is
-// equal.
+// length, and each of the SetValidator entries is equal.
 func (v SetValidators) Equal(other SetValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v SetValidators) Equal(other SetValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v SetValidators) Equal(other SetValidators) bool {
 	return true
 }
 
+// SetValidator type defines type and function that provides validation
+// functionality.
 type SetValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given SetValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given SetValidator equal.
 func (v SetValidator) Equal(other SetValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

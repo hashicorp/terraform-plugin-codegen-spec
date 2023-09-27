@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// Int64PlanModifiers type defines Int64PlanModifier types
 type Int64PlanModifiers []Int64PlanModifier
 
 // Equal returns true if the given Int64PlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the Int64PlanModifier entries is
-// equal.
+// length, and each of the Int64PlanModifier entries is equal.
 func (v Int64PlanModifiers) Equal(other Int64PlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v Int64PlanModifiers) Equal(other Int64PlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v Int64PlanModifiers) Equal(other Int64PlanModifiers) bool {
 	return true
 }
 
+// Int64PlanModifier type defines type and function that provides plan modification
+// functionality.
 type Int64PlanModifier struct {
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given Int64PlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given Int64PlanModifier are equal.
 func (v Int64PlanModifier) Equal(other Int64PlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

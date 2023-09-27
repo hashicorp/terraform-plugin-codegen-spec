@@ -3,11 +3,16 @@
 
 package schema
 
+// BoolDefault defines a value, or a custom type for a default boolean value.
 type BoolDefault struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
-	Static *bool          `json:"static,omitempty"`
+
+	// Static defines a specific boolean value.
+	Static *bool `json:"static,omitempty"`
 }
 
+// Equal returns true if all fields of the given BoolDefault are equal.
 func (d *BoolDefault) Equal(other *BoolDefault) bool {
 	if d == nil && other == nil {
 		return true

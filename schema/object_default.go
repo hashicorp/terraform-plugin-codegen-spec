@@ -3,10 +3,13 @@
 
 package schema
 
+// ObjectDefault defines a custom type for a default object value.
 type ObjectDefault struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// Equal returns true if all fields of the given ObjectDefault are equal.
 func (d *ObjectDefault) Equal(other *ObjectDefault) bool {
 	if d == nil && other == nil {
 		return true

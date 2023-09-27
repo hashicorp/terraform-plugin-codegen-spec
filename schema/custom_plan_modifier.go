@@ -9,17 +9,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 )
 
+// CustomPlanModifier defines a custom type for a schema plan modifier.
 type CustomPlanModifier struct {
-	Imports          []code.Import `json:"imports,omitempty"`
-	SchemaDefinition string        `json:"schema_definition"`
+	// Imports defines paths, and optional aliases for imported code.
+	Imports []code.Import `json:"imports,omitempty"`
+
+	// SchemaDefinition defines the plan modifier for use in the schema.
+	SchemaDefinition string `json:"schema_definition"`
 }
 
+// HasImport returns true if the CustomPlanModifier has defined imports.
 func (c *CustomPlanModifier) HasImport() bool {
 	return len(c.Imports) > 0
 }
 
-// Equal returns true if all fields of the given *CustomPlanModifier
-// are equal.
+// Equal returns true if all fields of the given CustomPlanModifier are equal.
 func (c *CustomPlanModifier) Equal(other *CustomPlanModifier) bool {
 	if c == nil && other == nil {
 		return true

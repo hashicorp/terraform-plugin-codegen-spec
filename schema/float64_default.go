@@ -3,11 +3,16 @@
 
 package schema
 
+// Float64Default defines a value, or a custom type for a default 64-bit floating point value.
 type Float64Default struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
-	Static *float64       `json:"static,omitempty"`
+
+	// Static defines a specific 64-bit floating point value.
+	Static *float64 `json:"static,omitempty"`
 }
 
+// Equal returns true if all fields of the given Float64Default are equal.
 func (d *Float64Default) Equal(other *Float64Default) bool {
 	if d == nil && other == nil {
 		return true

@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// Float64Validators type defines Float64Validator types
 type Float64Validators []Float64Validator
 
 // Equal returns true if the given Float64Validators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the Float64Validator entries is
-// equal.
+// length, and each of the Float64Validator entries is equal.
 func (v Float64Validators) Equal(other Float64Validators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v Float64Validators) Equal(other Float64Validators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v Float64Validators) Equal(other Float64Validators) bool {
 	return true
 }
 
+// Float64Validator type defines type and function that provides validation
+// functionality.
 type Float64Validator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given Float64Validator.Custom field
-// is equal.
+// Equal returns true if the fields of the given Float64Validator equal.
 func (v Float64Validator) Equal(other Float64Validator) bool {
 	return v.Custom.Equal(other.Custom)
 }

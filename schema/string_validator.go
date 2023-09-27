@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// StringValidators type defines StringValidator types
 type StringValidators []StringValidator
 
 // Equal returns true if the given StringValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the StringValidator entries is
-// equal.
+// length, and each of the StringValidator entries is equal.
 func (v StringValidators) Equal(other StringValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v StringValidators) Equal(other StringValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v StringValidators) Equal(other StringValidators) bool {
 	return true
 }
 
+// StringValidator type defines type and function that provides validation
+// functionality.
 type StringValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given StringValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given StringValidator equal.
 func (v StringValidator) Equal(other StringValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }
