@@ -25,6 +25,9 @@ type Specification struct {
 
 	// Resources defines a slice of resource.Resource type.
 	Resources resource.Resources `json:"resources,omitempty"`
+
+	// Version defines the Provider Code Specification JSON schema version
+	Version *string `json:"version,omitempty"`
 }
 
 // Validate delegates validation to each of datasource.DataSources,

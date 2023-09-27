@@ -27,6 +27,39 @@ func TestValidate_Version0_1(t *testing.T) {
 			document: []byte{},
 			expected: fmt.Errorf("empty document"),
 		},
+		"nil_version": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  }
+}`),
+			expected: fmt.Errorf(`version is required`),
+		},
+		"empty_version": {
+			document: []byte(`{
+  "datasources": [
+    {
+      "name": "example",
+      "schema": {
+		"attributes": []
+      }
+    }
+  ],
+  "provider": {
+    "name": "provider"
+  },
+  "version": ""
+}`),
+			expected: fmt.Errorf(`version is required`),
+		},
 		"unsupported_version": {
 			document: []byte(`{
   "datasources": [

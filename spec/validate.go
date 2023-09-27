@@ -39,21 +39,26 @@ func Validate(ctx context.Context, document []byte) error {
 
 	documentLoader := gojsonschema.NewBytesLoader(document)
 
+	// We only need to grab the version here, the JSON schema can do the remaining of the validation
 	var versionedDocument struct {
-		Version string `json:"version"`
+		Version *string `json:"version"`
 	}
 
 	if err := json.Unmarshal(document, &versionedDocument); err != nil {
 		return err
 	}
 
+	if versionedDocument.Version == nil || *versionedDocument.Version == "" {
+		return errors.New("version is required")
+	}
+
 	var schemaVersion []byte
 
-	switch versionedDocument.Version {
+	switch *versionedDocument.Version {
 	case Version0_1:
 		schemaVersion = JSONSchemaVersion0_1
 	default:
-		return fmt.Errorf("version: %q is unsupported", versionedDocument.Version)
+		return fmt.Errorf("version: %q is unsupported", *versionedDocument.Version)
 	}
 
 	schemaLoader := gojsonschema.NewBytesLoader(schemaVersion)
