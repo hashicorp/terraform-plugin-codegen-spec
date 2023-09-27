@@ -12,10 +12,19 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/resource"
 )
 
+// Specification defines the data source(s), provider, and resource(s) for
+// a [Terraform provider].
+//
+// [Terraform provider]: https://developer.hashicorp.com/terraform/language/providers
 type Specification struct {
+	// DataSources defines a slice of datasource.DataSource type.
 	DataSources datasource.DataSources `json:"datasources,omitempty"`
-	Provider    *provider.Provider     `json:"provider,omitempty"`
-	Resources   resource.Resources     `json:"resources,omitempty"`
+
+	// Provider defines an instance of the provider.Provider type.
+	Provider *provider.Provider `json:"provider,omitempty"`
+
+	// Resources defines a slice of resource.Resource type.
+	Resources resource.Resources `json:"resources,omitempty"`
 }
 
 // Validate delegates validation to each of datasource.DataSources,

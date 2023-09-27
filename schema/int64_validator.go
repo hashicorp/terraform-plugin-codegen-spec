@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// Int64Validators type defines Int64Validator types
 type Int64Validators []Int64Validator
 
 // Equal returns true if the given Int64Validators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the Int64Validator entries is
-// equal.
+// length, and each of the Int64Validator entries is equal.
 func (v Int64Validators) Equal(other Int64Validators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v Int64Validators) Equal(other Int64Validators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v Int64Validators) Equal(other Int64Validators) bool {
 	return true
 }
 
+// Int64Validator type defines type and function that provides validation
+// functionality.
 type Int64Validator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given Int64Validator.Custom field
-// is equal.
+// Equal returns true if the fields of the given Int64Validator equal.
 func (v Int64Validator) Equal(other Int64Validator) bool {
 	return v.Custom.Equal(other.Custom)
 }

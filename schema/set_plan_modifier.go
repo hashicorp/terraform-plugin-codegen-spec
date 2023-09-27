@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// SetPlanModifiers type defines SetPlanModifier types
 type SetPlanModifiers []SetPlanModifier
 
 // Equal returns true if the given SetPlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the SetPlanModifier entries is
-// equal.
+// length, and each of the SetPlanModifier entries is equal.
 func (v SetPlanModifiers) Equal(other SetPlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v SetPlanModifiers) Equal(other SetPlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v SetPlanModifiers) Equal(other SetPlanModifiers) bool {
 	return true
 }
 
+// SetPlanModifier type defines type and function that provides plan modification
+// functionality.
 type SetPlanModifier struct {
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given SetPlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given SetPlanModifier are equal.
 func (v SetPlanModifier) Equal(other SetPlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

@@ -3,7 +3,15 @@
 
 package spec
 
-import _ "embed"
+import (
+	_ "embed"
+)
 
-//go:embed schema.json
-var schema []byte
+const (
+	Version0_1 = "0.1"
+)
+
+var (
+	//go:embed v0.1/schema.json
+	JSONSchemaVersion0_1 []byte
+)

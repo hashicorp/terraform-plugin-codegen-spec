@@ -3,10 +3,14 @@
 
 package schema
 
+// NumberDefault defines a custom type for a default generic
+// number with up to 512 bits of floating point or integer precision.
 type NumberDefault struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// Equal returns true if all fields of the given Int64Default are equal.
 func (d *NumberDefault) Equal(other *NumberDefault) bool {
 	if d == nil && other == nil {
 		return true

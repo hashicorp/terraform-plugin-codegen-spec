@@ -3,10 +3,13 @@
 
 package schema
 
+// ListDefault defines a custom type for a default list value.
 type ListDefault struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// Equal returns true if all fields of the given ListDefault are equal.
 func (d *ListDefault) Equal(other *ListDefault) bool {
 	if d == nil && other == nil {
 		return true

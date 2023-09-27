@@ -9,15 +9,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 )
 
+// CustomDefault defines a custom type for a default schema value.
 type CustomDefault struct {
-	Imports          []code.Import `json:"imports,omitempty"`
-	SchemaDefinition string        `json:"schema_definition"`
+	// Imports defines paths, and optional aliases for imported code.
+	Imports []code.Import `json:"imports,omitempty"`
+
+	// SchemaDefinition defines the default for use in the schema.
+	SchemaDefinition string `json:"schema_definition"`
 }
 
+// HasImport returns true if the CustomDefault has defined imports.
 func (c *CustomDefault) HasImport() bool {
 	return len(c.Imports) > 0
 }
 
+// Equal returns true if all fields of the given CustomDefault are equal.
 func (c *CustomDefault) Equal(other *CustomDefault) bool {
 	if c == nil && other == nil {
 		return true

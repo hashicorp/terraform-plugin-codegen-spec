@@ -9,13 +9,18 @@ import (
 	"fmt"
 )
 
+// ValidateRequest defines the Path of the resource that is
+// being validated.
 type ValidateRequest struct {
 	Path string
 }
 
+// Resource defines an individual resource.
 type Resource struct {
+	// Name is the string identifier for the resource.
 	Name string `json:"name"`
 
+	// Schema defines the Attributes and Blocks for the data source.
 	Schema *Schema `json:"schema,omitempty"`
 }
 
@@ -30,8 +35,10 @@ func (r Resource) Validate(ctx context.Context, req ValidateRequest) error {
 	return r.Schema.Validate(ctx, schemaValidateRequest)
 }
 
+// ResourcesValidateRequest defines the request sent during validation of Resources.
 type ResourcesValidateRequest struct{}
 
+// Resources type defines Resource types.
 type Resources []Resource
 
 // Validate checks for duplicated data source names and delegates to Resource.Validate

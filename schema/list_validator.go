@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// ListValidators type defines ListValidator types
 type ListValidators []ListValidator
 
 // Equal returns true if the given ListValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the ListValidator entries is
-// equal.
+// length, and each of the ListValidator entries is equal.
 func (v ListValidators) Equal(other ListValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v ListValidators) Equal(other ListValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v ListValidators) Equal(other ListValidators) bool {
 	return true
 }
 
+// ListValidator type defines type and function that provides validation
+// functionality.
 type ListValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given ListValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given ListValidator equal.
 func (v ListValidator) Equal(other ListValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

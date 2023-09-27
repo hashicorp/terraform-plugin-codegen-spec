@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// BoolPlanModifiers type defines BoolPlanModifier types
 type BoolPlanModifiers []BoolPlanModifier
 
 // Equal returns true if the given BoolPlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the BoolPlanModifier entries is
-// equal.
+// length, and each of the BoolPlanModifier entries is equal.
 func (v BoolPlanModifiers) Equal(other BoolPlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v BoolPlanModifiers) Equal(other BoolPlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,14 @@ func (v BoolPlanModifiers) Equal(other BoolPlanModifiers) bool {
 	return true
 }
 
+// BoolPlanModifier type defines type and function that provides plan modification
+// functionality.
 type BoolPlanModifier struct {
+	// Custom defines a schema definition, and optional imports.
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given BoolPlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given BoolPlanModifier are equal.
 func (v BoolPlanModifier) Equal(other BoolPlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

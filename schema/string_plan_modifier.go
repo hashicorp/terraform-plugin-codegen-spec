@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// StringPlanModifiers type defines StringPlanModifier types
 type StringPlanModifiers []StringPlanModifier
 
 // Equal returns true if the given StringPlanModifiers is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the StringPlanModifier entries is
-// equal.
+// length, and each of the StringPlanModifier entries is equal.
 func (v StringPlanModifiers) Equal(other StringPlanModifiers) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v StringPlanModifiers) Equal(other StringPlanModifiers) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v StringPlanModifiers) Equal(other StringPlanModifiers) bool {
 	return true
 }
 
+// StringPlanModifier type defines type and function that provides plan modification
+// functionality.
 type StringPlanModifier struct {
 	Custom *CustomPlanModifier `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given StringPlanModifier.Custom field
-// is equal.
+// Equal returns true if the fields of the given StringPlanModifier are equal.
 func (v StringPlanModifier) Equal(other StringPlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
 }

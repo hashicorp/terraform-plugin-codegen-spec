@@ -9,13 +9,18 @@ import (
 	"fmt"
 )
 
+// ValidateRequest defines the Path of the data source that is
+// being validated.
 type ValidateRequest struct {
 	Path string
 }
 
+// DataSource defines an individual data source.
 type DataSource struct {
+	// Name is the string identifier for the data source.
 	Name string `json:"name"`
 
+	// Schema defines the Attributes and Blocks for the data source.
 	Schema *Schema `json:"schema,omitempty"`
 }
 
@@ -30,8 +35,10 @@ func (r DataSource) Validate(ctx context.Context, req ValidateRequest) error {
 	return r.Schema.Validate(ctx, schemaValidateRequest)
 }
 
+// DataSourcesValidateRequest defines the request sent during validation of DataSources.
 type DataSourcesValidateRequest struct{}
 
+// DataSources type defines DataSource types.
 type DataSources []DataSource
 
 // Validate checks for duplicated data source names and delegates to DataSource.Validate

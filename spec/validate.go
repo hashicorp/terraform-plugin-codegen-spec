@@ -7,36 +7,12 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 
 	"github.com/xeipuuv/gojsonschema"
 )
 
-func Validate(ctx context.Context, document []byte) error {
-	if len(document) == 0 {
-		return errors.New("empty document")
-	}
-
-	documentLoader := gojsonschema.NewBytesLoader(document)
-	schemaLoader := gojsonschema.NewBytesLoader(schema)
-
-	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
-
-	if err != nil {
-		return err
-	}
-
-	var errs error
-
-	if !result.Valid() {
-		for _, resultError := range result.Errors() {
-			errs = errors.Join(errors.New(resultError.String()))
-		}
-	}
-
-	return errs
-}
-
-// Parse returns a Specification from the JSON document contents or any validation errors.
+// Parse returns a Specification from the JSON document contents, or any validation errors.
 func Parse(ctx context.Context, document []byte) (Specification, error) {
 	if err := Validate(ctx, document); err != nil {
 		return Specification{}, err
@@ -53,4 +29,48 @@ func Parse(ctx context.Context, document []byte) (Specification, error) {
 	}
 
 	return spec, nil
+}
+
+// Validate loads the schema version specified in the document, and validates the document.
+func Validate(ctx context.Context, document []byte) error {
+	if len(document) == 0 {
+		return errors.New("empty document")
+	}
+
+	documentLoader := gojsonschema.NewBytesLoader(document)
+
+	var versionedDocument struct {
+		Version string `json:"version"`
+	}
+
+	if err := json.Unmarshal(document, &versionedDocument); err != nil {
+		return err
+	}
+
+	var schemaVersion []byte
+
+	switch versionedDocument.Version {
+	case Version0_1:
+		schemaVersion = JSONSchemaVersion0_1
+	default:
+		return fmt.Errorf("version: %q is unsupported", versionedDocument.Version)
+	}
+
+	schemaLoader := gojsonschema.NewBytesLoader(schemaVersion)
+
+	result, err := gojsonschema.Validate(schemaLoader, documentLoader)
+
+	if err != nil {
+		return err
+	}
+
+	var errs error
+
+	if !result.Valid() {
+		for _, resultError := range result.Errors() {
+			errs = errors.Join(errors.New(resultError.String()))
+		}
+	}
+
+	return errs
 }

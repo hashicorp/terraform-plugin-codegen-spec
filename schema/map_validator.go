@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// MapValidators type defines MapValidator types
 type MapValidators []MapValidator
 
 // Equal returns true if the given MapValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the MapValidator entries is
-// equal.
+// length, and each of the MapValidator entries is equal.
 func (v MapValidators) Equal(other MapValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v MapValidators) Equal(other MapValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v MapValidators) Equal(other MapValidators) bool {
 	return true
 }
 
+// MapValidator type defines type and function that provides validation
+// functionality.
 type MapValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given MapValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given MapValidator equal.
 func (v MapValidator) Equal(other MapValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

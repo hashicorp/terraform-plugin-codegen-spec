@@ -5,12 +5,11 @@ package schema
 
 import "sort"
 
+// NumberValidators type defines NumberValidator types
 type NumberValidators []NumberValidator
 
 // Equal returns true if the given NumberValidators is the same
-// length, and after sorting and removal of any nil entries,
-// is the same length, and each of the NumberValidator entries is
-// equal.
+// length, and each of the NumberValidator entries is equal.
 func (v NumberValidators) Equal(other NumberValidators) bool {
 	if v == nil && other == nil {
 		return true
@@ -42,6 +41,7 @@ func (v NumberValidators) Equal(other NumberValidators) bool {
 		}
 	}
 
+	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
@@ -65,12 +65,13 @@ func (v NumberValidators) Equal(other NumberValidators) bool {
 	return true
 }
 
+// NumberValidator type defines type and function that provides validation
+// functionality.
 type NumberValidator struct {
 	Custom *CustomValidator `json:"custom,omitempty"`
 }
 
-// Equal returns true if the given NumberValidator.Custom field
-// is equal.
+// Equal returns true if the fields of the given NumberValidator equal.
 func (v NumberValidator) Equal(other NumberValidator) bool {
 	return v.Custom.Equal(other.Custom)
 }

@@ -63,7 +63,7 @@ func TestSpecification_JSONMarshal(t *testing.T) {
 	}
 }
 
-func TestSpecification_JSONUnmarshal(t *testing.T) {
+func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -72,7 +72,7 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("example.json"),
+			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -113,18 +113,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "bool_attribute_associated_external_type",
-									Bool: &datasource.BoolAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -144,18 +132,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "float64_attribute_associated_external_type",
-									Float64: &datasource.Float64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "int64_attribute",
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -172,18 +148,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
-									},
-								},
-								{
-									Name: "int64_attribute_associated_external_type",
-									Int64: &datasource.Int64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -281,21 +245,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "list_attribute_associated_external_type",
-									List: &datasource.ListAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -334,21 +283,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
-										},
-									},
-								},
-								{
-									Name: "map_attribute_associated_external_type",
-									Map: &datasource.MapAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
 										},
 									},
 								},
@@ -407,18 +341,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
-									},
-								},
-								{
-									Name: "number_attribute_associated_external_type",
-									Number: &datasource.NumberAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -532,24 +454,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 														},
 													},
 												},
-											},
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
-									Name: "object_attribute_associated_external_type",
-									Object: &datasource.ObjectAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										AttributeTypes: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -691,21 +595,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "set_attribute_associated_external_type",
-									Set: &datasource.SetAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &datasource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -841,18 +730,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
-									},
-								},
-								{
-									Name: "string_attribute_associated_external_type",
-									String: &datasource.StringAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -1127,18 +1004,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
-								Name: "bool_attribute_associated_external_type",
-								Bool: &provider.BoolAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -1158,18 +1023,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
-								Name: "float64_attribute_associated_external_type",
-								Float64: &provider.Float64Attribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
 								Name: "int64_attribute",
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
@@ -1186,18 +1039,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
-								},
-							},
-							{
-								Name: "int64_attribute_associated_external_type",
-								Int64: &provider.Int64Attribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -1295,21 +1136,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
-								Name: "list_attribute_associated_external_type",
-								List: &provider.ListAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
-									},
-								},
-							},
-							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -1348,21 +1174,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
-									},
-								},
-							},
-							{
-								Name: "map_attribute_associated_external_type",
-								Map: &provider.MapAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
 									},
 								},
 							},
@@ -1421,18 +1232,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
-								},
-							},
-							{
-								Name: "number_attribute_associated_external_type",
-								Number: &provider.NumberAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -1546,24 +1345,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													},
 												},
 											},
-										},
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
-								Name: "object_attribute_associated_external_type",
-								Object: &provider.ObjectAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									AttributeTypes: []schema.ObjectAttributeType{
-										{
-											Name:   "obj_string_attr",
-											String: &schema.StringType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -1705,21 +1486,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 								},
 							},
 							{
-								Name: "set_attribute_associated_external_type",
-								Set: &provider.SetAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
-									},
-								},
-							},
-							{
 								Name: "set_nested_bool_attribute",
 								SetNested: &provider.SetNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -1855,18 +1621,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
-								},
-							},
-							{
-								Name: "string_attribute_associated_external_type",
-								String: &provider.StringAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 						},
@@ -2175,18 +1929,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "bool_attribute_associated_external_type",
-									Bool: &resource.BoolAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Optional,
-									},
-								},
-								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2215,18 +1957,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "float64_attribute_associated_external_type",
-									Float64: &resource.Float64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "int64_attribute",
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2252,18 +1982,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Default: &schema.Int64Default{
 											Static: pointer(int64(123)),
 										},
-									},
-								},
-								{
-									Name: "int64_attribute_associated_external_type",
-									Int64: &resource.Int64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -2386,21 +2104,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "list_attribute_associated_external_type",
-									List: &resource.ListAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2439,21 +2142,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
-										},
-									},
-								},
-								{
-									Name: "map_attribute_associated_external_type",
-									Map: &resource.MapAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
 										},
 									},
 								},
@@ -2531,18 +2219,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
-									},
-								},
-								{
-									Name: "number_attribute_associated_external_type",
-									Number: &resource.NumberAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -2656,24 +2332,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 														},
 													},
 												},
-											},
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
-									Name: "object_attribute_associated_external_type",
-									Object: &resource.ObjectAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										AttributeTypes: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -2840,21 +2498,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 									},
 								},
 								{
-									Name: "set_attribute_associated_external_type",
-									Set: &resource.SetAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &resource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2999,18 +2642,6 @@ func TestSpecification_JSONUnmarshal(t *testing.T) {
 										Default: &schema.StringDefault{
 											Static: pointer("example"),
 										},
-									},
-								},
-								{
-									Name: "string_attribute_associated_external_type",
-									String: &resource.StringAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -5626,7 +5257,7 @@ func TestSpecification_Validate_Resources(t *testing.T) {
 	}
 }
 
-func TestSpecification_Generate(t *testing.T) {
+func TestSpecification_Generate_Version0_1(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]struct {
@@ -5635,7 +5266,7 @@ func TestSpecification_Generate(t *testing.T) {
 		expectedError error
 	}{
 		"example": {
-			data: testReadFile("example.json"),
+			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
 				DataSources: datasource.DataSources{
 					{
@@ -5676,18 +5307,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "bool_attribute_associated_external_type",
-									Bool: &datasource.BoolAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5707,18 +5326,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "float64_attribute_associated_external_type",
-									Float64: &datasource.Float64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "int64_attribute",
 									Int64: &datasource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5735,18 +5342,6 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.Int64Type",
 											ValueType: "basetypes.Int64Value",
 										},
-									},
-								},
-								{
-									Name: "int64_attribute_associated_external_type",
-									Int64: &datasource.Int64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -5844,21 +5439,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "list_attribute_associated_external_type",
-									List: &datasource.ListAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5897,21 +5477,6 @@ func TestSpecification_Generate(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
-										},
-									},
-								},
-								{
-									Name: "map_attribute_associated_external_type",
-									Map: &datasource.MapAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
 										},
 									},
 								},
@@ -5970,18 +5535,6 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.NumberType",
 											ValueType: "basetypes.NumberValue",
 										},
-									},
-								},
-								{
-									Name: "number_attribute_associated_external_type",
-									Number: &datasource.NumberAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -6095,24 +5648,6 @@ func TestSpecification_Generate(t *testing.T) {
 														},
 													},
 												},
-											},
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
-									Name: "object_attribute_associated_external_type",
-									Object: &datasource.ObjectAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										AttributeTypes: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -6254,21 +5789,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "set_attribute_associated_external_type",
-									Set: &datasource.SetAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &datasource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6404,18 +5924,6 @@ func TestSpecification_Generate(t *testing.T) {
 											Type:      "basetypes.StringType",
 											ValueType: "basetypes.StringValue",
 										},
-									},
-								},
-								{
-									Name: "string_attribute_associated_external_type",
-									String: &datasource.StringAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
@@ -6690,18 +6198,6 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
-								Name: "bool_attribute_associated_external_type",
-								Bool: &provider.BoolAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -6721,18 +6217,6 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
-								Name: "float64_attribute_associated_external_type",
-								Float64: &provider.Float64Attribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
 								Name: "int64_attribute",
 								Int64: &provider.Int64Attribute{
 									OptionalRequired: schema.Optional,
@@ -6749,18 +6233,6 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.Int64Type",
 										ValueType: "basetypes.Int64Value",
 									},
-								},
-							},
-							{
-								Name: "int64_attribute_associated_external_type",
-								Int64: &provider.Int64Attribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -6858,21 +6330,6 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
-								Name: "list_attribute_associated_external_type",
-								List: &provider.ListAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
-									},
-								},
-							},
-							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -6911,21 +6368,6 @@ func TestSpecification_Generate(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
-									},
-								},
-							},
-							{
-								Name: "map_attribute_associated_external_type",
-								Map: &provider.MapAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
 									},
 								},
 							},
@@ -6984,18 +6426,6 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.NumberType",
 										ValueType: "basetypes.NumberValue",
 									},
-								},
-							},
-							{
-								Name: "number_attribute_associated_external_type",
-								Number: &provider.NumberAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 							{
@@ -7109,24 +6539,6 @@ func TestSpecification_Generate(t *testing.T) {
 													},
 												},
 											},
-										},
-									},
-									OptionalRequired: schema.Optional,
-								},
-							},
-							{
-								Name: "object_attribute_associated_external_type",
-								Object: &provider.ObjectAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									AttributeTypes: []schema.ObjectAttributeType{
-										{
-											Name:   "obj_string_attr",
-											String: &schema.StringType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -7268,21 +6680,6 @@ func TestSpecification_Generate(t *testing.T) {
 								},
 							},
 							{
-								Name: "set_attribute_associated_external_type",
-								Set: &provider.SetAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
-									ElementType: schema.ElementType{
-										String: &schema.StringType{},
-									},
-								},
-							},
-							{
 								Name: "set_nested_bool_attribute",
 								SetNested: &provider.SetNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -7418,18 +6815,6 @@ func TestSpecification_Generate(t *testing.T) {
 										Type:      "basetypes.StringType",
 										ValueType: "basetypes.StringValue",
 									},
-								},
-							},
-							{
-								Name: "string_attribute_associated_external_type",
-								String: &provider.StringAttribute{
-									AssociatedExternalType: &schema.AssociatedExternalType{
-										Import: &code.Import{
-											Path: "example.com/apisdk",
-										},
-										Type: "*apisdk.Type",
-									},
-									OptionalRequired: schema.Optional,
 								},
 							},
 						},
@@ -7738,18 +7123,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "bool_attribute_associated_external_type",
-									Bool: &resource.BoolAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Optional,
-									},
-								},
-								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -7778,18 +7151,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "float64_attribute_associated_external_type",
-									Float64: &resource.Float64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
 									Name: "int64_attribute",
 									Int64: &resource.Int64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -7815,18 +7176,6 @@ func TestSpecification_Generate(t *testing.T) {
 										Default: &schema.Int64Default{
 											Static: pointer(int64(123)),
 										},
-									},
-								},
-								{
-									Name: "int64_attribute_associated_external_type",
-									Int64: &resource.Int64Attribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -7949,21 +7298,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "list_attribute_associated_external_type",
-									List: &resource.ListAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -8002,21 +7336,6 @@ func TestSpecification_Generate(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
-										},
-									},
-								},
-								{
-									Name: "map_attribute_associated_external_type",
-									Map: &resource.MapAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
 										},
 									},
 								},
@@ -8094,18 +7413,6 @@ func TestSpecification_Generate(t *testing.T) {
 												SchemaDefinition: "numberdefault.StaticBigFloat(big.NewFloat(123.45))",
 											},
 										},
-									},
-								},
-								{
-									Name: "number_attribute_associated_external_type",
-									Number: &resource.NumberAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 								{
@@ -8219,24 +7526,6 @@ func TestSpecification_Generate(t *testing.T) {
 														},
 													},
 												},
-											},
-										},
-										ComputedOptionalRequired: schema.Computed,
-									},
-								},
-								{
-									Name: "object_attribute_associated_external_type",
-									Object: &resource.ObjectAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										AttributeTypes: []schema.ObjectAttributeType{
-											{
-												Name:   "obj_string_attr",
-												String: &schema.StringType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -8403,21 +7692,6 @@ func TestSpecification_Generate(t *testing.T) {
 									},
 								},
 								{
-									Name: "set_attribute_associated_external_type",
-									Set: &resource.SetAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
-										ElementType: schema.ElementType{
-											String: &schema.StringType{},
-										},
-									},
-								},
-								{
 									Name: "set_nested_bool_attribute",
 									SetNested: &resource.SetNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -8562,18 +7836,6 @@ func TestSpecification_Generate(t *testing.T) {
 										Default: &schema.StringDefault{
 											Static: pointer("example"),
 										},
-									},
-								},
-								{
-									Name: "string_attribute_associated_external_type",
-									String: &resource.StringAttribute{
-										AssociatedExternalType: &schema.AssociatedExternalType{
-											Import: &code.Import{
-												Path: "example.com/apisdk",
-											},
-											Type: "*apisdk.Type",
-										},
-										ComputedOptionalRequired: schema.Computed,
 									},
 								},
 							},
