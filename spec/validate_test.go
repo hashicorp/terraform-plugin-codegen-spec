@@ -183,7 +183,8 @@ func TestValidate_Version0_1(t *testing.T) {
     {
       "name": "Example"
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -191,7 +192,8 @@ func TestValidate_Version0_1(t *testing.T) {
 			document: []byte(`{
   "provider": {
     "name": "Example"
-  }
+  },
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("provider.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -201,7 +203,8 @@ func TestValidate_Version0_1(t *testing.T) {
     {
       "name": "Example"
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -221,7 +224,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -241,7 +245,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -261,7 +266,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -284,7 +290,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -305,7 +312,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -325,7 +333,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -348,7 +357,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -369,7 +379,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -389,7 +400,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -415,7 +427,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -438,7 +451,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -459,7 +473,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -479,7 +494,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -499,7 +515,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -518,7 +535,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -538,7 +556,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("datasources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -556,7 +575,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -574,7 +594,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -592,7 +613,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -613,7 +635,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -632,7 +655,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -650,7 +674,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -671,7 +696,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -690,7 +716,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -708,7 +735,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -732,7 +760,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -753,7 +782,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -772,7 +802,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -790,7 +821,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -808,7 +840,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -825,7 +858,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -843,7 +877,8 @@ func TestValidate_Version0_1(t *testing.T) {
           }
         ]
       }
-    }
+    },
+  "version": "0.1"
   }`),
 			expected: fmt.Errorf("provider.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -863,7 +898,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -883,7 +919,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -903,7 +940,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -926,7 +964,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -947,7 +986,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -967,7 +1007,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -990,7 +1031,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1011,7 +1053,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1031,7 +1074,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1057,7 +1101,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1080,7 +1125,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1101,7 +1147,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1121,7 +1168,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1141,7 +1189,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1160,7 +1209,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.blocks.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
@@ -1180,7 +1230,8 @@ func TestValidate_Version0_1(t *testing.T) {
         ]
       }
     }
-  ]
+  ],
+  "version": "0.1"
 }`),
 			expected: fmt.Errorf("resources.0.schema.attributes.0.name: Does not match pattern '^[a-z_][a-z0-9_]*$'"),
 		},
