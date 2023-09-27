@@ -74,7 +74,7 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 		"example": {
 			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
-				Version: pointer("0.1"),
+				Version: spec.Version0_1,
 				DataSources: datasource.DataSources{
 					{
 						Name: "datasource",
@@ -5269,7 +5269,7 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 		"example": {
 			data: testReadFile("./v0.1/example.json"),
 			expected: spec.Specification{
-				Version: pointer("0.1"),
+				Version: spec.Version0_1,
 				DataSources: datasource.DataSources{
 					{
 						Name: "datasource",
