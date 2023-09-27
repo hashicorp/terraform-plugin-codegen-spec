@@ -110,7 +110,7 @@ type NestedAttributeObject struct {
 // BoolAttribute represents a Schema attribute that is a boolean.
 type BoolAttribute struct {
 	// OptionalRequired indicates whether the attribute is required
-	// (`required`), or optional.
+	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
 
 	// CustomType defines a custom type and value for the attribute.
