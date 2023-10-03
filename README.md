@@ -81,3 +81,7 @@ A corresponding specification (e.g., [example.json](./spec/v0.1/example.json)) c
 Details of each of the fields defined within the JSON schema are available in the [documentation](https://developer.hashicorp.com//terraform/plugin/code-generation/specification). 
 
 Refer to [example.json](./spec/v0.1/example.json) for an example specification.
+
+## License
+
+Refer to [Mozilla Public License v2.0](./LICENSE).
