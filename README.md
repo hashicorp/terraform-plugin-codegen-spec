@@ -14,7 +14,7 @@ A specification can be generated from a declarative API model, such as an OpenAP
 
 ### Schema
 
-Schema versioning (e.g., [v0.1](./spec/v0.1/first.schema.json)) follows the convention of using a _MAJOR.MINOR_ version, as used by the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
+Schema versioning (e.g., [v0.1](./spec/v0.1/schema.json)) follows the convention of using a _MAJOR.MINOR_ version, as used by the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
 
 ### Tags & Releases
 
@@ -22,7 +22,7 @@ Tags and releases follow the convention of [semantic versioning](https://semver.
 
 ## Usage 
 
-The JSON schema (e.g., [v0.1](./spec/v0.1/first.schema.json)) defines the structure of a specification. For example:
+The JSON schema (e.g., [v0.1](./spec/v0.1/schema.json)) defines the structure of a specification. For example:
 
 ```json
 {
