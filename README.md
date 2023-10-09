@@ -1,20 +1,22 @@
-# terraform-plugin-codegen-spec
+# Terraform Provider Code Specification
 
-_Experimental: This code is under active development and not intended for production usage._
+> _[Terraform Provider Code Generation](https://developer.hashicorp.com/terraform/plugin/code-generation) is currently in tech preview._
 
 ## Overview
 
-The Terraform Plugin Provider Code Generation Specification is a versioned interface which is defined with a JSON schema, and has associated Go language bindings.
+The Terraform Provider Code Specification is a versioned interface which is defined with a JSON schema, and has associated Go language bindings. The specification defines a [Terraform Provider](https://developer.hashicorp.com/terraform/plugin) representation which can be used for the generation of Go code for use in a provider, for example, with the [Plugin Framework Code Generator](https://developer.hashicorp.com/terraform/plugin/code-generation/framework-generator).
 
-The specification defines a Terraform Plugin Provider representation which can be used for the generation of Go code for use in a provider.
+A specification can be generated from a declarative API model, such as OpenAPI with the [OpenAPI Provider Spec Generator](https://developer.hashicorp.com/terraform/plugin/code-generation/openapi-generator).
 
-A specification can be generated from a declarative API model, such as an OpenAPI Specification.
+## Documentation
+
+Full details of each of the fields defined within the JSON schema are available on the HashiCorp Developer site: https://developer.hashicorp.com//terraform/plugin/code-generation/specification.
 
 ## Versioning
 
 ### Schema
 
-Schema versioning (e.g., [v0.1](./spec/v0.1/schema.json)) follows the convention of using a _MAJOR.MINOR_ version, as used by the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
+Schema versioning (e.g., [v0.1](./spec/v0.1/schema.json)) follows the convention of using a _MAJOR.MINOR_ version, similar to the versioning used by [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
 
 ### Tags & Releases
 
@@ -77,8 +79,6 @@ A corresponding specification (e.g., [example.json](./spec/v0.1/example.json)) c
   ]
 }
 ```
-
-Details of each of the fields defined within the JSON schema are available in the [documentation](https://developer.hashicorp.com//terraform/plugin/code-generation/specification). 
 
 Refer to [example.json](./spec/v0.1/example.json) for an example specification.
 
