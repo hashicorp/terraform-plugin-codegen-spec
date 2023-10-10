@@ -16,7 +16,7 @@ Full details of each of the fields defined within the JSON schema are available 
 
 ### Schema
 
-Schema versioning (e.g., [v0.1](./spec/v0.1/schema.json)) follows the convention of using a _MAJOR.MINOR_ version, similar to the versioning used by [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
+Schema versioning (e.g., [0.1](./spec/v0.1/schema.json)) follows the convention of using a _MAJOR.MINOR_ version, similar to the versioning used by [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/schemas/v3.1/schema.json) for example.
 
 ### Tags & Releases
 
@@ -24,7 +24,7 @@ Tags and releases follow the convention of [semantic versioning](https://semver.
 
 ## Usage 
 
-The JSON schema (e.g., [v0.1](./spec/v0.1/schema.json)) defines the structure of a specification. For example:
+A JSON schema (e.g., [0.1](./spec/v0.1/schema.json)) defines the structure of a specification implementation by provider developers. For example:
 
 ```json
 {
@@ -60,7 +60,7 @@ The JSON schema (e.g., [v0.1](./spec/v0.1/schema.json)) defines the structure of
 }
 ```
 
-A corresponding specification (e.g., [example.json](./spec/v0.1/example.json)) could look as follows:
+A corresponding specification implementation (e.g., [example.json](./spec/v0.1/example.json)) could look as follows:
 
 ```json
 {
