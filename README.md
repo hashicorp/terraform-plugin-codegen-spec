@@ -49,7 +49,7 @@ A JSON schema (e.g., [0.1](./spec/v0.1/schema.json)) defines the structure of a 
     },
     "version": {
       "type": "string",
-      "minLength": 1
+      "minLength": 3
     }
   },
   "required": [
