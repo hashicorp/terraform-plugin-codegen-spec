@@ -20,7 +20,7 @@
     },
     "version": {
       "type": "string",
-      "minLength": 1
+      "minLength": 3
     }
   },
   "required": [
