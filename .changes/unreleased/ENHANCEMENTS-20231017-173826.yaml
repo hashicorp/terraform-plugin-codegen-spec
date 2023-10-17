@@ -1,0 +1,6 @@
+kind: ENHANCEMENTS
+body: Add associated external types for Bool, Float64, Int64, Number, and String Attributes
+  for data sources, provider, and resources
+time: 2023-10-17T17:38:26.139188+01:00
+custom:
+  Issue: "62"
