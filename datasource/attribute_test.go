@@ -13,6 +13,8 @@ import (
 )
 
 func TestAttributes_Validate(t *testing.T) {
+	t.Parallel()
+
 	testCases := map[string]struct {
 		attributes    datasource.Attributes
 		request       datasource.AttributeValidateRequest

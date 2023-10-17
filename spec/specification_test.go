@@ -3095,6 +3095,8 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 }
 
 func TestSpecification_Validate_DataSources(t *testing.T) {
+	t.Parallel()
+
 	testCases := map[string]struct {
 		spec          spec.Specification
 		expectedError error
@@ -3904,6 +3906,8 @@ func TestSpecification_Validate_DataSources(t *testing.T) {
 }
 
 func TestSpecification_Validate_Provider(t *testing.T) {
+	t.Parallel()
+
 	testCases := map[string]struct {
 		spec          spec.Specification
 		expectedError error
@@ -4630,6 +4634,8 @@ func TestSpecification_Validate_Provider(t *testing.T) {
 }
 
 func TestSpecification_Validate_Resources(t *testing.T) {
+	t.Parallel()
+
 	testCases := map[string]struct {
 		spec          spec.Specification
 		expectedError error
