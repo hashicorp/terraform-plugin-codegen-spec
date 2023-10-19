@@ -109,6 +109,9 @@ type NestedAttributeObject struct {
 
 // BoolAttribute represents a Schema attribute that is a boolean.
 type BoolAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a BoolAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// ComputedOptionalRequired indicates whether the attribute is required
 	// (`required`), optional (`optional`), computed (`computed`), or
 	// computed and optional (`computed_optional`).
@@ -139,6 +142,9 @@ type BoolAttribute struct {
 // Use Int64Attribute for a 64-bit integer attribute, or NumberAttribute
 // for a 512-bit generic number attribute.
 type Float64Attribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a Float64Attribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// ComputedOptionalRequired indicates whether the attribute is required
 	// (`required`), optional (`optional`), computed (`computed`), or
 	// computed and optional (`computed_optional`).
@@ -169,6 +175,9 @@ type Float64Attribute struct {
 // Use Float64Attribute for a 64-bit floating point number, or
 // NumberAttribute for a 512-bit generic number attribute.
 type Int64Attribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a Int64Attribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// ComputedOptionalRequired indicates whether the attribute is required
 	// (`required`), optional (`optional`), computed (`computed`), or
 	// computed and optional (`computed_optional`).
@@ -318,6 +327,9 @@ type MapNestedAttribute struct {
 // Use Float64Attribute for a 64-bit floating point number attribute,
 // or Int64Attribute for a 64-bit integer number attribute.
 type NumberAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a NumberAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// ComputedOptionalRequired indicates whether the attribute is required
 	// (`required`), optional (`optional`), computed (`computed`), or
 	// computed and optional (`computed_optional`).
@@ -464,6 +476,9 @@ type SingleNestedAttribute struct {
 
 // StringAttribute represents a Schema attribute that is a string.
 type StringAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a StringAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// ComputedOptionalRequired indicates whether the attribute is required
 	// (`required`), optional (`optional`), computed (`computed`), or
 	// computed and optional (`computed_optional`).

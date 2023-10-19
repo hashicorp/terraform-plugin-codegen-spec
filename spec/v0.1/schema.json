@@ -691,6 +691,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -731,6 +734,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -771,6 +777,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1024,6 +1033,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1222,46 +1234,6 @@
         "set_nested"
       ]
     },
-    "datasource_string_attribute": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "$ref": "#/$defs/valid_identifier"
-        },
-        "string": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "computed_optional_required": {
-              "$ref": "#/$defs/schema_computed_optional_required"
-            },
-            "custom_type": {
-              "$ref": "#/$defs/schema_custom_type"
-            },
-            "deprecation_message": {
-              "type": "string"
-            },
-            "description": {
-              "type": "string"
-            },
-            "sensitive": {
-              "type": "boolean"
-            },
-            "validators": {
-              "$ref": "#/$defs/schema_string_validators"
-            }
-          },
-          "required": [
-            "computed_optional_required"
-          ]
-        }
-      },
-      "required": [
-        "name",
-        "string"
-      ]
-    },
     "datasource_single_nested_attribute": {
       "type": "object",
       "additionalProperties": false,
@@ -1348,6 +1320,49 @@
         "single_nested"
       ]
     },
+    "datasource_string_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/valid_identifier"
+        },
+        "string": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_string_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "string"
+      ]
+    },
     "provider_nested_attribute_object": {
       "type": "object",
       "properties": {
@@ -1396,6 +1411,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1436,6 +1454,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1476,6 +1497,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1729,6 +1753,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -2024,6 +2051,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -2107,6 +2137,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2153,6 +2186,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2199,6 +2235,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2488,6 +2527,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2825,6 +2867,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },

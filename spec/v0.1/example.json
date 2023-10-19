@@ -38,6 +38,18 @@
             }
           },
           {
+            "name": "bool_attribute_associated_external_type",
+            "bool": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
+            }
+          },
+          {
             "name": "float64_attribute",
             "float64": {
               "computed_optional_required": "computed"
@@ -57,6 +69,18 @@
             }
           },
           {
+            "name": "float64_attribute_associated_external_type",
+            "float64": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
+            }
+          },
+          {
             "name": "int64_attribute",
             "int64": {
               "computed_optional_required": "computed"
@@ -73,6 +97,18 @@
                 "type": "basetypes.Int64Type",
                 "value_type": "basetypes.Int64Value"
               }
+            }
+          },
+          {
+            "name": "int64_attribute_associated_external_type",
+            "int64": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
             }
           },
           {
@@ -266,6 +302,18 @@
                 "type": "basetypes.NumberType",
                 "value_type": "basetypes.NumberValue"
               }
+            }
+          },
+          {
+            "name": "number_attribute_associated_external_type",
+            "number": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
             }
           },
           {
@@ -656,6 +704,18 @@
                 "value_type": "basetypes.StringValue"
               }
             }
+          },
+          {
+            "name": "string_attribute_associated_external_type",
+            "string": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
+            }
           }
         ],
         "blocks": [
@@ -929,6 +989,18 @@
           }
         },
         {
+          "name": "bool_attribute_associated_external_type",
+          "bool": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
+          }
+        },
+        {
           "name": "float64_attribute",
           "float64": {
             "optional_required": "optional"
@@ -948,6 +1020,18 @@
           }
         },
         {
+          "name": "float64_attribute_associated_external_type",
+          "float64": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
+          }
+        },
+        {
           "name": "int64_attribute",
           "int64": {
             "optional_required": "optional"
@@ -964,6 +1048,18 @@
               "type": "basetypes.Int64Type",
               "value_type": "basetypes.Int64Value"
             }
+          }
+        },
+        {
+          "name": "int64_attribute_associated_external_type",
+          "int64": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
           }
         },
         {
@@ -1157,6 +1253,18 @@
               "type": "basetypes.NumberType",
               "value_type": "basetypes.NumberValue"
             }
+          }
+        },
+        {
+          "name": "number_attribute_associated_external_type",
+          "number": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
           }
         },
         {
@@ -1547,6 +1655,18 @@
               "value_type": "basetypes.StringValue"
             }
           }
+        },
+        {
+          "name": "string_attribute_associated_external_type",
+          "string": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
+          }
         }
       ],
       "blocks": [
@@ -1856,6 +1976,18 @@
             }
           },
           {
+            "name": "bool_attribute_associated_external_type",
+            "bool": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "optional"
+            }
+          },
+          {
             "name": "float64_attribute",
             "float64": {
               "computed_optional_required": "computed"
@@ -1884,6 +2016,18 @@
             }
           },
           {
+            "name": "float64_attribute_associated_external_type",
+            "float64": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
+            }
+          },
+          {
             "name": "int64_attribute",
             "int64": {
               "computed_optional_required": "computed"
@@ -1909,6 +2053,18 @@
               "default": {
                 "static": 123
               }
+            }
+          },
+          {
+            "name": "int64_attribute_associated_external_type",
+            "int64": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
             }
           },
           {
@@ -2146,6 +2302,18 @@
                   "schema_definition": "numberdefault.StaticBigFloat(big.NewFloat(123.45))"
                 }
               }
+            }
+          },
+          {
+            "name": "number_attribute_associated_external_type",
+            "number": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
             }
           },
           {
@@ -2569,6 +2737,18 @@
               "default": {
                 "static": "example"
               }
+            }
+          },
+          {
+            "name": "string_attribute_associated_external_type",
+            "string": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
             }
           }
         ],
