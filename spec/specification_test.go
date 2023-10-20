@@ -282,6 +282,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &datasource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -320,6 +335,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_associated_external_type",
+									Map: &datasource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -509,6 +539,24 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &datasource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &datasource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -640,6 +688,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_associated_external_type",
+									Set: &datasource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -1233,6 +1296,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_attribute_associated_external_type",
+								List: &provider.ListAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -1271,6 +1349,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
+									},
+								},
+							},
+							{
+								Name: "map_attribute_associated_external_type",
+								Map: &provider.MapAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
 									},
 								},
 							},
@@ -1460,6 +1553,24 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_associated_external_type",
+								Object: &provider.ObjectAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "list_nested_bool_attribute",
 								ListNested: &provider.ListNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -1591,6 +1702,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
+									},
+								},
+							},
+							{
+								Name: "set_attribute_associated_external_type",
+								Set: &provider.SetAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
 									},
 								},
 							},
@@ -2261,6 +2387,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &resource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2299,6 +2440,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_associated_external_type",
+									Map: &resource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -2507,6 +2663,24 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &resource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &resource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2663,6 +2837,21 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_associated_external_type",
+									Set: &resource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -5663,6 +5852,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &datasource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &datasource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -5701,6 +5905,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_associated_external_type",
+									Map: &datasource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -5890,6 +6109,24 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &datasource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &datasource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6021,6 +6258,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_associated_external_type",
+									Set: &datasource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -6614,6 +6866,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "list_attribute_associated_external_type",
+								List: &provider.ListAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
+									},
+								},
+							},
+							{
 								Name: "map_attribute",
 								Map: &provider.MapAttribute{
 									OptionalRequired: schema.Optional,
@@ -6652,6 +6919,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
+									},
+								},
+							},
+							{
+								Name: "map_attribute_associated_external_type",
+								Map: &provider.MapAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
 									},
 								},
 							},
@@ -6841,6 +7123,24 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "object_attribute_associated_external_type",
+								Object: &provider.ObjectAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:   "obj_string_attr",
+											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
 								Name: "list_nested_bool_attribute",
 								ListNested: &provider.ListNestedAttribute{
 									OptionalRequired: schema.Optional,
@@ -6972,6 +7272,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 												ValueType: "basetypes.StringValue",
 											},
 										},
+									},
+								},
+							},
+							{
+								Name: "set_attribute_associated_external_type",
+								Set: &provider.SetAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+									ElementType: schema.ElementType{
+										String: &schema.StringType{},
 									},
 								},
 							},
@@ -7642,6 +7957,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "list_attribute_associated_external_type",
+									List: &resource.ListAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
+										},
+									},
+								},
+								{
 									Name: "map_attribute",
 									Map: &resource.MapAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -7680,6 +8010,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "map_attribute_associated_external_type",
+									Map: &resource.MapAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},
@@ -7888,6 +8233,24 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_associated_external_type",
+									Object: &resource.ObjectAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:   "obj_string_attr",
+												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "list_nested_bool_attribute",
 									ListNested: &resource.ListNestedAttribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -8044,6 +8407,21 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 													ValueType: "basetypes.StringValue",
 												},
 											},
+										},
+									},
+								},
+								{
+									Name: "set_attribute_associated_external_type",
+									Set: &resource.SetAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+										ElementType: schema.ElementType{
+											String: &schema.StringType{},
 										},
 									},
 								},

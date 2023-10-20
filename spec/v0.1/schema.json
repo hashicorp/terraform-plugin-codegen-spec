@@ -820,6 +820,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -945,6 +948,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1076,6 +1082,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -1120,6 +1129,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -1540,6 +1552,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1665,6 +1680,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -1796,6 +1814,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -1840,6 +1861,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "custom_type": {
               "$ref": "#/$defs/schema_custom_type"
             },
@@ -2284,6 +2308,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2427,6 +2454,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },
@@ -2576,6 +2606,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "attribute_types": {
               "$ref": "#/$defs/schema_object_attribute_types"
             },
@@ -2626,6 +2659,9 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
             "computed_optional_required": {
               "$ref": "#/$defs/schema_computed_optional_required"
             },

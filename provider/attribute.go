@@ -93,11 +93,11 @@ type Attribute struct {
 // NestedAttributeObject is the underlying object defining the Attributes
 // for a ListNestedAttribute, MapNestedAttribute, or SetNestedAttribute.
 type NestedAttributeObject struct {
-	// Attributes defines the Attribute types associated with a NestedAttributeObject.
-	Attributes Attributes `json:"attributes,omitempty"`
-
 	// AssociatedExternalType defines a type that can be used as a NestedAttributeObject.
 	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
+	// Attributes defines the Attribute types associated with a NestedAttributeObject.
+	Attributes Attributes `json:"attributes,omitempty"`
 
 	// CustomType defines a custom type and value for the NestedAttributeObject.
 	CustomType *schema.CustomType `json:"custom_type,omitempty"`
@@ -199,6 +199,9 @@ type Int64Attribute struct {
 // ListAttribute represents a Schema attribute that is a list with a single
 // element type.
 type ListAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a ListAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// OptionalRequired indicates whether the attribute is required
 	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
@@ -257,6 +260,9 @@ type ListNestedAttribute struct {
 // MapAttribute represents a Schema attribute that is a map with a single
 // element type.
 type MapAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a MapAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// OptionalRequired indicates whether the attribute is required
 	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
@@ -347,6 +353,9 @@ type NumberAttribute struct {
 // ObjectAttribute represents a Schema attribute that is an object with only
 // type information for underlying attributes.
 type ObjectAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent an ObjectAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// AttributeTypes provides the mapping of underlying names to types.
 	AttributeTypes schema.ObjectAttributeTypes `json:"attribute_types"`
 
@@ -376,6 +385,9 @@ type ObjectAttribute struct {
 // SetAttribute represents a Schema attribute that is a set with a single
 // element type.
 type SetAttribute struct {
+	// AssociatedExternalType defines a Go type that can be used to represent a SetAttribute.
+	AssociatedExternalType *schema.AssociatedExternalType `json:"associated_external_type,omitempty"`
+
 	// OptionalRequired indicates whether the attribute is required
 	// (`required`), or optional (`optional`).
 	OptionalRequired schema.OptionalRequired `json:"optional_required"`
