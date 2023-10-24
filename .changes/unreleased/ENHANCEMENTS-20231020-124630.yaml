@@ -1,0 +1,5 @@
+kind: ENHANCEMENTS
+body: Add associated external type for list, map, object, and set attributes
+time: 2023-10-20T12:46:30.685662+01:00
+custom:
+  Issue: "65"

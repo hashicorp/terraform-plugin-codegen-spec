@@ -206,6 +206,21 @@
             }
           },
           {
+            "name": "list_attribute_associated_external_type",
+            "list": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
             "name": "map_attribute",
             "map": {
               "computed_optional_required": "computed",
@@ -244,6 +259,21 @@
                     "value_type": "basetypes.StringValue"
                   }
                 }
+              }
+            }
+          },
+          {
+            "name": "map_attribute_associated_external_type",
+            "map": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
               }
             }
           },
@@ -433,6 +463,24 @@
             }
           },
           {
+            "name": "object_attribute_associated_external_type",
+            "object": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {}
+                }
+              ]
+            }
+          },
+          {
             "name": "list_nested_bool_attribute",
             "list_nested": {
               "computed_optional_required": "computed",
@@ -564,6 +612,21 @@
                     "value_type": "basetypes.StringValue"
                   }
                 }
+              }
+            }
+          },
+          {
+            "name": "set_attribute_associated_external_type",
+            "set": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
               }
             }
           },
@@ -1157,6 +1220,21 @@
           }
         },
         {
+          "name": "list_attribute_associated_external_type",
+          "list": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional",
+            "element_type": {
+              "string": {}
+            }
+          }
+        },
+        {
           "name": "map_attribute",
           "map": {
             "optional_required": "optional",
@@ -1195,6 +1273,21 @@
                   "value_type": "basetypes.StringValue"
                 }
               }
+            }
+          }
+        },
+        {
+          "name": "map_attribute_associated_external_type",
+          "map": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional",
+            "element_type": {
+              "string": {}
             }
           }
         },
@@ -1384,6 +1477,24 @@
           }
         },
         {
+          "name": "object_attribute_associated_external_type",
+          "object": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "obj_string_attr",
+                "string": {}
+              }
+            ]
+          }
+        },
+        {
           "name": "list_nested_bool_attribute",
           "list_nested": {
             "optional_required": "optional",
@@ -1515,6 +1626,21 @@
                   "value_type": "basetypes.StringValue"
                 }
               }
+            }
+          }
+        },
+        {
+          "name": "set_attribute_associated_external_type",
+          "set": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional",
+            "element_type": {
+              "string": {}
             }
           }
         },
@@ -2187,6 +2313,21 @@
             }
           },
           {
+            "name": "list_attribute_associated_external_type",
+            "list": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
+              }
+            }
+          },
+          {
             "name": "map_attribute",
             "map": {
               "computed_optional_required": "computed",
@@ -2225,6 +2366,21 @@
                     "value_type": "basetypes.StringValue"
                   }
                 }
+              }
+            }
+          },
+          {
+            "name": "map_attribute_associated_external_type",
+            "map": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
               }
             }
           },
@@ -2433,6 +2589,24 @@
             }
           },
           {
+            "name": "object_attribute_associated_external_type",
+            "object": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "obj_string_attr",
+                  "string": {}
+                }
+              ]
+            }
+          },
+          {
             "name": "list_nested_bool_attribute",
             "list_nested": {
               "computed_optional_required": "computed",
@@ -2589,6 +2763,21 @@
                     "value_type": "basetypes.StringValue"
                   }
                 }
+              }
+            }
+          },
+          {
+            "name": "set_attribute_associated_external_type",
+            "set": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed",
+              "element_type": {
+                "string": {}
               }
             }
           },
