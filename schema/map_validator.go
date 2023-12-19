@@ -3,10 +3,25 @@
 
 package schema
 
-import "sort"
-
 // MapValidators type defines MapValidator types
 type MapValidators []MapValidator
+
+// CustomValidators returns CustomValidator for each MapValidator.
+func (v MapValidators) CustomValidators() CustomValidators {
+	var customValidators CustomValidators
+
+	for _, validator := range v {
+		customValidator := validator.Custom
+
+		if customValidator == nil {
+			continue
+		}
+
+		customValidators = append(customValidators, customValidator)
+	}
+
+	return customValidators
+}
 
 // Equal returns true if the given MapValidators is the same
 // length, and each of the MapValidator entries is equal.
@@ -23,38 +38,17 @@ func (v MapValidators) Equal(other MapValidators) bool {
 		return false
 	}
 
-	var validators MapValidators
+	validators := v.CustomValidators()
 
-	var otherValidators MapValidators
+	otherValidators := other.CustomValidators()
 
-	// Remove nils otherwise sort will panic.
-	for _, validator := range v {
-		if validator.Custom != nil {
-			validators = append(validators, validator)
-		}
-	}
-
-	// Remove nils otherwise sort will panic.
-	for _, validator := range other {
-		if validator.Custom != nil {
-			otherValidators = append(otherValidators, validator)
-		}
-	}
-
-	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(validators, func(i, j int) bool {
-		return validators[i].Custom.SchemaDefinition < validators[j].Custom.SchemaDefinition
-	})
+	validators.Sort()
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(otherValidators, func(i, j int) bool {
-		return otherValidators[i].Custom.SchemaDefinition < otherValidators[j].Custom.SchemaDefinition
-	})
+	otherValidators.Sort()
 
 	for k, validator := range validators {
 		if !validator.Equal(otherValidators[k]) {

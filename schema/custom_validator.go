@@ -9,6 +9,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 )
 
+// CustomValidators type is a slice of *CustomValidator.
+type CustomValidators []*CustomValidator
+
+// Sort will order on the basis of CustomValidator.SchemaDefinition.
+func (c CustomValidators) Sort() {
+	// SchemaDefinition is required by the spec JSON schema.
+	sort.SliceStable(c, func(i, j int) bool {
+		switch {
+		case c[i] == nil && c[j] == nil:
+			return true
+		case c[i] == nil:
+			return false
+		case c[j] == nil:
+			return true
+		default:
+			return c[i].SchemaDefinition < c[j].SchemaDefinition
+		}
+	})
+}
+
 // CustomValidator defines a custom type for a schema validator.
 type CustomValidator struct {
 	// Imports defines paths, and optional aliases for imported code.

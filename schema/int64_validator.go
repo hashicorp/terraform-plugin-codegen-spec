@@ -3,10 +3,25 @@
 
 package schema
 
-import "sort"
-
 // Int64Validators type defines Int64Validator types
 type Int64Validators []Int64Validator
+
+// CustomValidators returns CustomValidator for each Float64Validator.
+func (v Int64Validators) CustomValidators() CustomValidators {
+	var customValidators CustomValidators
+
+	for _, validator := range v {
+		customValidator := validator.Custom
+
+		if customValidator == nil {
+			continue
+		}
+
+		customValidators = append(customValidators, customValidator)
+	}
+
+	return customValidators
+}
 
 // Equal returns true if the given Int64Validators is the same
 // length, and each of the Int64Validator entries is equal.
@@ -23,38 +38,17 @@ func (v Int64Validators) Equal(other Int64Validators) bool {
 		return false
 	}
 
-	var validators Int64Validators
+	validators := v.CustomValidators()
 
-	var otherValidators Int64Validators
+	otherValidators := other.CustomValidators()
 
-	// Remove nils otherwise sort will panic.
-	for _, validator := range v {
-		if validator.Custom != nil {
-			validators = append(validators, validator)
-		}
-	}
-
-	// Remove nils otherwise sort will panic.
-	for _, validator := range other {
-		if validator.Custom != nil {
-			otherValidators = append(otherValidators, validator)
-		}
-	}
-
-	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(validators, func(i, j int) bool {
-		return validators[i].Custom.SchemaDefinition < validators[j].Custom.SchemaDefinition
-	})
+	validators.Sort()
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(otherValidators, func(i, j int) bool {
-		return otherValidators[i].Custom.SchemaDefinition < otherValidators[j].Custom.SchemaDefinition
-	})
+	otherValidators.Sort()
 
 	for k, validator := range validators {
 		if !validator.Equal(otherValidators[k]) {
