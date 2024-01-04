@@ -9,6 +9,15 @@ type ObjectDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// CustomDefault returns *CustomDefault.
+func (d *ObjectDefault) CustomDefault() *CustomDefault {
+	if d == nil {
+		return nil
+	}
+
+	return d.Custom
+}
+
 // Equal returns true if all fields of the given ObjectDefault are equal.
 func (d *ObjectDefault) Equal(other *ObjectDefault) bool {
 	if d == nil && other == nil {

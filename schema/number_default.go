@@ -10,6 +10,15 @@ type NumberDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// CustomDefault returns *CustomDefault.
+func (d *NumberDefault) CustomDefault() *CustomDefault {
+	if d == nil {
+		return nil
+	}
+
+	return d.Custom
+}
+
 // Equal returns true if all fields of the given Int64Default are equal.
 func (d *NumberDefault) Equal(other *NumberDefault) bool {
 	if d == nil && other == nil {
