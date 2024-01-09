@@ -9,6 +9,15 @@ type SetDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// CustomDefault returns *CustomDefault.
+func (d *SetDefault) CustomDefault() *CustomDefault {
+	if d == nil {
+		return nil
+	}
+
+	return d.Custom
+}
+
 // Equal returns true if all fields of the given SetDefault are equal.
 func (d *SetDefault) Equal(other *SetDefault) bool {
 	if d == nil && other == nil {

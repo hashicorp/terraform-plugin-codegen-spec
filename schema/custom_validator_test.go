@@ -238,3 +238,58 @@ func TestCustomValidator_Equal(t *testing.T) {
 		})
 	}
 }
+
+func TestCustomValidators_Sort(t *testing.T) {
+	t.Parallel()
+
+	testCases := map[string]struct {
+		customValidators schema.CustomValidators
+		expected         schema.CustomValidators
+	}{
+		"custom-validators-nil": {
+			expected: nil,
+		},
+		"custom-validators-nil-entry": {
+			customValidators: schema.CustomValidators{nil},
+			expected:         schema.CustomValidators{nil},
+		},
+		"custom-validators-nil-entries": {
+			customValidators: schema.CustomValidators{nil, nil},
+			expected:         schema.CustomValidators{nil, nil},
+		},
+		"custom-validators-non-nil-with-nil-entry": {
+			customValidators: schema.CustomValidators{&schema.CustomValidator{}, nil},
+			expected:         schema.CustomValidators{&schema.CustomValidator{}, nil},
+		},
+		"custom-validators-nil-with-non-nil-entry": {
+			customValidators: schema.CustomValidators{nil, &schema.CustomValidator{}},
+			expected:         schema.CustomValidators{&schema.CustomValidator{}, nil},
+		},
+		"custom-validators-non-nil-entries-sorted": {
+			customValidators: schema.CustomValidators{&schema.CustomValidator{SchemaDefinition: "x"}, &schema.CustomValidator{SchemaDefinition: "y"}},
+			expected:         schema.CustomValidators{&schema.CustomValidator{SchemaDefinition: "x"}, &schema.CustomValidator{SchemaDefinition: "y"}},
+		},
+		"custom-validators-non-nil-entries-unsorted": {
+			customValidators: schema.CustomValidators{&schema.CustomValidator{SchemaDefinition: "y"}, &schema.CustomValidator{SchemaDefinition: "x"}},
+			expected:         schema.CustomValidators{&schema.CustomValidator{SchemaDefinition: "x"}, &schema.CustomValidator{SchemaDefinition: "y"}},
+		},
+		"custom-validators-multiple-entries": {
+			customValidators: schema.CustomValidators{nil, &schema.CustomValidator{SchemaDefinition: "y"}, &schema.CustomValidator{SchemaDefinition: "z"}, nil, &schema.CustomValidator{SchemaDefinition: "x"}},
+			expected:         schema.CustomValidators{&schema.CustomValidator{SchemaDefinition: "x"}, &schema.CustomValidator{SchemaDefinition: "y"}, &schema.CustomValidator{SchemaDefinition: "z"}, nil, nil},
+		},
+	}
+
+	for name, testCase := range testCases {
+		name, testCase := name, testCase
+
+		t.Run(name, func(t *testing.T) {
+			t.Parallel()
+
+			testCase.customValidators.Sort()
+
+			if diff := cmp.Diff(testCase.customValidators, testCase.expected); diff != "" {
+				t.Errorf("unexpected difference: %s", diff)
+			}
+		})
+	}
+}

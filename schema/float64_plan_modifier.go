@@ -3,10 +3,25 @@
 
 package schema
 
-import "sort"
-
 // Float64PlanModifiers type defines Float64PlanModifier types
 type Float64PlanModifiers []Float64PlanModifier
+
+// CustomPlanModifiers returns CustomPlanModifier for each Float64PlanModifier.
+func (v Float64PlanModifiers) CustomPlanModifiers() CustomPlanModifiers {
+	var customPlanModifiers CustomPlanModifiers
+
+	for _, planModifier := range v {
+		customPlanModifier := planModifier.Custom
+
+		if customPlanModifier == nil {
+			continue
+		}
+
+		customPlanModifiers = append(customPlanModifiers, customPlanModifier)
+	}
+
+	return customPlanModifiers
+}
 
 // Equal returns true if the given Float64PlanModifiers is the same
 // length, and each of the Float64PlanModifier entries is equal.
@@ -23,38 +38,17 @@ func (v Float64PlanModifiers) Equal(other Float64PlanModifiers) bool {
 		return false
 	}
 
-	var planModifiers Float64PlanModifiers
+	planModifiers := v.CustomPlanModifiers()
 
-	var otherPlanModifiers Float64PlanModifiers
+	otherPlanModifiers := other.CustomPlanModifiers()
 
-	// Remove nils otherwise sort will panic.
-	for _, planModifier := range v {
-		if planModifier.Custom != nil {
-			planModifiers = append(planModifiers, planModifier)
-		}
-	}
-
-	// Remove nils otherwise sort will panic.
-	for _, planModifier := range other {
-		if planModifier.Custom != nil {
-			otherPlanModifiers = append(otherPlanModifiers, planModifier)
-		}
-	}
-
-	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(planModifiers, func(i, j int) bool {
-		return planModifiers[i].Custom.SchemaDefinition < planModifiers[j].Custom.SchemaDefinition
-	})
+	planModifiers.Sort()
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(otherPlanModifiers, func(i, j int) bool {
-		return otherPlanModifiers[i].Custom.SchemaDefinition < otherPlanModifiers[j].Custom.SchemaDefinition
-	})
+	otherPlanModifiers.Sort()
 
 	for k, planModifier := range planModifiers {
 		if !planModifier.Equal(otherPlanModifiers[k]) {
@@ -74,4 +68,5 @@ type Float64PlanModifier struct {
 // Equal returns true if the fields of the given Float64PlanModifier are equal.
 func (v Float64PlanModifier) Equal(other Float64PlanModifier) bool {
 	return v.Custom.Equal(other.Custom)
+
 }

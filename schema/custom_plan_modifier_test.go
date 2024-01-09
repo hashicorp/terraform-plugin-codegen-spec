@@ -238,3 +238,58 @@ func TestCustomPlanModifier_Equal(t *testing.T) {
 		})
 	}
 }
+
+func TestCustomPlanModifiers_Sort(t *testing.T) {
+	t.Parallel()
+
+	testCases := map[string]struct {
+		customPlanModifiers schema.CustomPlanModifiers
+		expected            schema.CustomPlanModifiers
+	}{
+		"custom-validators-nil": {
+			expected: nil,
+		},
+		"custom-validators-nil-entry": {
+			customPlanModifiers: schema.CustomPlanModifiers{nil},
+			expected:            schema.CustomPlanModifiers{nil},
+		},
+		"custom-validators-nil-entries": {
+			customPlanModifiers: schema.CustomPlanModifiers{nil, nil},
+			expected:            schema.CustomPlanModifiers{nil, nil},
+		},
+		"custom-validators-non-nil-with-nil-entry": {
+			customPlanModifiers: schema.CustomPlanModifiers{&schema.CustomPlanModifier{}, nil},
+			expected:            schema.CustomPlanModifiers{&schema.CustomPlanModifier{}, nil},
+		},
+		"custom-validators-nil-with-non-nil-entry": {
+			customPlanModifiers: schema.CustomPlanModifiers{nil, &schema.CustomPlanModifier{}},
+			expected:            schema.CustomPlanModifiers{&schema.CustomPlanModifier{}, nil},
+		},
+		"custom-validators-non-nil-entries-sorted": {
+			customPlanModifiers: schema.CustomPlanModifiers{&schema.CustomPlanModifier{SchemaDefinition: "x"}, &schema.CustomPlanModifier{SchemaDefinition: "y"}},
+			expected:            schema.CustomPlanModifiers{&schema.CustomPlanModifier{SchemaDefinition: "x"}, &schema.CustomPlanModifier{SchemaDefinition: "y"}},
+		},
+		"custom-validators-non-nil-entries-unsorted": {
+			customPlanModifiers: schema.CustomPlanModifiers{&schema.CustomPlanModifier{SchemaDefinition: "y"}, &schema.CustomPlanModifier{SchemaDefinition: "x"}},
+			expected:            schema.CustomPlanModifiers{&schema.CustomPlanModifier{SchemaDefinition: "x"}, &schema.CustomPlanModifier{SchemaDefinition: "y"}},
+		},
+		"custom-validators-multiple-entries": {
+			customPlanModifiers: schema.CustomPlanModifiers{nil, &schema.CustomPlanModifier{SchemaDefinition: "y"}, &schema.CustomPlanModifier{SchemaDefinition: "z"}, nil, &schema.CustomPlanModifier{SchemaDefinition: "x"}},
+			expected:            schema.CustomPlanModifiers{&schema.CustomPlanModifier{SchemaDefinition: "x"}, &schema.CustomPlanModifier{SchemaDefinition: "y"}, &schema.CustomPlanModifier{SchemaDefinition: "z"}, nil, nil},
+		},
+	}
+
+	for name, testCase := range testCases {
+		name, testCase := name, testCase
+
+		t.Run(name, func(t *testing.T) {
+			t.Parallel()
+
+			testCase.customPlanModifiers.Sort()
+
+			if diff := cmp.Diff(testCase.customPlanModifiers, testCase.expected); diff != "" {
+				t.Errorf("unexpected difference: %s", diff)
+			}
+		})
+	}
+}

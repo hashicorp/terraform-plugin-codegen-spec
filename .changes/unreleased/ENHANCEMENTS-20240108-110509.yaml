@@ -1,0 +1,6 @@
+kind: ENHANCEMENTS
+body: Add `CustomPlanModifiers` type and `CustomPlanModifiers()` function to bool,
+  float64, int64, list, map, number, object, set, and string plan modifier types
+time: 2024-01-08T11:05:09.06701Z
+custom:
+  Issue: "77"
