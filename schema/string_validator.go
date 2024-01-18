@@ -3,10 +3,25 @@
 
 package schema
 
-import "sort"
-
 // StringValidators type defines StringValidator types
 type StringValidators []StringValidator
+
+// CustomValidators returns CustomValidator for each StringValidator.
+func (v StringValidators) CustomValidators() CustomValidators {
+	var customValidators CustomValidators
+
+	for _, validator := range v {
+		customValidator := validator.Custom
+
+		if customValidator == nil {
+			continue
+		}
+
+		customValidators = append(customValidators, customValidator)
+	}
+
+	return customValidators
+}
 
 // Equal returns true if the given StringValidators is the same
 // length, and each of the StringValidator entries is equal.
@@ -23,38 +38,17 @@ func (v StringValidators) Equal(other StringValidators) bool {
 		return false
 	}
 
-	var validators StringValidators
+	validators := v.CustomValidators()
 
-	var otherValidators StringValidators
+	otherValidators := other.CustomValidators()
 
-	// Remove nils otherwise sort will panic.
-	for _, validator := range v {
-		if validator.Custom != nil {
-			validators = append(validators, validator)
-		}
-	}
-
-	// Remove nils otherwise sort will panic.
-	for _, validator := range other {
-		if validator.Custom != nil {
-			otherValidators = append(otherValidators, validator)
-		}
-	}
-
-	// Compare length after removing nils.
 	if len(validators) != len(otherValidators) {
 		return false
 	}
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(validators, func(i, j int) bool {
-		return validators[i].Custom.SchemaDefinition < validators[j].Custom.SchemaDefinition
-	})
+	validators.Sort()
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(otherValidators, func(i, j int) bool {
-		return otherValidators[i].Custom.SchemaDefinition < otherValidators[j].Custom.SchemaDefinition
-	})
+	otherValidators.Sort()
 
 	for k, validator := range validators {
 		if !validator.Equal(otherValidators[k]) {

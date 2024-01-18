@@ -9,6 +9,15 @@ type MapDefault struct {
 	Custom *CustomDefault `json:"custom,omitempty"`
 }
 
+// CustomDefault returns *CustomDefault.
+func (d *MapDefault) CustomDefault() *CustomDefault {
+	if d == nil {
+		return nil
+	}
+
+	return d.Custom
+}
+
 // Equal returns true if all fields of the given MapDefault are equal.
 func (d *MapDefault) Equal(other *MapDefault) bool {
 	if d == nil && other == nil {

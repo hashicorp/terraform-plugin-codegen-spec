@@ -12,4 +12,8 @@ const (
 
 type ComputedOptionalRequired string
 
+func (c ComputedOptionalRequired) Equal(other ComputedOptionalRequired) bool {
+	return c == other
+}
+
 type OptionalRequired = ComputedOptionalRequired

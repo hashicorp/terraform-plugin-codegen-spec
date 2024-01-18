@@ -3,10 +3,25 @@
 
 package schema
 
-import "sort"
-
 // NumberPlanModifiers type defines NumberPlanModifier types
 type NumberPlanModifiers []NumberPlanModifier
+
+// CustomPlanModifiers returns CustomPlanModifier for each NumberPlanModifier.
+func (v NumberPlanModifiers) CustomPlanModifiers() CustomPlanModifiers {
+	var customPlanModifiers CustomPlanModifiers
+
+	for _, planModifier := range v {
+		customPlanModifier := planModifier.Custom
+
+		if customPlanModifier == nil {
+			continue
+		}
+
+		customPlanModifiers = append(customPlanModifiers, customPlanModifier)
+	}
+
+	return customPlanModifiers
+}
 
 // Equal returns true if the given NumberPlanModifiers is the same
 // length, and each of the NumberPlanModifier entries is equal.
@@ -23,38 +38,17 @@ func (v NumberPlanModifiers) Equal(other NumberPlanModifiers) bool {
 		return false
 	}
 
-	var planModifiers NumberPlanModifiers
+	planModifiers := v.CustomPlanModifiers()
 
-	var otherPlanModifiers NumberPlanModifiers
+	otherPlanModifiers := other.CustomPlanModifiers()
 
-	// Remove nils otherwise sort will panic.
-	for _, planModifier := range v {
-		if planModifier.Custom != nil {
-			planModifiers = append(planModifiers, planModifier)
-		}
-	}
-
-	// Remove nils otherwise sort will panic.
-	for _, planModifier := range other {
-		if planModifier.Custom != nil {
-			otherPlanModifiers = append(otherPlanModifiers, planModifier)
-		}
-	}
-
-	// Compare length after removing nils.
 	if len(planModifiers) != len(otherPlanModifiers) {
 		return false
 	}
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(planModifiers, func(i, j int) bool {
-		return planModifiers[i].Custom.SchemaDefinition < planModifiers[j].Custom.SchemaDefinition
-	})
+	planModifiers.Sort()
 
-	// SchemaDefinition is required by the spec JSON schema.
-	sort.Slice(otherPlanModifiers, func(i, j int) bool {
-		return otherPlanModifiers[i].Custom.SchemaDefinition < otherPlanModifiers[j].Custom.SchemaDefinition
-	})
+	otherPlanModifiers.Sort()
 
 	for k, planModifier := range planModifiers {
 		if !planModifier.Equal(otherPlanModifiers[k]) {

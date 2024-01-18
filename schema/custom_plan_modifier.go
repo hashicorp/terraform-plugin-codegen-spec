@@ -9,6 +9,26 @@ import (
 	"github.com/hashicorp/terraform-plugin-codegen-spec/code"
 )
 
+// CustomPlanModifiers type is a slice of *CustomPlanModifier.
+type CustomPlanModifiers []*CustomPlanModifier
+
+// Sort will order on the basis of CustomPlanModifier.SchemaDefinition.
+func (c CustomPlanModifiers) Sort() {
+	// SchemaDefinition is required by the spec JSON schema.
+	sort.SliceStable(c, func(i, j int) bool {
+		switch {
+		case c[i] == nil && c[j] == nil:
+			return true
+		case c[i] == nil:
+			return false
+		case c[j] == nil:
+			return true
+		default:
+			return c[i].SchemaDefinition < c[j].SchemaDefinition
+		}
+	})
+}
+
 // CustomPlanModifier defines a custom type for a schema plan modifier.
 type CustomPlanModifier struct {
 	// Imports defines paths, and optional aliases for imported code.
