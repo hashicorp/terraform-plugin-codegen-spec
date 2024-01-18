@@ -1,0 +1,5 @@
+kind: BUG FIXES
+body: 'schema: Remove Framework-specific implementation details from plan modifiers'
+time: 2024-01-18T09:33:14.853296Z
+custom:
+  Issue: "84"
