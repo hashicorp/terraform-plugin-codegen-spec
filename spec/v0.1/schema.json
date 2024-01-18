@@ -2969,32 +2969,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_bool_plan_modifiers": {
@@ -3090,32 +3068,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_float64_plan_modifiers": {
@@ -3169,32 +3125,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_int64_plan_modifiers": {
@@ -3240,32 +3174,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_list_plan_modifiers": {
@@ -3311,32 +3223,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_map_plan_modifiers": {
@@ -3382,32 +3272,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_number_plan_modifiers": {
@@ -3502,32 +3370,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_set_plan_modifiers": {
@@ -3581,32 +3427,10 @@
       "properties": {
         "custom": {
           "$ref": "#/$defs/schema_custom_plan_modifier"
-        },
-        "requires_replace": {
-          "type": "object",
-          "additionalProperties": false
-        },
-        "use_state_for_unknown": {
-          "type": "object",
-          "additionalProperties": false
         }
       },
-      "oneOf": [
-        {
-          "required": [
-            "custom"
-          ]
-        },
-        {
-          "required": [
-            "requires_replace"
-          ]
-        },
-        {
-          "required": [
-            "use_state_for_unknown"
-          ]
-        }
+      "required": [
+        "custom"
       ]
     },
     "schema_string_plan_modifiers": {

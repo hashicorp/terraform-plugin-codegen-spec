@@ -2038,9 +2038,6 @@
               "computed_optional_required": "computed",
               "plan_modifiers": [
                 {
-                  "requires_replace": {}
-                },
-                {
                   "custom": {
                     "imports": [
                       {
