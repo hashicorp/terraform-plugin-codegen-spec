@@ -2113,7 +2113,6 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										PlanModifiers: schema.BoolPlanModifiers{
-											{},
 											{
 												Custom: &schema.CustomPlanModifier{
 													Imports: []code.Import{
@@ -7683,7 +7682,6 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									Bool: &resource.BoolAttribute{
 										ComputedOptionalRequired: schema.Computed,
 										PlanModifiers: schema.BoolPlanModifiers{
-											{},
 											{
 												Custom: &schema.CustomPlanModifier{
 													Imports: []code.Import{

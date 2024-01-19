@@ -1,0 +1,5 @@
+kind: BUG FIXES
+body: 'schema: Remove Framework-specific `requires_replace` and `use_state_for_unknown` plan modifiers from specification which are unused during code generation, use custom plan modifiers instead'
+time: 2024-01-18T09:33:14.853296Z
+custom:
+  Issue: "84"
