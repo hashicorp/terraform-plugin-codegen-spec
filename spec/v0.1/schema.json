@@ -81,6 +81,9 @@
         },
         "markdown_description": {
           "type": "string"
+        },
+        "deprecation_message": {
+          "type": "string"
         }
       },
       "minProperties": 1

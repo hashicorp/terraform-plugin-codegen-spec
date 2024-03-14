@@ -27,6 +27,28 @@ type Schema struct {
 	// about what this resource is, what it's for, and how it should be
 	// used. It should be formatted using Markdown.
 	MarkdownDescription string `json:"markdown_description,omitempty"`
+
+	// DeprecationMessage defines warning diagnostic details to display when
+	// practitioner configurations use this resource. The warning diagnostic
+	// summary is automatically set to "Resource Deprecated" along with
+	// configuration source file and line information.
+	//
+	// Set this field to a practitioner actionable message such as:
+	//
+	//  - "Use examplecloud_other resource instead. This resource
+	//    will be removed in the next major version of the provider."
+	//  - "Remove this resource as it no longer is valid and
+	//    will be removed in the next major version of the provider."
+	//
+	DeprecationMessage string `json:"deprecation_message,omitempty"`
+
+	// Version indicates the current version of the resource schema. Versioning
+	// is only required if there is a breaking change involving existing state
+	// data, such as changing an attribute or block type in a manner that is
+	// incompatible with the Terraform type.
+	//
+	// Versions are conventionally only incremented by one each release.
+	Version *int64 `json:"version,omitempty"`
 }
 
 // SchemaValidateRequest specifies the resource being validated.
