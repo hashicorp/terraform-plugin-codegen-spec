@@ -15,6 +15,18 @@ type Schema struct {
 
 	// Blocks defines the Block types for the Schema.
 	Blocks Blocks `json:"blocks,omitempty"`
+
+	// Description is used in various tooling, like the language server, to
+	// give practitioners more information about what this data source is,
+	// what it's for, and how it should be used. It should be written as
+	// plain text, with no special formatting.
+	Description string `json:"description,omitempty"`
+
+	// MarkdownDescription is used in various tooling, like the
+	// documentation generator, to give practitioners more information
+	// about what this data source is, what it's for, and how it should be
+	// used. It should be formatted using Markdown.
+	MarkdownDescription string `json:"markdown_description,omitempty"`
 }
 
 // SchemaValidateRequest specifies the data source being validated.

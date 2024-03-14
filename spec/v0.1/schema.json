@@ -75,6 +75,12 @@
         },
         "blocks": {
           "$ref": "#/$defs/datasource_blocks"
+        },
+        "description": {
+          "type": "string"
+        },
+        "markdown_description": {
+          "type": "string"
         }
       },
       "minProperties": 1
@@ -164,6 +170,12 @@
         },
         "blocks": {
           "$ref": "#/$defs/provider_blocks"
+        },
+        "description": {
+          "type": "string"
+        },
+        "markdown_description": {
+          "type": "string"
         }
       }
     },
@@ -253,6 +265,12 @@
         },
         "blocks": {
           "$ref": "#/$defs/resource_blocks"
+        },
+        "description": {
+          "type": "string"
+        },
+        "markdown_description": {
+          "type": "string"
         }
       },
       "minProperties": 1
