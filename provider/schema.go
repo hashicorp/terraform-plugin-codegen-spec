@@ -20,13 +20,13 @@ type Schema struct {
 	// give practitioners more information about what this provider is,
 	// what it's for, and how it should be used. It should be written as
 	// plain text, with no special formatting.
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 
 	// MarkdownDescription is used in various tooling, like the
 	// documentation generator, to give practitioners more information
 	// about what this provider is, what it's for, and how it should be
 	// used. It should be formatted using Markdown.
-	MarkdownDescription string `json:"markdown_description,omitempty"`
+	MarkdownDescription *string `json:"markdown_description,omitempty"`
 
 	// DeprecationMessage defines warning diagnostic details to display when
 	// practitioner configurations use this provider. The warning diagnostic
@@ -38,7 +38,7 @@ type Schema struct {
 	//  - "Use examplenewcloud provider instead."
 	//  - "Remove this provider as it no longer is valid."
 	//
-	DeprecationMessage string `json:"deprecation_message,omitempty"`
+	DeprecationMessage *string `json:"deprecation_message,omitempty"`
 }
 
 // SchemaValidateRequest specifies the provider being validated.
