@@ -1,6 +1,0 @@
-kind: ENHANCEMENTS
-body: Add `CustomDefault()` function to list, map, number, object, and set default
-  types
-time: 2024-01-08T11:08:02.113579Z
-custom:
-  Issue: "77"

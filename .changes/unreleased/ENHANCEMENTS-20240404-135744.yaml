@@ -1,5 +1,0 @@
-kind: ENHANCEMENTS
-body: Added `Description`, `MarkdownDescription` and `DeprecationMessage` string fields to all schemas
-time: 2024-04-04T13:57:44.879043-04:00
-custom:
-  Issue: "81"

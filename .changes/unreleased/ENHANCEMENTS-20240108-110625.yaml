@@ -1,6 +1,0 @@
-kind: ENHANCEMENTS
-body: Add `CustomValidators` type and `CustomValidators()` function to  bool, float64,
-  int64, list, map, number, object, set, and string validator types
-time: 2024-01-08T11:06:25.9511Z
-custom:
-  Issue: "77"
