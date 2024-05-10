@@ -422,6 +422,18 @@
             }
           },
           {
+            "name": "object_attribute_attribute_types_dynamic",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "object_dynamic_attribute",
+                  "dynamic": {}
+                }
+              ]
+            }
+          },
+          {
             "name": "object_attribute_attribute_types_object_custom_type",
             "object": {
               "computed_optional_required": "computed",
@@ -1497,6 +1509,18 @@
               {
                 "name": "obj_string_attr",
                 "string": {}
+              }
+            ]
+          }
+        },
+        {
+          "name": "object_attribute_attribute_types_dynamic",
+          "object": {
+            "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "object_dynamic_attribute",
+                "dynamic": {}
               }
             ]
           }
@@ -2709,6 +2733,18 @@
                 {
                   "name": "obj_string_attr",
                   "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_attribute_types_dynamic",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "object_dynamic_attribute",
+                  "dynamic": {}
                 }
               ]
             }

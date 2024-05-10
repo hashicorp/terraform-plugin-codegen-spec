@@ -77,6 +77,7 @@ type ObjectAttributeType struct {
 	Name string `json:"name"`
 
 	Bool    *BoolType    `json:"bool,omitempty"`
+	Dynamic *DynamicType `json:"dynamic,omitempty"`
 	Float64 *Float64Type `json:"float64,omitempty"`
 	Int64   *Int64Type   `json:"int64,omitempty"`
 	List    *ListType    `json:"list,omitempty"`
@@ -103,6 +104,18 @@ func (o ObjectAttributeType) Equal(other ObjectAttributeType) bool {
 
 	if o.Bool != nil && other.Bool != nil {
 		return o.Bool.CustomType.Equal(other.Bool.CustomType)
+	}
+
+	if o.Dynamic == nil && other.Dynamic != nil {
+		return false
+	}
+
+	if o.Dynamic != nil && other.Dynamic == nil {
+		return false
+	}
+
+	if o.Dynamic != nil && other.Dynamic != nil {
+		return o.Dynamic.CustomType.Equal(other.Dynamic.CustomType)
 	}
 
 	if o.Float64 == nil && other.Float64 != nil {

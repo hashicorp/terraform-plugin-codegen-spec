@@ -498,6 +498,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_object_custom_type",
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -1572,6 +1584,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 										{
 											Name:   "obj_string_attr",
 											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_attribute_types_dynamic",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:    "object_dynamic_attribute",
+											Dynamic: &schema.DynamicType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -2784,6 +2808,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -6302,6 +6338,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
 									Name: "object_attribute_attribute_types_object_custom_type",
 									Object: &datasource.ObjectAttribute{
 										AttributeTypes: []schema.ObjectAttributeType{
@@ -7376,6 +7424,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 										{
 											Name:   "obj_string_attr",
 											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_attribute_types_dynamic",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:    "object_dynamic_attribute",
+											Dynamic: &schema.DynamicType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -8588,6 +8648,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,

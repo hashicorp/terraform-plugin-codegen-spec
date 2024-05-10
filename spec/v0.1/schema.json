@@ -407,6 +407,15 @@
         }
       }
     },
+    "schema_dynamic_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "custom_type": {
+          "$ref": "#/$defs/schema_custom_type"
+        }
+      }
+    },
     "schema_element_type": {
       "type": "object",
       "additionalProperties": false,
@@ -561,6 +570,9 @@
         "bool": {
           "$ref": "#/$defs/schema_bool_type"
         },
+        "dynamic": {
+          "$ref": "#/$defs/schema_dynamic_type"
+        },
         "float64": {
           "$ref": "#/$defs/schema_float64_type"
         },
@@ -593,6 +605,11 @@
         {
           "required": [
             "bool"
+          ]
+        },
+        {
+          "required": [
+            "dynamic"
           ]
         },
         {
