@@ -96,6 +96,9 @@
             "$ref": "#/$defs/datasource_bool_attribute"
           },
           {
+            "$ref": "#/$defs/datasource_dynamic_attribute"
+          },
+          {
             "$ref": "#/$defs/datasource_float64_attribute"
           },
           {
@@ -191,6 +194,9 @@
         "oneOf": [
           {
             "$ref": "#/$defs/provider_bool_attribute"
+          },
+          {
+            "$ref": "#/$defs/provider_dynamic_attribute"
           },
           {
             "$ref": "#/$defs/provider_float64_attribute"
@@ -290,6 +296,9 @@
         "oneOf": [
           {
             "$ref": "#/$defs/resource_bool_attribute"
+          },
+          {
+            "$ref": "#/$defs/resource_dynamic_attribute"
           },
           {
             "$ref": "#/$defs/resource_float64_attribute"
@@ -748,6 +757,49 @@
       "required": [
         "name",
         "bool"
+      ]
+    },
+    "datasource_dynamic_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/valid_identifier"
+        },
+        "dynamic": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_dynamic_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "dynamic"
       ]
     },
     "datasource_float64_attribute": {
@@ -1480,6 +1532,49 @@
       "required": [
         "name",
         "bool"
+      ]
+    },
+    "provider_dynamic_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/valid_identifier"
+        },
+        "dynamic": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "optional_required": {
+              "$ref": "#/$defs/schema_optional_required"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_dynamic_validators"
+            }
+          },
+          "required": [
+            "optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "dynamic"
       ]
     },
     "provider_float64_attribute": {
@@ -2224,6 +2319,55 @@
       "required": [
         "name",
         "bool"
+      ]
+    },
+    "resource_dynamic_attribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/valid_identifier"
+        },
+        "dynamic": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "associated_external_type": {
+              "$ref": "#/$defs/schema_associated_external_type"
+            },
+            "computed_optional_required": {
+              "$ref": "#/$defs/schema_computed_optional_required"
+            },
+            "custom_type": {
+              "$ref": "#/$defs/schema_custom_type"
+            },
+            "default": {
+              "$ref": "#/$defs/schema_dynamic_default"
+            },
+            "deprecation_message": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "plan_modifiers": {
+              "$ref": "#/$defs/schema_dynamic_plan_modifiers"
+            },
+            "sensitive": {
+              "type": "boolean"
+            },
+            "validators": {
+              "$ref": "#/$defs/schema_dynamic_validators"
+            }
+          },
+          "required": [
+            "computed_optional_required"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "dynamic"
       ]
     },
     "resource_float64_attribute": {
@@ -3066,6 +3210,55 @@
       "required": [
         "schema_definition"
       ]
+    },
+    "schema_dynamic_default": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_default"
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "custom"
+          ]
+        }
+      ]
+    },
+    "schema_dynamic_plan_modifier": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_plan_modifier"
+        }
+      },
+      "required": [
+        "custom"
+      ]
+    },
+    "schema_dynamic_plan_modifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_dynamic_plan_modifier"
+      }
+    },
+    "schema_dynamic_validator": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/$defs/schema_custom_validator"
+        }
+      },
+      "required": [
+        "custom"
+      ]
+    },
+    "schema_dynamic_validators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/schema_dynamic_validator"
+      }
     },
     "schema_float64_default": {
       "type": "object",
