@@ -4,6 +4,10 @@
 package schema
 
 // ElementType defines the type within a list, map, or set.
+//
+// DynamicType is intentionally not supported as it can cause confusing behavior
+// or unavoidable errors for practitioners if elements cannot be conformed into
+// a single element type.
 type ElementType struct {
 	Bool    *BoolType    `json:"bool,omitempty"`
 	Float64 *Float64Type `json:"float64,omitempty"`

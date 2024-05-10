@@ -126,6 +126,69 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "dynamic_attribute",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_associated_external_type",
+									Dynamic: &datasource.DynamicAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "basetypes.DynamicType",
+											ValueType: "basetypes.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type_import_alias",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias: pointer("fwtype"),
+												Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.DynamicType",
+											ValueType: "fwtype.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_validators",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Optional,
+										Validators: schema.DynamicValidators{
+											{
+												Custom: &schema.CustomValidator{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/mydynamicvalidator",
+														},
+													},
+													SchemaDefinition: "mydynamicvalidator.Validate()",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -429,6 +492,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -1143,6 +1218,69 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "dynamic_attribute",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "dynamic_attribute_associated_external_type",
+								Dynamic: &provider.DynamicAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "dynamic_attribute_custom_type",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "basetypes.DynamicType",
+										ValueType: "basetypes.DynamicValue",
+									},
+								},
+							},
+							{
+								Name: "dynamic_attribute_custom_type_import_alias",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Alias: pointer("fwtype"),
+											Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "fwtype.DynamicType",
+										ValueType: "fwtype.DynamicValue",
+									},
+								},
+							},
+							{
+								Name: "dynamic_attribute_validators",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									Validators: schema.DynamicValidators{
+										{
+											Custom: &schema.CustomValidator{
+												Imports: []code.Import{
+													{
+														Path: "github.com/my_account/my_project/mydynamicvalidator",
+													},
+												},
+												SchemaDefinition: "mydynamicvalidator.Validate()",
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -1446,6 +1584,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 										{
 											Name:   "obj_string_attr",
 											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_attribute_types_dynamic",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:    "object_dynamic_attribute",
+											Dynamic: &schema.DynamicType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -2193,6 +2343,106 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "dynamic_attribute",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_associated_external_type",
+									Dynamic: &resource.DynamicAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Optional,
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "basetypes.DynamicType",
+											ValueType: "basetypes.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type_import_alias",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias: pointer("fwtype"),
+												Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.DynamicType",
+											ValueType: "fwtype.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_default",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Optional,
+										Default: &schema.DynamicDefault{
+											Custom: &schema.CustomDefault{
+												Imports: []code.Import{
+													{
+														Path: "github.com/hashicorp/terraform-plugin-framework/resource/schema/dynamicdefault",
+													},
+													{
+														Path: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
+												},
+												SchemaDefinition: "dynamicdefault.StaticValue(types.StringValue(\"example\"))",
+											},
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_plan_modifiers",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										PlanModifiers: schema.DynamicPlanModifiers{
+											{
+												Custom: &schema.CustomPlanModifier{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/dynamicplanmodifier",
+														},
+													},
+													SchemaDefinition: "mydynamicplanmodifier.Modify()",
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_validators",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										Validators: schema.DynamicValidators{
+											{
+												Custom: &schema.CustomValidator{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/mydynamicvalidator",
+														},
+													},
+													SchemaDefinition: "mydynamicvalidator.Validate()",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -2558,6 +2808,18 @@ func TestSpecification_JSONUnmarshal_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -5704,6 +5966,69 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "dynamic_attribute",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_associated_external_type",
+									Dynamic: &datasource.DynamicAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "basetypes.DynamicType",
+											ValueType: "basetypes.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type_import_alias",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias: pointer("fwtype"),
+												Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.DynamicType",
+											ValueType: "fwtype.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_validators",
+									Dynamic: &datasource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Optional,
+										Validators: schema.DynamicValidators{
+											{
+												Custom: &schema.CustomValidator{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/mydynamicvalidator",
+														},
+													},
+													SchemaDefinition: "mydynamicvalidator.Validate()",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &datasource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -6007,6 +6332,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &datasource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,
@@ -6721,6 +7058,69 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 								},
 							},
 							{
+								Name: "dynamic_attribute",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "dynamic_attribute_associated_external_type",
+								Dynamic: &provider.DynamicAttribute{
+									AssociatedExternalType: &schema.AssociatedExternalType{
+										Import: &code.Import{
+											Path: "example.com/apisdk",
+										},
+										Type: "*apisdk.Type",
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "dynamic_attribute_custom_type",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "basetypes.DynamicType",
+										ValueType: "basetypes.DynamicValue",
+									},
+								},
+							},
+							{
+								Name: "dynamic_attribute_custom_type_import_alias",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									CustomType: &schema.CustomType{
+										Import: &code.Import{
+											Alias: pointer("fwtype"),
+											Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+										},
+										Type:      "fwtype.DynamicType",
+										ValueType: "fwtype.DynamicValue",
+									},
+								},
+							},
+							{
+								Name: "dynamic_attribute_validators",
+								Dynamic: &provider.DynamicAttribute{
+									OptionalRequired: schema.Optional,
+									Validators: schema.DynamicValidators{
+										{
+											Custom: &schema.CustomValidator{
+												Imports: []code.Import{
+													{
+														Path: "github.com/my_account/my_project/mydynamicvalidator",
+													},
+												},
+												SchemaDefinition: "mydynamicvalidator.Validate()",
+											},
+										},
+									},
+								},
+							},
+							{
 								Name: "float64_attribute",
 								Float64: &provider.Float64Attribute{
 									OptionalRequired: schema.Optional,
@@ -7024,6 +7424,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 										{
 											Name:   "obj_string_attr",
 											String: &schema.StringType{},
+										},
+									},
+									OptionalRequired: schema.Optional,
+								},
+							},
+							{
+								Name: "object_attribute_attribute_types_dynamic",
+								Object: &provider.ObjectAttribute{
+									AttributeTypes: []schema.ObjectAttributeType{
+										{
+											Name:    "object_dynamic_attribute",
+											Dynamic: &schema.DynamicType{},
 										},
 									},
 									OptionalRequired: schema.Optional,
@@ -7771,6 +8183,106 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 									},
 								},
 								{
+									Name: "dynamic_attribute",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "dynamic_attribute_associated_external_type",
+									Dynamic: &resource.DynamicAttribute{
+										AssociatedExternalType: &schema.AssociatedExternalType{
+											Import: &code.Import{
+												Path: "example.com/apisdk",
+											},
+											Type: "*apisdk.Type",
+										},
+										ComputedOptionalRequired: schema.Optional,
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Path: "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "basetypes.DynamicType",
+											ValueType: "basetypes.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_custom_type_import_alias",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										CustomType: &schema.CustomType{
+											Import: &code.Import{
+												Alias: pointer("fwtype"),
+												Path:  "github.com/hashicorp/terraform-plugin-framework/types/basetypes",
+											},
+											Type:      "fwtype.DynamicType",
+											ValueType: "fwtype.DynamicValue",
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_default",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Optional,
+										Default: &schema.DynamicDefault{
+											Custom: &schema.CustomDefault{
+												Imports: []code.Import{
+													{
+														Path: "github.com/hashicorp/terraform-plugin-framework/resource/schema/dynamicdefault",
+													},
+													{
+														Path: "github.com/hashicorp/terraform-plugin-framework/types",
+													},
+												},
+												SchemaDefinition: "dynamicdefault.StaticValue(types.StringValue(\"example\"))",
+											},
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_plan_modifiers",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										PlanModifiers: schema.DynamicPlanModifiers{
+											{
+												Custom: &schema.CustomPlanModifier{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/dynamicplanmodifier",
+														},
+													},
+													SchemaDefinition: "mydynamicplanmodifier.Modify()",
+												},
+											},
+										},
+									},
+								},
+								{
+									Name: "dynamic_attribute_validators",
+									Dynamic: &resource.DynamicAttribute{
+										ComputedOptionalRequired: schema.Computed,
+										Validators: schema.DynamicValidators{
+											{
+												Custom: &schema.CustomValidator{
+													Imports: []code.Import{
+														{
+															Path: "github.com/my_account/my_project/mydynamicvalidator",
+														},
+													},
+													SchemaDefinition: "mydynamicvalidator.Validate()",
+												},
+											},
+										},
+									},
+								},
+								{
 									Name: "float64_attribute",
 									Float64: &resource.Float64Attribute{
 										ComputedOptionalRequired: schema.Computed,
@@ -8136,6 +8648,18 @@ func TestSpecification_Generate_Version0_1(t *testing.T) {
 											{
 												Name:   "obj_string_attr",
 												String: &schema.StringType{},
+											},
+										},
+										ComputedOptionalRequired: schema.Computed,
+									},
+								},
+								{
+									Name: "object_attribute_attribute_types_dynamic",
+									Object: &resource.ObjectAttribute{
+										AttributeTypes: []schema.ObjectAttributeType{
+											{
+												Name:    "object_dynamic_attribute",
+												Dynamic: &schema.DynamicType{},
 											},
 										},
 										ComputedOptionalRequired: schema.Computed,

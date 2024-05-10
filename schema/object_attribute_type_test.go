@@ -90,6 +90,18 @@ func TestObjectAttributeType_Equal(t *testing.T) {
 			},
 			expected: false,
 		},
+		"dynamic_nil_other_not_nil": {
+			other: schema.ObjectAttributeType{
+				Dynamic: &schema.DynamicType{},
+			},
+			expected: false,
+		},
+		"dynamic_not_nil_other_nil": {
+			objectAttributeType: schema.ObjectAttributeType{
+				Dynamic: &schema.DynamicType{},
+			},
+			expected: false,
+		},
 		"float64_nil_other_not_nil": {
 			other: schema.ObjectAttributeType{
 				Float64: &schema.Float64Type{},

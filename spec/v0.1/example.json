@@ -50,6 +50,69 @@
             }
           },
           {
+            "name": "dynamic_attribute",
+            "dynamic": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "dynamic_attribute_associated_external_type",
+            "dynamic": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "dynamic_attribute_custom_type",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": {
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                },
+                "type": "basetypes.DynamicType",
+                "value_type": "basetypes.DynamicValue"
+              }
+            }
+          },
+          {
+            "name": "dynamic_attribute_custom_type_import_alias",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": {
+                  "alias": "fwtype",
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                },
+                "type": "fwtype.DynamicType",
+                "value_type": "fwtype.DynamicValue"
+              }
+            }
+          },
+          {
+            "name": "dynamic_attribute_validators",
+            "dynamic": {
+              "computed_optional_required": "optional",
+              "validators": [
+                {
+                  "custom": {
+                    "imports": [
+                      {
+                        "path": "github.com/my_account/my_project/mydynamicvalidator"
+                      }
+                    ],
+                    "schema_definition": "mydynamicvalidator.Validate()"
+                  }
+                }
+              ]
+            }
+          },
+          {
             "name": "float64_attribute",
             "float64": {
               "computed_optional_required": "computed"
@@ -354,6 +417,18 @@
                 {
                   "name": "obj_string_attr",
                   "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_attribute_types_dynamic",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "object_dynamic_attribute",
+                  "dynamic": {}
                 }
               ]
             }
@@ -1067,6 +1142,69 @@
           }
         },
         {
+          "name": "dynamic_attribute",
+          "dynamic": {
+            "optional_required": "optional"
+          }
+        },
+        {
+          "name": "dynamic_attribute_associated_external_type",
+          "dynamic": {
+            "associated_external_type": {
+              "import": {
+                "path": "example.com/apisdk"
+              },
+              "type": "*apisdk.Type"
+            },
+            "optional_required": "optional"
+          }
+        },
+        {
+          "name": "dynamic_attribute_custom_type",
+          "dynamic": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": {
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+              },
+              "type": "basetypes.DynamicType",
+              "value_type": "basetypes.DynamicValue"
+            }
+          }
+        },
+        {
+          "name": "dynamic_attribute_custom_type_import_alias",
+          "dynamic": {
+            "optional_required": "optional",
+            "custom_type": {
+              "import": {
+                "alias": "fwtype",
+                "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+              },
+              "type": "fwtype.DynamicType",
+              "value_type": "fwtype.DynamicValue"
+            }
+          }
+        },
+        {
+          "name": "dynamic_attribute_validators",
+          "dynamic": {
+            "optional_required": "optional",
+            "validators": [
+              {
+                "custom": {
+                  "imports": [
+                    {
+                      "path": "github.com/my_account/my_project/mydynamicvalidator"
+                    }
+                  ],
+                  "schema_definition": "mydynamicvalidator.Validate()"
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "float64_attribute",
           "float64": {
             "optional_required": "optional"
@@ -1371,6 +1509,18 @@
               {
                 "name": "obj_string_attr",
                 "string": {}
+              }
+            ]
+          }
+        },
+        {
+          "name": "object_attribute_attribute_types_dynamic",
+          "object": {
+            "optional_required": "optional",
+            "attribute_types": [
+              {
+                "name": "object_dynamic_attribute",
+                "dynamic": {}
               }
             ]
           }
@@ -2117,6 +2267,106 @@
             }
           },
           {
+            "name": "dynamic_attribute",
+            "dynamic": {
+              "computed_optional_required": "computed"
+            }
+          },
+          {
+            "name": "dynamic_attribute_associated_external_type",
+            "dynamic": {
+              "associated_external_type": {
+                "import": {
+                  "path": "example.com/apisdk"
+                },
+                "type": "*apisdk.Type"
+              },
+              "computed_optional_required": "optional"
+            }
+          },
+          {
+            "name": "dynamic_attribute_custom_type",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": {
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                },
+                "type": "basetypes.DynamicType",
+                "value_type": "basetypes.DynamicValue"
+              }
+            }
+          },
+          {
+            "name": "dynamic_attribute_custom_type_import_alias",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "custom_type": {
+                "import": {
+                  "alias": "fwtype",
+                  "path": "github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+                },
+                "type": "fwtype.DynamicType",
+                "value_type": "fwtype.DynamicValue"
+              }
+            }
+          },
+          {
+            "name": "dynamic_attribute_default",
+            "dynamic": {
+              "computed_optional_required": "optional",
+              "default": {
+                "custom": {
+                  "imports": [
+                    {
+                      "path": "github.com/hashicorp/terraform-plugin-framework/resource/schema/dynamicdefault"
+                    },
+                    {
+                      "path": "github.com/hashicorp/terraform-plugin-framework/types"
+                    }
+                  ],
+                  "schema_definition": "dynamicdefault.StaticValue(types.StringValue(\"example\"))"
+                }
+              }
+            }
+          },
+          {
+            "name": "dynamic_attribute_plan_modifiers",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "plan_modifiers": [
+                {
+                  "custom": {
+                    "imports": [
+                      {
+                        "path": "github.com/my_account/my_project/dynamicplanmodifier"
+                      }
+                    ],
+                    "schema_definition": "mydynamicplanmodifier.Modify()"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "dynamic_attribute_validators",
+            "dynamic": {
+              "computed_optional_required": "computed",
+              "validators": [
+                {
+                  "custom": {
+                    "imports": [
+                      {
+                        "path": "github.com/my_account/my_project/mydynamicvalidator"
+                      }
+                    ],
+                    "schema_definition": "mydynamicvalidator.Validate()"
+                  }
+                }
+              ]
+            }
+          },
+          {
             "name": "float64_attribute",
             "float64": {
               "computed_optional_required": "computed"
@@ -2483,6 +2733,18 @@
                 {
                   "name": "obj_string_attr",
                   "string": {}
+                }
+              ]
+            }
+          },
+          {
+            "name": "object_attribute_attribute_types_dynamic",
+            "object": {
+              "computed_optional_required": "computed",
+              "attribute_types": [
+                {
+                  "name": "object_dynamic_attribute",
+                  "dynamic": {}
                 }
               ]
             }
