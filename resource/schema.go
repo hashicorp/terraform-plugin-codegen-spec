@@ -41,6 +41,11 @@ type Schema struct {
 	//    will be removed in the next major version of the provider."
 	//
 	DeprecationMessage *string `json:"deprecation_message,omitempty"`
+
+	// Version is used when upgrading resource state, to help massage
+	// resources created with earlier schemas into the shape defined by the
+	// current schema. It is only valid for resources.
+	Version *int64 `json:"version,omitempty"`
 }
 
 // SchemaValidateRequest specifies the resource being validated.
