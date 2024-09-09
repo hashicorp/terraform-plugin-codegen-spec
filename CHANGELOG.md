@@ -1,3 +1,13 @@
+## 0.2.0 (September 09, 2024)
+
+NOTES:
+
+* all: This Go module has been updated to Go 1.22 per the [Go support policy](https://go.dev/doc/devel/release#policy). It is recommended to review the [Go 1.22 release notes](https://go.dev/doc/go1.22) before upgrading. Any consumers building on earlier Go versions may experience errors. ([#111](https://github.com/hashicorp/terraform-plugin-codegen-spec/issues/111))
+
+FEATURES:
+
+* Initial support of dynamic attributes in data source, provider, and resource schemas ([#98](https://github.com/hashicorp/terraform-plugin-codegen-spec/issues/98))
+
 ## 0.1.1 (April 04, 2024)
 
 ENHANCEMENTS:

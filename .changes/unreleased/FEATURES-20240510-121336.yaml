@@ -1,6 +1,0 @@
-kind: FEATURES
-body: Initial support of dynamic attributes in data source, provider, and resource
-  schemas
-time: 2024-05-10T12:13:36.019491-04:00
-custom:
-  Issue: "98"
