@@ -286,6 +286,9 @@
         },
         "deprecation_message": {
           "type": "string"
+        },
+        "version": {
+          "type": "number"
         }
       },
       "minProperties": 1

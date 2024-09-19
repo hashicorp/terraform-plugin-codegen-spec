@@ -3438,7 +3438,8 @@
         ],
         "markdown_description": "*This* is a description",
         "description": "This is a description",
-        "deprecation_message": "This resource is deprecated"
+        "deprecation_message": "This resource is deprecated",
+        "version": 1
       }
     }
   ],
