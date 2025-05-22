@@ -143,6 +143,10 @@ type BoolAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.BoolValidators `json:"validators,omitempty"`
@@ -178,6 +182,10 @@ type DynamicAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -217,6 +225,10 @@ type Float64Attribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -258,6 +270,10 @@ type Int64Attribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.Int64Validators `json:"validators,omitempty"`
@@ -298,6 +314,10 @@ type ListAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.ListValidators `json:"validators,omitempty"`
@@ -334,6 +354,10 @@ type ListNestedAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -375,6 +399,10 @@ type MapAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.MapValidators `json:"validators,omitempty"`
@@ -411,6 +439,10 @@ type MapNestedAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -452,6 +484,10 @@ type NumberAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.NumberValidators `json:"validators,omitempty"`
@@ -491,6 +527,10 @@ type ObjectAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -532,6 +572,10 @@ type SetAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.SetValidators `json:"validators,omitempty"`
@@ -568,6 +612,10 @@ type SetNestedAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
@@ -609,6 +657,10 @@ type SingleNestedAttribute struct {
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
 
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
+
 	// Validators define types and functions that provide validation
 	// functionality for the block.
 	Validators schema.ObjectValidators `json:"validators,omitempty"`
@@ -644,6 +696,10 @@ type StringAttribute struct {
 	// Sensitive indicates whether the value of the attribute should
 	// be considered sensitive data.
 	Sensitive *bool `json:"sensitive,omitempty"`
+
+	// WriteOnly indicates that Terraform will not store
+	// this attribute value in the plan or state artifacts.
+	WriteOnly *bool `json:"write_only,omitempty"`
 
 	// Validators define types and functions that provide validation
 	// functionality for the block.
