@@ -2324,6 +2324,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_bool_validators"
             }
@@ -2371,6 +2374,9 @@
               "$ref": "#/$defs/schema_dynamic_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -2422,6 +2428,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_float64_validators"
             }
@@ -2469,6 +2478,9 @@
               "$ref": "#/$defs/schema_int64_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -2523,6 +2535,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_list_validators"
             }
@@ -2571,6 +2586,9 @@
               "$ref": "#/$defs/schema_list_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -2669,6 +2687,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_map_validators"
             }
@@ -2717,6 +2738,9 @@
               "$ref": "#/$defs/schema_map_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -2769,6 +2793,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_number_validators"
             }
@@ -2819,6 +2846,9 @@
               "$ref": "#/$defs/schema_object_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -2874,6 +2904,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_set_validators"
             }
@@ -2922,6 +2955,9 @@
               "$ref": "#/$defs/schema_set_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
@@ -3020,6 +3056,9 @@
             "sensitive": {
               "type": "boolean"
             },
+            "write_only": {
+              "type": "boolean"
+            },
             "validators": {
               "$ref": "#/$defs/schema_object_validators"
             }
@@ -3113,6 +3152,9 @@
               "$ref": "#/$defs/schema_string_plan_modifiers"
             },
             "sensitive": {
+              "type": "boolean"
+            },
+            "write_only": {
               "type": "boolean"
             },
             "validators": {
